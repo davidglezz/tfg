@@ -4,7 +4,8 @@
     "module": "commonjs",
     "lib": [
       "es5",
-      "es6"
+      "es6",
+      "es2015"
     ],
     "pretty": true,
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
@@ -15,7 +16,7 @@
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
     "outDir": "./build",
     //"rootDir": "./src",
-    "removeComments": true,                /* Do not emit comments to output. */
+    "removeComments": false,                /* Do not emit comments to output. */
     // "noEmit": true,                        /* Do not emit outputs. */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
