@@ -1,0 +1,28 @@
+<div class="app-auth">
+  <div class="container page">
+    <div class="row">
+      <div class="col-mat-6 offset-mat-3 col-xs-12">
+        <h1 class="text-xs-center">{{ title }}</h1>
+        <p class="text-xs-center">
+          <a [routerLink]="['/login']">Have an account?</a>
+          <a [routerLink]="['/register']">Need an account?</a>
+        </p>
+        <!--<app-list-errors [errors]="errors"></app-list-errors>-->
+        <form (ngSubmit)="submitForm()">
+          <fieldset class="form-group">
+            <input formControlName="username" placeholder="Username" class="form-control form-control-lg" type="text" />
+          </fieldset>
+          <fieldset class="form-group">
+            <input formControlName="email" placeholder="Email" class="form-control form-control-lg" type="text" />
+          </fieldset>
+          <fieldset class="form-group">
+            <input formControlName="password" placeholder="Password" class="form-control form-control-lg" type="password" />
+          </fieldset>
+          <button class="btn btn-lg btn-primary pull-xs-right" type="submit">
+            {{ title }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

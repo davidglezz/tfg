@@ -1,0 +1,120 @@
+<mat-progress-spinner *ngIf="isLoading" class="loader" color="primary" mode="indeterminate"></mat-progress-spinner>
+<mat-card class="product-info-content" *ngIf="!isLoading">
+  <mat-card-content>
+    <div class="row">
+      <div class="col no-grow">
+        <img class="image" [src]="product.image | defaultPicture" width="440px" height="440px" />
+      </div>
+      <div class="col">
+        <h1 class="title">{{product.name}}</h1>
+        <div class="description" *ngIf="product.description">
+          {{product.description}}
+        </div>
+
+        <h2>Detalles</h2>
+        <ul class="property-list">
+          <li *ngIf="product.brand">Marca:
+            <strong>{{product.brand}}</strong>
+          </li>
+          <li *ngIf="product.color">Color:
+            <strong>{{product.color}}</strong>
+          </li>
+          <li *ngIf="product.gtin13">EAN13:
+            <strong>{{product.gtin13}}</strong>
+          </li>
+          <li *ngIf="product.mpn">MPN:
+            <strong>{{product.mpn}}</strong>
+          </li>
+          <li *ngIf="product.sku">SKU:
+            <strong>{{product.sku}}</strong>
+          </li>
+          <li *ngIf="product.productID">Product ID:
+            <strong>{{product.productID}}</strong>
+          </li>
+          <li *ngIf="product.language">Idioma:
+            <strong>{{product.language}}</strong>
+          </li>
+          <li>Actualizado el:
+            <strong>{{product.dateUpd | date:"dd/MM/yyyy hh:mm"}}</strong>
+          </li>
+          <li>Encontrado el:
+            <strong>{{product.dateAdd | date:"dd/MM/yyyy hh:mm"}}</strong>
+          </li>
+        </ul>
+
+        <div class="rating" *ngIf="product.ratingValue">
+          <div class="rating-stars">
+            <span class="rating-star" *ngFor="let v of [0,1,2,3,4]">
+              <mat-icon *ngIf="product.ratingValue*5 < v+0.25">star_border</mat-icon>
+              <mat-icon *ngIf="product.ratingValue*5 >= v+0.25 && product.ratingValue*5 <= v+0.75">star_half</mat-icon>
+              <mat-icon *ngIf="product.ratingValue*5 > v+0.75">star</mat-icon>
+            </span>
+          </div>
+          <p class="rating-results">
+            Tiene una valoración de
+            <strong>{{product.ratingValue * 5.0}} / 5</strong> con un total de
+            <strong>{{product.ratingCount}}</strong> valoraciones.
+          </p>
+        </div>
+
+
+        <hr />
+        <div class="price-content" *ngIf="product.price>0">
+          <span class="price {{product.priceCurrency}}" *ngIf="product.price!=product.priceTotal">{{product.price}}</span>
+          <span class="divider" *ngIf="product.price!=product.priceTotal"> / </span>
+          <span class="priceTotal {{product.priceCurrency}}">{{product.priceTotal}}</span>
+          <span class="availability {{product.availability}}">{{product.availability}}</span>
+        </div>
+      </div>
+    </div>
+
+    <mat-tab-group class="additional-info">
+
+      <mat-tab label="Vendido por">
+        <mat-nav-list *ngIf="urls.length > 0">
+          <mat-list-item *ngFor="let url of urls">
+            <img matListAvatar src="https://api.statvoo.com/favicon/?url={{url.shop.domain}}" alt="{{url.shop.name}} Icon">
+            <h3 matLine>
+              {{url.shop.name}}
+            </h3>
+            <a matLine target="_blank" href="{{url.href}}">{{url.href}}</a>
+            <button mat-button>
+              <mat-icon matListIcon>launch</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
+        <h3 class="muted center" *ngIf="urls.length === 0">¡Vaya! Nadie vende este artículo.</h3>
+
+        <div *ngIf="prices.values">
+          <canvas baseChart [datasets]="prices.values" [labels]="prices.labels" [options]="prices.options" chartType="line"></canvas>
+        </div><!-- -->
+      </mat-tab>
+
+      <mat-tab label="Similares">
+        <div class="tab-body-content" *ngIf="similar.length > 0">
+          <app-product-item *ngFor="let item of similar" [item]="item"></app-product-item>
+        </div>
+        <div class="tab-body-content" *ngIf="similar.length == 0">
+          <p>No se han encontrado productos similares.</p>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Descripción">
+        <div class="tab-body-content">
+          {{product.description}}
+        </div>
+
+      </mat-tab>
+
+      <mat-tab label="Valoraciones">
+        TODO
+      </mat-tab>
+    </mat-tab-group>
+
+    <!--
+    <div class="footer">
+      <button mat-button color="primary">ATRAS</button>
+    </div>
+    -->
+  </mat-card-content>
+</mat-card>

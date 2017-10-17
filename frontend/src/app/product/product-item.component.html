@@ -1,0 +1,29 @@
+<mat-card class="product-item" [routerLink]="['/product',item.product.id]">
+  <mat-card-header class="header" *ngIf="item.shop">
+    <img mat-card-avatar src="https://api.statvoo.com/favicon/?url={{item.shop.domain}}" alt="{{item.shop.name}} Icon">
+    <mat-card-title>{{item.shop.name}}</mat-card-title>
+    <mat-card-subtitle><a target="_blank" href="{{item.href}}" title="{{item.href}}">{{item.shop.domain}}</a></mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image class="image" [src]="item.product.image | defaultPicture" width="220px" height="220px" />
+  <mat-card-title-group class="title-group">
+    <mat-card-title class="title">{{item.product.name}}</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content class="price-content" *ngIf="item.product.price>0">
+    <span class="price {{item.product.priceCurrency}}" *ngIf="item.product.price!=item.product.priceTotal">{{item.product.price | number:'1.0-2'}}</span>
+    <span class="divider" *ngIf="item.product.price!=item.product.priceTotal"> / </span>
+    <span class="priceTotal {{item.product.priceCurrency}}">{{item.product.priceTotal | number:'1.0-2'}}</span>
+  </mat-card-content>
+  <mat-card-content class="price-content" *ngIf="!item.product.price">
+    <span class="no-price"> Precio no disponible</span>
+  </mat-card-content>
+  <mat-card-actions class="footer">
+    <span class="footer-placeholder">&nbsp;</span>
+    <span class="language-content" *ngIf="item.product.language">
+      <mat-icon class="footer-icon">language</mat-icon> {{item.product.language}}
+    </span>
+    <span class="rating-content" *ngIf="item.product.ratingValue>0">
+      <mat-icon class="footer-icon">star</mat-icon> {{item.product.ratingValue*5 | number:'1.0-2'}}
+    </span>
+    <!-- availability , brand -->
+  </mat-card-actions>
+</mat-card>

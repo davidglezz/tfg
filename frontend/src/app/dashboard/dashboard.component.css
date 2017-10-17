@@ -1,0 +1,19 @@
+/*
+mat-grid-tile {
+  background: lightblue;
+}
+*/
+
+
+/*
+app-dashboard mat-grid-tile figure {
+  align-items: flex-start!important;
+}
+*/
+
+.dashboard-card {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - 20px);
+  margin: 10px;
+}

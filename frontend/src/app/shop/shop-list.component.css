@@ -1,0 +1,11 @@
+.muted {
+    color: rgba(0,0,0,.46);
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.center {
+  text-align: center;
+}

@@ -1,0 +1,6 @@
+<h1>Panel de control</h1>
+<mat-grid-list cols="4" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let tile of tiles" colspan="tile.cols" rowspan="tile.rows">
+    <mat-card  [style.background]="tile.color" class="dashboard-card">{{tile.text}}</mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

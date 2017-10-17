@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <button mat-button class="app-toolbar-menu" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button> TFG-DAVID
+  <app-search></app-search>
+  <span class="app-toolbar-filler"></span>
+  <!--<mat-slide-toggle color="accent" [(ngModel)]="isDev">Dev Features</mat-slide-toggle>-->
+</mat-toolbar>
+
+<mat-sidenav-container [class.app-dark-theme]="!isDev" class="app-sidenav-container">
+  <mat-sidenav #sidenav mode="over" opened="false" class="app-sidenav" tabindex="-1">
+    <mat-nav-list>
+
+      <h3 matSubheader>Principal</h3>
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/dashboard" [routerLink]="['dashboard']">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line>Dashboard</span>
+      </a>
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/shop" [routerLink]="['/shop']">
+        <mat-icon mat-list-icon>store</mat-icon>
+        <span mat-line>Tiendas</span>
+      </a>
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/product" [routerLink]="['/product']">
+        <mat-icon mat-list-icon>shopping_cart</mat-icon>
+        <span mat-line>Productos</span>
+      </a>
+      <md-divider></md-divider>
+      <h3 matSubheader>Ayuda</h3>
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/about" [routerLink]="['/about']">
+        <mat-icon mat-list-icon>help</mat-icon>
+        <span mat-line>Información</span>
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

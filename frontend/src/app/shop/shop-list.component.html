@@ -1,0 +1,26 @@
+<mat-toolbar class="section-toolbar">
+  Tiendas ( {{shops.length}} )
+  <span class="fill-remaining-space"></span>
+  <div class="filter">
+    <mat-form-field floatPlaceholder="never">
+      <!--<mat-icon matPrefix>search</mat-icon>-->
+      <input matInput [(ngModel)]="searchQuery" name="searchQuery" placeholder="Buscar" (keyup)="filter()">
+      <!--<mat-icon matSuffix>filter_list</mat-icon>-->
+    </mat-form-field>
+  </div>
+</mat-toolbar>
+
+<mat-nav-list *ngIf="shops.length > 0">
+  <ng-container *ngFor="let shop of shops; let i = index;">
+    <h3 *ngIf="needSeparator(i)" matSubheader>{{getSepartorName(i)}}</h3>
+    <mat-list-item (click)="showInfo(shop)">
+      <img matListAvatar src="https://api.statvoo.com/favicon/?url={{shop.domain}}" alt="{{shop.name}} Icon">
+      <span matLine>
+        {{shop.name}}
+    </span>
+      <a matLine href="{{shop.domain}}">{{shop.domain}}</a>
+    </mat-list-item>
+  </ng-container>
+</mat-nav-list>
+
+<h3 class="muted center" *ngIf="shops.length === 0">Todavía no hay ninguna tienda.</h3>

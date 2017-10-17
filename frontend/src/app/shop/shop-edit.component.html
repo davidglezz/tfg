@@ -1,0 +1,9 @@
+<form>
+  <mat-input-container style="width:30%">
+    <input matInput [(ngModel)]="newShop.name" placeholder="Name" name="name">
+  </mat-input-container>
+  <mat-input-container style="width:30%">
+    <input matInput [(ngModel)]="newShop.domain" placeholder="Domain" name="domain">
+  </mat-input-container>
+  <button mat-raised-button (click)="createShop()">Create Shop</button>
+</form>

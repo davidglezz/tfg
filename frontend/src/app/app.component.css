@@ -1,0 +1,108 @@
+.app-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+}
+
+.app-toolbar-menu.mat-button {
+  min-width: 0;
+  padding: 0 8px;
+  margin-right: 16px;
+}
+
+.app-toolbar-filler {
+  flex: 1 1 auto;
+}
+
+.app-sidenav-container {
+  /* Minus Top Toolbar */
+  margin-top: 64px;
+  height: calc(100vh - 64px);
+}
+
+.app-dark-theme {
+  background: black;
+}
+
+.app-sidenav {
+  min-width: 100px;
+}
+
+.app-sidenav.mat-sidenav {
+  /*background: transparent;*/
+}
+
+.app-sidenav .mat-list .mat-subheader,
+.app-sidenav .mat-nav-list .mat-subheader {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  /*font-weight: 600;*/
+}
+
+.mat-nav-list .mat-list-item.sidenav-item-selected {
+  background-color: rgba(0, 0, 0, .05);
+  border-radius: 2px;
+  color: rgba(0, 0, 0, .9);
+  font-weight: bold;
+}
+
+.app-content {
+  /*padding: 0 16px;*/
+}
+
+.app-content mat-card {
+  margin: 16px;
+}
+
+.app-sidenav .mat-list .mat-list-item .mat-list-icon,
+.app-sidenav .mat-nav-list .mat-list-item .mat-list-icon {
+  padding: 0;
+  /*margin-right: 16px;*/
+}
+
+.app-content mat-checkbox {
+  margin: 10px;
+}
+
+.app-action {
+  display: inline-block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.app-spinner {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+
+.app-input-icon {
+  font-size: 16px;
+}
+
+.app-list {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  width: 350px;
+  margin: 20px;
+}
+
+.app-progress {
+  margin: 20px;
+}
+
+/* FIX para el FAB : transform no compatible con position:fixed */
+.mat-drawer-content {
+  transform: none !important;
+}
+
+/**/
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+
+app-search {
+  width: 100%;
+}

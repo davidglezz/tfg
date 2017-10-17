@@ -1,0 +1,77 @@
+virtual-scroll {
+  display: block;
+  width: 100%;
+  /* 100% menos la toolbar, pading, 2º toolbar */
+  height: calc(100vh - 64px - 0px - 64px);
+  /*margin: 0 -16px;*/
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.loader {
+  width: calc(100% - 48px);
+  margin: 1rem;
+  box-sizing: border-box;
+}
+
+.product-filters-sidenav {
+  padding: 1rem;
+  /*margin: 0 -1rem;*/
+  background: transparent;
+  max-width: 18rem;
+}
+
+.product-filters-sidenav .mat-list .mat-subheader,
+.product-filters-sidenav .mat-nav-list .mat-subheader {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* .mat-.. No funciona por la transclusion */
+.mat-expansion-panel-content,
+.filter-list {
+  overflow: scroll;
+  max-height: 250px;
+  /*margin: 0 -1rem;*/
+  outline: 0;
+}
+
+.mat-expansion-panel-body {
+  margin: 0;
+  overflow: visible;
+}
+
+.filter-list .filter-list-item {
+  /* margin: 0 -1rem; */
+}
+
+.filter-list .filter-list-item .filter-list-item-content {
+  	overflow: hidden;
+  	white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: -1rem;
+}
+
+.filter-list .filter-list-item .filter-list-item-content img {
+  vertical-align: text-bottom;
+  margin-right: 0.5rem;
+}
+
+.filter-slider {
+  width: 100%;
+}
+
+.filter-slider.first {
+  margin-top: 1rem;
+}
