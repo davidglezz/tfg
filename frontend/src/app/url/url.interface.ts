@@ -1,4 +1,4 @@
-import { Shop } from '../shop/Shop.interface';
+import { Shop } from '../shop/shop.interface';
 import { Product } from '../product/product.interface';
 
 export interface Url {

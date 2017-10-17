@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Shop } from './Shop.interface'
+import { Shop } from './shop.interface'
 import { API } from '../api.config';
 
 @Injectable()
