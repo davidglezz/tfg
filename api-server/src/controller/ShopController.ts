@@ -7,7 +7,7 @@ import { Url } from '../persistence/entities/Url';
 
 interface Dictionary<T> { [key: string]: T; }
 
-@JsonController('/shops')
+@JsonController('/api/shops')
 export class ShopController {
     private connection: Connection
     private repository: Repository<Shop>
