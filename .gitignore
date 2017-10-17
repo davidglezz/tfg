@@ -64,6 +64,7 @@ persistence/src/ormconfig.json
 persistence/src/connectionOptions.ts
 api-server/src/persistence/ormconfig.json
 api-server/src/persistence/connectionOptions.ts
+api-server/public/*
 crawler/src/persistence/ormconfig.json
 crawler/src/persistence/connectionOptions.ts
 crawler/build
@@ -79,3 +80,4 @@ crawler/src/scraper/SitemapParser3.ts
 crawler/src/scraper/SitemapParser.ts
 crawler/src/request.ts
 crawler/.vscode
+
