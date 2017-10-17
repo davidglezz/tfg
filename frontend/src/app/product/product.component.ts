@@ -126,7 +126,7 @@ export class ProductComponent implements OnInit, OnChanges {
     this.loading = true;
     this.productService
       .getProducts(0, this.pageSize, this.productFilter)
-      .subscribe(data => this.items = data.map(product => { return { product } }) as Url[], console.error, () => {
+      .subscribe(data => this.items = data.map(product => ({ product }) ) as Url[], console.error, () => {
         this.loading = false
         this.productVirtualScroll.refresh()
         if (this.items && this.items.length) {
@@ -146,7 +146,7 @@ export class ProductComponent implements OnInit, OnChanges {
       const nbProducts = this.items.length
       this.productService
         .getProducts(this.items.length, this.pageSize, this.productFilter)
-        .subscribe(data => this.items = this.items.concat(data.map((product) => { return { product } }) as Url[]), console.error, () => {
+        .subscribe(data => this.items = this.items.concat(data.map((product) => ({ product })) as Url[]), console.error, () => {
           this.loading = false
           this.noMoreProducts = nbProducts === this.items.length
         })
