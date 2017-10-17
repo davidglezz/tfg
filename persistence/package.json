@@ -1,0 +1,16 @@
+{
+  "name": "persistence",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David González García",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^8.0.28",
+    "typeorm": "0.1.0-alpha.42"
+  }
+}
