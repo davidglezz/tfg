@@ -57,3 +57,25 @@ typings/
 # dotenv environment variables file
 .env
 
+
+crawler/debug
+persistence/dist
+persistence/src/ormconfig.json
+persistence/src/connectionOptions.ts
+api-server/src/persistence/ormconfig.json
+api-server/src/persistence/connectionOptions.ts
+crawler/src/persistence/ormconfig.json
+crawler/src/persistence/connectionOptions.ts
+crawler/build
+crawler/test
+
+# exclusiones temporales
+persistence/gen.bat
+persistence/model.mwb
+frontend/src/environments/environment.prod.ngsummary.json
+frontend/src/environments/environment.ngsummary.json
+crawler/typings.json
+crawler/src/scraper/SitemapParser3.ts
+crawler/src/scraper/SitemapParser.ts
+crawler/src/request.ts
+crawler/.vscode
