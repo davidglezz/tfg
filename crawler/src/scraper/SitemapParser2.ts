@@ -28,7 +28,7 @@ export class SitemapParser {
             lowerCaseTags: true
         })
 
-        this.stream = merge2({ end: true, objectMode: true })
+        this.stream = merge2({ end: true, objectMode: true } as any) // Defecto en definicin de tipos
         this.stream.pipe(parserStream)
     }
 
