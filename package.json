@@ -1,0 +1,23 @@
+{
+  "name": "tfg",
+  "version": "1.0.0",
+  "description": "product-agregator",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start \"/app/crawler/src/index.ts\" --name=crawler && pm2 start \"/app/api-server/src/app.ts\" --name=api-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidglezz/tfg.git"
+  },
+  "author": "David González García",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidglezz/tfg/issues"
+  },
+  "homepage": "https://github.com/davidglezz/tfg#readme",
+  "dependencies": {
+    "pm2": "^2.7.1"
+  }
+}
