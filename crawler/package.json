@@ -23,9 +23,9 @@
     "@types/htmlparser2": "^3.7.31",
     "@types/jasmine": "^2.6.0",
     "@types/merge2": "^1.1.2",
-    "@types/node": "^8.0.34",
+    "@types/node": "^8.0.44",
     "@types/normalize-url": "^1.9.1",
-    "@types/request": "^2.0.4",
+    "@types/request": "^2.0.6",
     "@types/sax": "^1.0.0",
     "async": "^2.5.0",
     "chai": "^4.1.2",
@@ -42,7 +42,7 @@
     "popsicle-limit": "^1.0.0",
     "request": "^2.83.0",
     "typedi": "^0.5.2",
-    "typeorm": "^0.1.0",
+    "typeorm": "^0.1.1",
     "urijs": "^1.19.0"
   },
   "devDependencies": {
