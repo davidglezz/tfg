@@ -17,7 +17,7 @@ cp -a /app/persistence/src/. /app/crawler/src/persistence/
 cp -a /app/persistence/src/. /app/api-server/src/persistence/
 
 cd /app/frontend && npm update
-ng build --prod
+ng build
 mv /app/frontend/dist/* /app/api-server/public/
 
 cd /app/api-server/ && ts-node src/app.ts & cd /app/crawler/ && ts-node src/index.ts
