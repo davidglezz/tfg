@@ -23,10 +23,11 @@
     "@types/htmlparser2": "^3.7.31",
     "@types/jasmine": "^2.6.0",
     "@types/merge2": "^1.1.2",
-    "@types/node": "^8.0.44",
+    "@types/node": "^8.0.45",
     "@types/normalize-url": "^1.9.1",
     "@types/request": "^2.0.6",
     "@types/sax": "^1.0.0",
+    "@types/urijs": "^1.15.34",
     "async": "^2.5.0",
     "chai": "^4.1.2",
     "charset": "^1.0.1",
@@ -45,7 +46,5 @@
     "typeorm": "^0.1.1",
     "urijs": "^1.19.0"
   },
-  "devDependencies": {
-    "@types/urijs": "^1.15.34"
-  }
+  "devDependencies": {}
 }
