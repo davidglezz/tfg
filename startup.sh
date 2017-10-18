@@ -20,7 +20,9 @@ cd /app/frontend && npm update
 ng build
 mv /app/frontend/dist/* /app/api-server/public/
 
-cd /app/api-server/ && ts-node src/app.ts & cd /app/crawler/ && ts-node src/index.ts
+cd /app/api-server/ && ts-node src/app.ts & 
+cd /app/crawler/ && ts-node src/index.ts &
+wait
 
 #pm2 start ts-node /app/api-server/src/app.ts
 #pm2 start ts-node /app/crawler/src/index.ts
