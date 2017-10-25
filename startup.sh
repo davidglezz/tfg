@@ -5,6 +5,8 @@ npm update ts-node
 npm update @angular/cli 
 
 cd /app
+git reset --hard
+git clean -fd
 git pull || git clone https://github.com/davidglezz/tfg.git .
 
 cd /app && npm update
