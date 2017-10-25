@@ -273,28 +273,33 @@ export class ProductController {
 
     @Post("/")
     create( @EntityFromBody({ required: true }) product: Product) {
+        return throw new Error("Disabled until there is an authentication system")
         return this.repository.save(product)
     }
 
     @Put("/")
     update( @EntityFromBody({ required: true }) product: Product) {
+        return throw new Error("Disabled until there is an authentication system")
         return this.repository.save(product);
     }
 
     @Put("/:id")
     updateOne( @EntityFromBody({ required: true }) product: Product) {
+        return throw new Error("Disabled until there is an authentication system")
         return this.repository.save(product);
     }
 
     @Delete("/")
     deleteAll( @QueryParam("confirm") confirm = false) {
+        return throw new Error("Disabled until there is an authentication system")
         if (confirm)
             return this.repository.clear();
     }
 
     @Delete("/:id")
     deleteOne( @Param("id") id: number) {
-        return this.repository.removeById(id);
+        return throw new Error("Disabled until there is an authentication system")
+        // return this.repository.removeById(id);
     }
 }
 

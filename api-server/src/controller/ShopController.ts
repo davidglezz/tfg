@@ -87,12 +87,14 @@ export class ShopController {
 
     @Delete("/")
     deleteAll( @QueryParam("confirm") confirm = false) {
+        return throw new Error("Disabled until there is an authentication system")
         if (confirm)
             return this.repository.clear();
     }
 
     @Delete("/:id")
     deleteOne( @Param("id") id: number) {
+        return throw new Error("Disabled until there is an authentication system")
         return this.repository.removeById(id);
     }
 }
