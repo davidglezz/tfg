@@ -14,9 +14,11 @@ export class ShopService {
 
     constructor(private http: Http) { }
 
-    getShops(page: number = 0, limit: number = 100): Observable<Shop[]> {
+    getShops(page: number = 0, limit: number = 100, orderBy = 'name', orderWay: 'ASC' | 'DESC' = 'ASC'): Observable<Shop[]> {
         const params: RequestOptionsArgs = {
             params: {
+                'orderBy': orderBy,
+                'orderWay': orderWay,
                 'page': page,
                 'limit': limit
             }
