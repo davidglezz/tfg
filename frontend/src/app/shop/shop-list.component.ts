@@ -37,29 +37,6 @@ export class ShopListComponent implements OnInit {
     }
   }
 
-  createShop(newShop: Shop): void {
-
-    this.shopService.createShop(newShop)
-      .then(shop => {
-        this.shops.push(shop);
-        this.selectedShop = null;
-      });
-  }
-
-  deleteShop(shop: Shop): void {
-    this.shopService
-      .deleteShop(shop)
-      .then(() => {
-        this.shops = this.shops.filter(b => b !== shop);
-        if (this.selectedShop === shop) { this.selectedShop = null; }
-      });
-  }
-
-  showInfo(shop: Shop): void {
-    this.selectedShop = shop;
-    this.router.navigate(['/information', this.selectedShop.id]);
-  }
-
   needSeparator(i: number) {
     if (i === 0) {
       return this.shops[i].name.charAt(0).toUpperCase()

@@ -1,20 +1,46 @@
-<mat-card style="width: 30%" *ngIf="shop">
-  <mat-card-header>
-    <mat-card-title>{{shop.name}}</mat-card-title>
-  </mat-card-header>
+<mat-card class="content" *ngIf="shop">
   <mat-card-content>
-    <div><label>id: </label>{{shop.id}}</div>
-    <div>
-      <label>Name: </label>
-      <input [(ngModel)]="shop.name" placeholder="Name" />
-    </div>
-    <div>
-      <label>Domain: </label>
-      <input [(ngModel)]="shop.domain" placeholder="Domain" />
-    </div>
+    <h1>{{shop.name}}
+      <span class="muted right">#{{shop.id}}</span>
+    </h1>
+    <h2>Información</h2>
+    <mat-list>
+      <mat-list-item>
+        <span>Dominio: </span>
+        <span class="value">{{shop.domain}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Url del sitemap: </span>
+        <span class="value">{{shop.sitemap}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Gastos de envío: </span>
+        <span class="value">{{shop.shippingCost | number:'1.0-2'}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Intervalo de actualización de productos: </span>
+        <span class="value">{{shop.productUpdInterval | timespan}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Intervalo de actualización del sitemap: </span>
+        <span class="value">{{shop.sitemapUpdInterval | timespan}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Fecha de creación: </span>
+        <span class="value">{{shop.dateAdd | date:"dd/MM/yyyy hh:mm"}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Última actualización: </span>
+        <span class="value">{{shop.dateUpd | date:"dd/MM/yyyy hh:mm"}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span>Próxima actualización: </span>
+        <span class="value">{{shop.dateNextUpd | date:"dd/MM/yyyy hh:mm"}}</span>
+      </mat-list-item>
+    </mat-list>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="goBack()"> Back </button>
-    <button mat-button (click)="updateShop()"> Update </button>
+    <button mat-button [routerLink]="['/shop']"> Atrás </button>
+    <button mat-button [routerLink]="['/shop',shop.id,'edit']"> Modificar </button>
   </mat-card-actions>
 </mat-card>

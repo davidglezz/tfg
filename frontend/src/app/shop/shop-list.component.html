@@ -13,12 +13,12 @@
 <mat-nav-list *ngIf="shops.length > 0">
   <ng-container *ngFor="let shop of shops; let i = index;">
     <h3 *ngIf="needSeparator(i)" matSubheader>{{getSepartorName(i)}}</h3>
-    <mat-list-item (click)="showInfo(shop)">
+    <mat-list-item [routerLink]="['/shop',shop.id]">
       <img matListAvatar src="https://api.statvoo.com/favicon/?url={{shop.domain}}" alt="{{shop.name}} Icon">
       <span matLine>
         {{shop.name}}
     </span>
-      <a matLine href="{{shop.domain}}">{{shop.domain}}</a>
+      <span matLine>{{shop.domain}}</span>
     </mat-list-item>
   </ng-container>
 </mat-nav-list>

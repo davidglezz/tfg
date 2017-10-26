@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Shop } from './shop.interface';
+import { Params, ActivatedRoute, Router } from '@angular/router';
+import { ShopService } from './shop.service';
 
 @Component({
   selector: 'app-shop-edit',
@@ -7,15 +9,43 @@ import { Shop } from './shop.interface';
   styleUrls: ['./shop-edit.component.css']
 })
 export class ShopEditComponent implements OnInit {
+  shop: Shop;
+  isNew: boolean;
 
-  newShop: Shop
-  constructor() { }
+  constructor(
+    private shopService: ShopService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.isNew = this.router.isActive(this.router.createUrlTree(['/shop', 'add']), true);
+    console.log('isNew', this.isNew)
+    if (!this.isNew) {
+      this.route.params
+        .switchMap((params: Params) => this.shopService.getShopById(+params['id']))
+        .subscribe(shop => this.shop = shop as Shop);
+    } else {
+      this.shop = {} as Shop
+    }
   }
 
-  createShop() {
-  }
+  save() {
+    if (!this.isNew) {
+      this.shop.dateNextUpd = undefined; // TODO
+      this.shop.dateAdd = undefined;
+      this.shop.dateUpd = undefined;
+      this.shopService.updateShop(this.shop)
+        .subscribe(shop => {
+          this.router.navigate(['/shop', shop.id]);
+        });
+    } else {
+      this.shopService.createShop(this.shop)
+        .subscribe(shop => {
+          this.router.navigate(['/shop', shop.id]);
+        });
+    }
 
+  }
 
 }

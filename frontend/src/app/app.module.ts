@@ -46,7 +46,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShopComponent } from './shop/shop.component';
 import { ShopInfoComponent } from './shop/shop-info.component';
-import { ShopAddComponent } from './shop/shop-add.component';
 import { ShopListComponent } from './shop/shop-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProductItemComponent } from './product/product-item.component';
@@ -61,6 +60,7 @@ import { ShopEditComponent } from './shop/shop-edit.component';
 import { AboutComponent } from './about/about.component';
 import { ObjectKeysPipe } from './object-keys.pipe';
 import { SearchComponent } from './search/search.component';
+import { TimespanPipe } from './timespan.pipe';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,6 @@ import { SearchComponent } from './search/search.component';
     DashboardComponent,
     ShopComponent,
     ShopInfoComponent,
-    ShopAddComponent,
     ShopListComponent,
     ProductComponent,
     UrlComponent,
@@ -80,7 +79,8 @@ import { SearchComponent } from './search/search.component';
     ShopEditComponent,
     AboutComponent,
     ObjectKeysPipe,
-    SearchComponent
+    SearchComponent,
+    TimespanPipe
   ],
   imports: [
     BrowserModule,
@@ -123,7 +123,7 @@ import { SearchComponent } from './search/search.component';
   ],
   exports: [
     DefaultPicturePipe,
-    
+
     // CDk
     CdkTableModule,
     OverlayModule,

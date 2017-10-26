@@ -1,9 +1,47 @@
 <form>
-  <mat-input-container style="width:30%">
-    <input matInput [(ngModel)]="newShop.name" placeholder="Name" name="name">
-  </mat-input-container>
-  <mat-input-container style="width:30%">
-    <input matInput [(ngModel)]="newShop.domain" placeholder="Domain" name="domain">
-  </mat-input-container>
-  <button mat-raised-button (click)="createShop()">Create Shop</button>
+  <mat-card class="content" *ngIf="shop">
+    <mat-card-content>
+      <h1>
+        <span *ngIf="isNew" [ngClass]="{'muted' : shop.name}">Nueva tienda: </span>
+        {{shop.name}}
+        <span *ngIf="!isNew" class="muted right">#{{shop.id}}</span>
+      </h1>
+
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="shop.name" placeholder="Nombre" name="name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="shop.domain" placeholder="Dominio" name="domain">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="shop.sitemap" placeholder="Url del sitemap" name="sitemap">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="shop.shippingCost" placeholder="Gastos de envío (€)" name="shippingCost">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="shop.productUpdInterval" placeholder="Intervalo de actualización de productos (ms)" name="productUpdInterval">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="shop.sitemapUpdInterval" placeholder="Intervalo de actualización del sitemap (ms)" name="sitemapUpdInterval">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button *ngIf="!(shop.id > 0)" [routerLink]="['/shop']"> Cancelar </button>
+      <button mat-button *ngIf="shop.id > 0" [routerLink]="['/shop',shop.id]"> Cancelar </button>
+      <button mat-button (click)="save()"> Guardar </button>
+    </mat-card-actions>
+  </mat-card>
 </form>

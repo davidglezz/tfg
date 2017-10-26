@@ -60,9 +60,9 @@
 
         <hr />
         <div class="price-content" *ngIf="product.price>0">
-          <span class="price {{product.priceCurrency}}" *ngIf="product.price!=product.priceTotal">{{product.price}}</span>
+          <span class="price {{product.priceCurrency}}" *ngIf="product.price!=product.priceTotal">{{product.price | number:'1.0-2'}}</span>
           <span class="divider" *ngIf="product.price!=product.priceTotal"> / </span>
-          <span class="priceTotal {{product.priceCurrency}}">{{product.priceTotal}}</span>
+          <span class="priceTotal {{product.priceCurrency}}">{{product.priceTotal | number:'1.0-2'}}</span>
           <span class="availability {{product.availability}}">{{product.availability}}</span>
         </div>
       </div>

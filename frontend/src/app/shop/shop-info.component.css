@@ -1,0 +1,16 @@
+.content {
+  margin: 24px auto;
+  max-width: 990px;
+}
+
+.muted {
+  color: rgba(0,0,0,.32);
+}
+.right{
+  float: right;
+}
+
+.value {
+  font-weight: bold;
+  margin-left: 0.5rem;
+}

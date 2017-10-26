@@ -14,22 +14,11 @@ export class ShopInfoComponent implements OnInit {
 
   constructor(
     private shopService: ShopService,
-    private route: ActivatedRoute,
-    private location: Location
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    /*this.route.params.switchMap((params: Params) => this.shopService.getShop(+params['id']))
-      .subscribe(shop => this.shop = shop as Shop);*/
+    this.route.params.switchMap((params: Params) => this.shopService.getShopById(+params['id']))
+      .subscribe(shop => this.shop = shop as Shop);
   }
-
-  updateShop(): void {
-    // this.shopService.updateShop(this.shop);
-    this.goBack();
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
 }

@@ -5,6 +5,8 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductComponent } from './product/product.component';
 import { ProductInfoComponent } from './product/product-info.component';
 import { AboutComponent } from './about/about.component';
+import { ShopInfoComponent } from './shop/shop-info.component'
+import { ShopEditComponent } from './shop/shop-edit.component'
 
 const routes: Routes = [
   {
@@ -14,6 +16,18 @@ const routes: Routes = [
   {
     path: 'shop',
     component: ShopComponent
+  },
+  {
+    path: 'shop/add',
+    component: ShopEditComponent
+  },
+  {
+    path: 'shop/:id',
+    component: ShopInfoComponent
+  },
+  {
+    path: 'shop/:id/edit',
+    component: ShopEditComponent
   },
   {
     path: 'product',
