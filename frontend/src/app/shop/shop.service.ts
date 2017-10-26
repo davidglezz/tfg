@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Shop } from './shop.interface'
@@ -25,7 +24,7 @@ export class ShopService {
         }
         return this.http.get(this.endpoint, params)
             .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .catch(this.handleError);
     }
 
     getShopsList(): Observable<Shop[]> {
@@ -38,7 +37,7 @@ export class ShopService {
         }
         return this.http.get(this.endpoint, params)
             .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .catch(this.handleError);
     }
 
     getShopsResultSet(page: number = 0, limit: number = 100): Observable<ResultSet<Shop>> {
@@ -50,46 +49,42 @@ export class ShopService {
         }
         return this.http.get(this.endpoint, params)
             .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .catch(this.handleError);
     }
 
-    getShopById(id: number): Promise<Shop> {
+    getShopById(id: number): Observable<Shop> {
         const url = `${this.endpoint}/${id}`;
         return this.http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Shop)
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
 
-    createShop(shop: Shop): Promise<Shop> {
+    createShop(shop: Shop): Observable<Shop> {
         return this.http
             .post(this.endpoint, JSON.stringify(shop), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json().data as Shop)
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
-    updateShop(shop: Shop): Promise<Shop> {
+    updateShop(shop: Shop): Observable<Shop> {
         const url = `${this.endpoint}/${shop.id}`;
         return this.http
-            .put(url, JSON.stringify(shop), { headers: this.headers })
-            .toPromise()
-            .then(() => shop)
+            .post(url, JSON.stringify(shop), { headers: this.headers })
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
-    deleteShop(shop: Shop): Promise<void> {
+    deleteShop(shop: Shop): Observable<void> {
         const url = `${this.endpoint}/${shop.id}`;
         return this.http.delete(url, { headers: this.headers })
-            .toPromise()
-            .then(() => null)
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
+    private handleError(error: any): Observable<any> {
         console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
+        return Observable.throw(error.json().error || 'Server error');
     }
 }
 
