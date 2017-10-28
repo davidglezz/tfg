@@ -72,16 +72,16 @@
 
       <mat-tab label="Vendido por">
         <mat-nav-list *ngIf="urls.length > 0">
-          <mat-list-item *ngFor="let url of urls">
+          <a mat-list-item target="_blank" href="{{url.href}}" *ngFor="let url of urls">
             <img matListAvatar src="https://api.statvoo.com/favicon/?url={{url.shop.domain}}" alt="{{url.shop.name}} Icon">
             <h3 matLine>
               {{url.shop.name}}
             </h3>
-            <a matLine target="_blank" href="{{url.href}}">{{url.href}}</a>
+            <span matLine>{{url.href}}</span>
             <button mat-button>
               <mat-icon matListIcon>launch</mat-icon>
             </button>
-          </mat-list-item>
+          </a>
         </mat-nav-list>
         <h3 class="muted center" *ngIf="urls.length === 0">¡Vaya! Nadie vende este artículo.</h3>
 
