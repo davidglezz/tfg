@@ -18,17 +18,17 @@
         <span mat-line>Dashboard</span>
       </a>
       -->
-      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/shop" [routerLink]="['/shop']">
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/shop" [routerLink]="['/shop']" (click)="sidenav.close()">
         <mat-icon mat-list-icon>store</mat-icon>
         <span mat-line>Tiendas</span>
       </a>
-      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/product" [routerLink]="['/product']">
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/product" [routerLink]="['/product']" (click)="sidenav.close()">
         <mat-icon mat-list-icon>shopping_cart</mat-icon>
         <span mat-line>Productos</span>
       </a>
       <md-divider></md-divider>
       <h3 matSubheader>Ayuda</h3>
-      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/about" [routerLink]="['/about']">
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/about" [routerLink]="['/about']" (click)="sidenav.close()">
         <mat-icon mat-list-icon>help</mat-icon>
         <span mat-line>Información</span>
       </a>
