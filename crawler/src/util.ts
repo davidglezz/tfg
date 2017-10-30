@@ -3,7 +3,7 @@ import { IncomingMessage as httpsIncomingMessage } from 'https';
 import { Buffer } from 'buffer';
 
 /**
- * Genera un hash numérico de un string
+ * Generate a numeric hash of a string
  * @param str 
  */
 export function stringHash(str: string): number {
@@ -19,7 +19,7 @@ export function stringHash(str: string): number {
 }
 
 /**
- * Convierte una un timestamp con precisión de ms en fecha formato sql
+ * Convert timestamp with ms precision to date in sql format
  * @param timestamp 
  */
 export function timestampToSql(timestamp: number) {
@@ -28,7 +28,7 @@ export function timestampToSql(timestamp: number) {
 
 
 /**
- * Agrupa los elementos de un array segun el resultado de "iteratee"
+ * Groups the elements of an array according to the result of "iteratee"
  * @param arr 
  * @param iteratee 
  */
@@ -43,7 +43,9 @@ export function groupBy<T>(arr: T[], iteratee: (value: T, index: number, arr: T[
     return result
 }
 
-
+/**
+ * EventLoopDelayAlert is a tool that notifies when a function takes a long time and blocks the event loop.
+ */
 type hrTime = [number, number]
 export class EventLoopDelayAlert {
     private stoping = false
@@ -89,8 +91,8 @@ export function capitalize(str: string) {
 
 /**
  * 
- * @param value String valor que se quiere convertir
- * @param decimal String Caracter separador como ',' o '.', si no se proporciona, lo detecta.
+ * @param value String value that you want to convert
+ * @param decimal String Separator character like ',' or '.', if it is not provided, it is autodetected.
  *
  * let testNums = ['5', '25', '1.2', '1,2', '-12,25€', '5-5', '1.256.000', '1,213.12','.25',',0025']
    testNums.forEach((val:string) => console.log(val, parsePrice(val)));
@@ -144,9 +146,10 @@ export function parsePrice(value: string | string[], decimal?: string): Number |
     result = result
         .replace(/\((?=\d+)(.*)\)/, '-$1') // replace bracketed values with negatives
         .replace(regex, '')         // strip out any cruft
-
+ 
+    // make sure decimal point is standard
     if (decimal != '' && decimal != '.')
-        result = result.replace(decimal, '.')      // make sure decimal point is standard    
+        result = result.replace(decimal, '.')
 
     result = parseFloat(result)
 
@@ -159,7 +162,7 @@ export function parsePrice(value: string | string[], decimal?: string): Number |
 // SEE: https://github.com/bitinn/node-fetch/blob/60cf26c2f3baf566c15632b723664b47f5b1f2db/src/body.js#L230
 const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w\-]{1,100})/i;
 /**
- * guest data charset from req.headers, xml, html content-type meta tag
+ * Guest data charset from req.headers, xml, html content-type meta tag
  * headers:
  *  'content-type': 'text/html;charset=gbk'
  * meta tag:
