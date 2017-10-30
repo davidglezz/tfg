@@ -28,7 +28,7 @@ export class SitemapParser {
             lowerCaseTags: true
         })
 
-        this.stream = merge2({ end: true, objectMode: true } as any) // Defecto en definicin de tipos
+        this.stream = merge2({ end: true, objectMode: true } as any) // as any because bad typescript type definition
         this.stream.pipe(parserStream)
     }
 
@@ -116,7 +116,7 @@ class sitemapHandler implements htmlparser.Handler {
                 return
 
             if (this.isURLSet) {
-                // Si erroneamente se incluyen sitemaps en urlset
+                // Fix if urlset erroneously includes sitemaps
                 if (text.lastIndexOf('.xml') >= 0 || text.lastIndexOf('.gz') >= 0)
                     return this.onSitemap(text)
 
