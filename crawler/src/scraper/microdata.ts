@@ -10,12 +10,6 @@ import { charset as getCharset, capitalize, parsePrice } from '../util';
 import { writeJsonFile } from '../debug';
 import { Dictionary } from '../interfaces/Dictionary';
 
-// https://search.google.com/structured-data/testing-tool/
-// Encoding: https://github.com/request/request/issues/2355
-// Charset https://github.com/axios/axios/pull/869/files
-
-// TODO separar request de la extraccion de datos
-
 export async function extractMicrodata(url: string): Promise<microdataResult> {
     return new Promise<microdataResult>((resolve, reject) => {
         url = encodeURI(url)
@@ -24,13 +18,8 @@ export async function extractMicrodata(url: string): Promise<microdataResult> {
             'status': 200
         }
 
-        // TODO mejorar : espera 2 callbacks y resuelve promesa : usar Promise.all()
         let requestCompleted = false
         let parseComplete = false
-        const resolveIfCompleted = () => {
-            if (requestCompleted && parseComplete)
-                resolve(result)
-        }
 
         function onRequestEnd(error: any, response: RequestResponse, body: any): void {
             if (error) {
@@ -39,14 +28,16 @@ export async function extractMicrodata(url: string): Promise<microdataResult> {
                 let redirect = response.request as any
                 result.url = redirect.uri.href;
                 requestCompleted = true
-                resolveIfCompleted()
+                if (parseComplete)
+                    resolve(result)
             }
         }
 
         function onMetaparserEnd (err: Error | null, data: Result) {
             result.data = data
             parseComplete = true
-            resolveIfCompleted()
+            if (requestCompleted)
+                resolve(result)
         }
 
         const handler = new metaparserHandler(onMetaparserEnd, { 'url': url })
@@ -55,35 +46,11 @@ export async function extractMicrodata(url: string): Promise<microdataResult> {
         let reqOptions = {
             method: "GET",
             url: url,
-            followAllRedirects: true, // TODO no seguir
+            followAllRedirects: true, // TODO no follow
             timeout: 10000
         };
 
-        let req = request(reqOptions, onRequestEnd) // .setMaxListeners(0);
-        // TODO probar con opciones encoding y gzip de request
-        // https://github.com/request/request/issues/311#issuecomment-244272794
-        // TODO decode charset:
-        // http://www.opirata.com/es/marco-expositor-para-vinilo-p-40284.html
-        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding
-        // https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept-Charset
-        /*req.on('response', function (resp) {
-            let charset = getCharset(resp),
-                encoding = resp.headers['content-encoding'],
-                decodedRes;
-            
-            // unzip
-            if (encoding == 'gzip' || encoding == 'deflate')
-                decodedRes = resp.pipe(encoding == 'gzip' ? zlib.createGunzip() : zlib.createInflate())
-            else
-                decodedRes = resp
-
-            // charset
-            if (charset && charset != 'utf-8' && iconv.encodingExists(charset)) {
-                return decodedRes.pipe(iconv.decodeStream(charset))
-            }
-
-            return decodedRes
-        })*/
+        let req = request(reqOptions, onRequestEnd)
         req.pipe(parser);
     })
 
@@ -99,8 +66,8 @@ function getStringValue(obj: Array<Dictionary<any>> | Dictionary<any> | undefine
     if (typeof obj === 'undefined')
         return value
 
-    // Si es array solo se tiene en cuenta el primero
-    // TODO mejorar sorte para multiples valores
+    // If it is an array, only the first one is taken into account
+    // TODO improve support for multiple values
     if (obj.constructor === Array)
         obj = (obj as Array<any>).shift()
 
@@ -133,7 +100,7 @@ export function productFromMetadata(metadata: Result): ProductDTO {
     })
 
     // TODO
-    /* elcorteingles no muestra el nombre directamente
+    /* elcorteingles does not show brand name directly
     brand
         @type: Thing
         name: HP
@@ -141,18 +108,18 @@ export function productFromMetadata(metadata: Result): ProductDTO {
 
     // FIX brand
     if (product.brand) {
-        // Url en vez de nombre
-        const bar = product.brand.lastIndexOf('/')
-        if (bar >= 0) {
-            // Cortar, separar por "-", capitalizar y unir con espacion
+        // If Url instead of name (brand-name -> Brand Name)
+        const isUrl = product.brand.lastIndexOf('/')
+        if (isUrl >= 0) {
+            // Cut, Split by "-", capitalize and join
             product.brand = product.brand
-                .substring(bar + 1, product.brand.length)
+                .substring(isUrl + 1, product.brand.length)
                 .split('-')
                 .map(capitalize)
                 .join(' ')
         }
 
-        // Demasiado larga
+        // Too long brand name
         if (product.brand.length > 45) {
             console.info("product.brand truncated.", product.brand)
             product.brand = product.brand.substr(0, 45)
@@ -162,20 +129,21 @@ export function productFromMetadata(metadata: Result): ProductDTO {
     // offers
     if (productMicrodata.hasOwnProperty('offers')) {
         let offer = productMicrodata.offers
-        // Solo tendremos en cuenta la primera 'oferta'.
+        // We will only take into account the first 'offer', for now.
         if (productMicrodata.offers.constructor === Array)
             offer = productMicrodata.offers.shift()
 
         let value = getStringValue(offer.price) || ''
         product['price'] = parsePrice(value) as number
-        product['priceCurrency'] = getStringValue(offer.priceCurrency, 'EUR') as string // De momento por defecto €
+
+        // Euro as the default currency, to improve
+        product['priceCurrency'] = getStringValue(offer.priceCurrency, 'EUR') as string
 
         const ItemAvailability = ['Discontinued', 'InStock', 'InStoreOnly', 'LimitedAvailability',
             'OnlineOnly', 'OutOfStock', 'PreOrder', 'PreSale', 'SoldOut']
 
         product['availability'] = getStringValue(offer.availability)
 
-        // Correcciones
         if (product['availability'] && ItemAvailability.indexOf(product['availability']) < 0) {
 
             product['availability'] = product['availability']
@@ -188,7 +156,7 @@ export function productFromMetadata(metadata: Result): ProductDTO {
 
             // Default
             if (ItemAvailability.indexOf(product['availability']) < 0) {
-                console.log('availability no reconocido:', product['availability'])
+                console.log('availability not found:', product['availability'])
                 product['availability'] = 'InStock'
             }
 
@@ -210,7 +178,7 @@ export function productFromMetadata(metadata: Result): ProductDTO {
 
 /**
  * 
- * @param metadata Resultado de htmlmetaparser
+ * @param metadata htmlmetaparser result.
  * @returns number of products found
  */
 export function numberOfProducts(metadata: Result): number {
