@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { createConnection, useContainer, ConnectionOptions, Connection } from "typeorm"
 import { Container } from "typedi"
 import { error, inspect } from 'util'
-import { connectionOptions  } from './persistence'
+import { connectionOptions } from './persistence'
 import { whilst, AsyncFunction } from 'async'
 import { TaskUpdateSitemap } from './tasks/TaskUpdateSitemap'
 import { TaskUpdateUrls } from './tasks/TaskUpdateUrls';
@@ -11,34 +11,32 @@ import { Url } from './persistence/entities/Url';
 import { Task } from './interfaces/Task';
 
 process.setMaxListeners(0);
-require('events').EventEmitter.prototype._maxListeners = 100;
+require('events').EventEmitter.prototype._maxListeners = 250;
 process.on('uncaughtException', console.error);
 
 useContainer(Container)
+
 async function main() {
-    // Conexión con la base de datos
     const connection: Connection = await createConnection(connectionOptions)
 
     let stats = {} as any
     (global as any).statistics = stats;
-    //const statsTimer = setInterval(() => console.dir(stats, { depth: null, colors:true }), 10000)
-   // const statsTimer = setInterval(() => console.log(stats), 10000)
-    
-    // Tareas concurrentes
-    /*let task: AsyncFunction<void, Error>[] = [taskUpdateSitemap, taskUpdateUrls]*/
+    //const statsTimer = setInterval(() => console.dir(stats, { depth: null, colors:true }), 1000)
+
+    // Concurrent tasks
     let task = [TaskUpdateSitemap, TaskUpdateUrls]
     let taskPromise = task.map(async (task, index) => {
         return new Promise<void>(async (resolve, reject) => {
             console.info(`[START] ${task.name}`)
             stats[task.name] = {}
-            const taskInstance = new task(stats[task.name])//Reflect.construct(task, [stats[task.name]])
+            const taskInstance = new task(stats[task.name])// or Reflect.construct(task, [stats[task.name]])
 
             whilst<Error>(
-                () => true, // TODO establecer condición de parada
+                () => true, // TODO set stop condition
                 taskInstance.run.bind(taskInstance),
                 (error) => {
                     error ? console.error(`[ERROR] ${task.name}`, error) : console.info(`[STOP] ${task.name}`)
-                    resolve() // Silenciamos el error
+                    resolve() // Silence the error
                 }
             )
         })
@@ -49,5 +47,3 @@ async function main() {
 main()
     .then(() => { console.info("Fin de la ejecución.") })
     .catch((e) => { console.error("La ejecución termino con errores", e) })
-
-
