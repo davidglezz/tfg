@@ -7,6 +7,7 @@ import * as normalizeUrl from 'normalize-url'
 import { timestampToSql } from '../util'
 import { Dictionary } from '../interfaces/Dictionary'
 import { Task } from '../interfaces/Task'
+import { escapeString } from '../persistence/index';
 
 export class TaskUpdateSitemap implements Task {
 
@@ -15,10 +16,10 @@ export class TaskUpdateSitemap implements Task {
 
     private config = {
         ShopConcurrency: 10,
-        NextUpdIncrement: 15000, // 15 segundos
+        NextUpdIncrement: 10000, // 10 seconds
         UrlBatchSize: 250,
         ShopBatchSize: 100,
-        DefaultTimeToNextRun: 60000 // 1 minuto
+        DefaultTimeToNextRun: 60000 // 1 minute
     }
 
     constructor(public stats: Dictionary<any> = {}, config?: any) {
@@ -30,10 +31,10 @@ export class TaskUpdateSitemap implements Task {
     }
 
     /**
-     * Añade nuevas Urls mediante sitemap.xml
+     * Add new Urls from sitemap.xml
      */
     async run(): Promise<void> {
-        console.info('[-] Tarea de actualizacion de tiendas mediante sitemap.')
+        console.info(`[RUN] ${TaskUpdateSitemap.name}`)
         return new Promise<void>(async (resolve, reject) => {
             let shops = await this.repository.shop.createQueryBuilder("shop")
                 .where("shop.dateNextUpd < :value", { value: new Date() })
@@ -44,16 +45,15 @@ export class TaskUpdateSitemap implements Task {
                 .getMany()
 
             eachLimit<Shop, Error>(shops, this.config.ShopConcurrency, async (shop: Shop) => {
-                // Descargar sitemap y añadir urls
+                // Download sitemap and add urls
                 await this.proccessSitemap(shop)
-                // Establecer proxima actualizacion de sitemap
+                // Set next sitemap update date
                 await this.updateShopDateNextUpd(shop)
 
             }, async (err: any) => {
                 if (err)
-                    console.warn(err) // no se hace reject(err), No pasa nada
-                   
-                // TODO contemplar un .continue() para procesar de forma inmediata
+                    console.warn(err) // no reject(err), if error, continue
+                
                 let timespan = await this.getNextUpdate()
                 setTimeout(resolve, timespan)
             })
@@ -62,7 +62,7 @@ export class TaskUpdateSitemap implements Task {
 
     /**
      * @returns set of all url Hashes for a given shop
-     * 100mb~150mb por cada millón (1.000.000) de hashes
+     * 100mb~150mb of RAM per million (1.000.000) of hashes
      */
     async getAllShopUrlHashes(shop: Shop): Promise<Set<number>> {
         return this.repository.url.createQueryBuilder("url")
@@ -106,7 +106,7 @@ export class TaskUpdateSitemap implements Task {
     }
 
     /**
-     * Almacena en la base de datos un conjunto de filas
+     * Stores a set of rows in the database
      * @param toAdd Array<String>
      */
     async addUrls(toAdd: string[]) {
@@ -118,7 +118,7 @@ export class TaskUpdateSitemap implements Task {
     }
 
     /**
-     * Descargar sitemap y añadir urls a la base de datos
+     * Download sitemap and add urls to the database
      * @param shop 
      */
     async proccessSitemap(shop: Shop) {
@@ -127,12 +127,12 @@ export class TaskUpdateSitemap implements Task {
             new: 0,
             saved: 0,
 
-            current: 'NO INICIADO'
+            current: 'NOT STARTED'
         }
         this.stats[shop.name] = stats
 
         const currentHashes = await this.getAllShopUrlHashes(shop)
-        let rowsToAdd: string[] = [] // new Array(this.config.UrlBatchSize)
+        let rowsToAdd: string[] = []
         let nextUpd = Date.now()
         let parser = new SitemapParser(onUrl, () => { })
 
@@ -142,7 +142,7 @@ export class TaskUpdateSitemap implements Task {
                 if (rowsToAdd.length > 0)
                     save()
 
-                stats.current = 'FINALIZADO'
+                stats.current = 'FINALIZED'
 
                 autoDeleteStats(3)
 
@@ -174,7 +174,7 @@ export class TaskUpdateSitemap implements Task {
             stats.saved += valuesToAdd.length
         }
 
-        // Acción al encontrar una url en el sitemap
+        // Action when finding a url in the sitemap
         async function onUrl(url: string) {
             url = normalizeUrl(url, { stripWWW: false })
             stats.current = url
@@ -187,10 +187,9 @@ export class TaskUpdateSitemap implements Task {
             currentHashes.add(urlHash)
             stats.new++
             nextUpd += This.config.NextUpdIncrement
-            // TODO seguridad sql -> usar escapeString()
-            url = url.replace("'", "\\'")
+
+            url = escapeString(url)
             const dateNextUpd = timestampToSql(nextUpd)
-            //rowsToAdd.push("('" + [shop.id, urlHash, url, dateNextUpd].join("','") + "')")
             rowsToAdd.push(`('${shop.id}','${urlHash}','${url}','${dateNextUpd}')`)
 
             if (rowsToAdd.length == This.config.UrlBatchSize)
