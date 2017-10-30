@@ -124,13 +124,13 @@ export class TaskUpdateUrls implements Task {
             // If the price or availability changes
             priceChanges = Math.abs(url.product.price - productInfo.price) >= 0.01
             if (priceChanges || url.product.availability !== productInfo.availability) {
-                console.info('Price does not update:', url.href)
+                console.info('Price is updated:', url.href)
                 url.product.price = productInfo.price
                 url.product.priceTotal = productInfo.priceTotal
                 url.product.availability = productInfo.availability
                 await this.repository.product.save(url.product).catch(console.error)
             } else {
-                console.info('Price does not update:', url.href)
+                console.info('Price is not updated:', url.href)
             }
         }
 
