@@ -225,7 +225,7 @@ export default class UrlScraper {
     };
 
     /**
-     * Normaliza una url
+     * Normalize url
      * @param url 
      */
     public static normalize(url: string): string {
