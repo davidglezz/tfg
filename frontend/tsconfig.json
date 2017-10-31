@@ -17,5 +17,8 @@
       "dom",
       "esnext.asynciterable"
     ]
+  },
+  "angularCompilerOptions": {
+    "genDir": "./src/locale"
   }
 }

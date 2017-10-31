@@ -1,5 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { environment } from './environments/environment';
+import { getTranslationProviders } from './app/i18n-providers';
+
 
 if (environment.production) {
   enableProdMode();
@@ -11,8 +13,13 @@ if (environment.production) {
  */
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {AppModule} from './app/app.module';
-platformBrowserDynamic().bootstrapModule(AppModule);
+// platformBrowserDynamic().bootstrapModule(AppModule);
 // .then(success => console.log(`Bootstrap success`)).catch(err => console.error(err));
+getTranslationProviders().then(providers => {
+  console.log(providers);
+  const options = { providers };
+  platformBrowserDynamic().bootstrapModule(AppModule, options);
+});
 
 /**
  * AoT compile.

@@ -23,8 +23,7 @@ export class ProductService {
                 'filter': encodeURI(filter ? JSON.stringify(filter) : '{}')
             }
         }
-
-        console.log(params.params)
+        // console.log(params.params)
 
         return this.http.get(this.endpoint, params)
             .map((res: Response) => res.json())
@@ -73,32 +72,6 @@ export class ProductService {
             .map((res: Response) => res.json())
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
         // .catch(this.handleError);
-    }
-
-
-    createProduct(product: Product): Promise<Product> {
-        return this.http
-            .post(this.endpoint, JSON.stringify(product), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json().data as Product)
-            .catch(this.handleError);
-    }
-
-    updateProduct(product: Product): Promise<Product> {
-        const url = `${this.endpoint}/${product.id}`;
-        return this.http
-            .put(url, JSON.stringify(product), { headers: this.headers })
-            .toPromise()
-            .then(() => product)
-            .catch(this.handleError);
-    }
-
-    deleteProduct(product: Product): Promise<void> {
-        const url = `${this.endpoint}/${product.id}`;
-        return this.http.delete(url, { headers: this.headers })
-            .toPromise()
-            .then(() => null)
-            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
