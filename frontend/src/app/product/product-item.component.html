@@ -14,7 +14,7 @@
     <span class="priceTotal {{item.product.priceCurrency}}">{{item.product.priceTotal | number:'1.0-2'}}</span>
   </mat-card-content>
   <mat-card-content class="price-content" *ngIf="!item.product.price">
-    <span class="no-price"> Precio no disponible</span>
+    <span class="no-price" i18n="@@Product-Item-NoPrice">Price not available</span>
   </mat-card-content>
   <mat-card-actions class="footer">
     <span class="footer-placeholder">&nbsp;</span>

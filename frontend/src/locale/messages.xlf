@@ -2,10 +2,374 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="Product-Filter-Price-Title" datatype="html">
+        <source>Price</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Price-From" datatype="html">
+        <source>From</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Price-To" datatype="html">
+        <source>To</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Rating-Title" datatype="html">
+        <source>Rating</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Shop-Title" datatype="html">
+        <source>Shop</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-SelectNoneBtn" datatype="html">
+        <source>Select None</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-SelectAllBtn" datatype="html">
+        <source>Select All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Brand-Title" datatype="html">
+        <source>Brand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Availability-Title" datatype="html">
+        <source>Availability</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Filter-Language-Title" datatype="html">
+        <source>Language</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-List-Title" datatype="html">
+        <source>Products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-Brand" datatype="html">
+        <source>Brand:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-Color" datatype="html">
+        <source>Color:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-EAN13" datatype="html">
+        <source>EAN13:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-MPN" datatype="html">
+        <source>MPN:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-SKU" datatype="html">
+        <source>SKU:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-ProductID" datatype="html">
+        <source>Product ID:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-Language" datatype="html">
+        <source>Language:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-UpdatedOn" datatype="html">
+        <source>Updated on:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-FoundOn" datatype="html">
+        <source>Found on:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-Rating1" datatype="html">
+        <source>It has a rating of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-Rating2" datatype="html">
+        <source>with a total of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-Rating3" datatype="html">
+        <source>reviews.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-NoShops" datatype="html">
+        <source>Wow! Nobody sells this item.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Info-NoSimilar" datatype="html">
+        <source>No similar products found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-info.component.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="About-Title" datatype="html">
+        <source>Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\about\about.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="About-Subject" datatype="html">
+        <source>This application has been created by David González García as Final Degree Project.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\about\about.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="About-Summary" datatype="html">
+        <source>Prototype of a web application that indexes microdata (schema.org) exposed by electronic stores and allows the search of
+  products.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\about\about.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="About-SourceCode" datatype="html">
+        <source>Source code:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\about\about.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-Title" datatype="html">
+        <source>Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-Domain" datatype="html">
+        <source>Domain:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-SitemapUrl" datatype="html">
+        <source>Sitemap url:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-ShippingCost" datatype="html">
+        <source>Shipping cost:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-ProductUpdInterval" datatype="html">
+        <source>Product update interval:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-SitemapUpdInterval" datatype="html">
+        <source>Sitemap update interval:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-DateAdd" datatype="html">
+        <source>Creation date:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-DateUpd" datatype="html">
+        <source>Last update:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-DateNextUpd" datatype="html">
+        <source>Next update:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-BackBtn" datatype="html">
+        <source>Back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Info-ModifyBtn" datatype="html">
+        <source>Modify</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-info.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-Title" datatype="html">
+        <source>New shop: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-Name" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-Domain" datatype="html">
+        <source>Domain</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-Sitemap" datatype="html">
+        <source>Sitemap url</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-ShippingCost" datatype="html">
+        <source>Shipping cost (€)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-ProductUpdInterval" datatype="html">
+        <source>Product update interval (ms)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-SitemapUpdInterval" datatype="html">
+        <source>Sitemap update interval (ms)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-CancelBtn" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-NewShop-SaveBtn" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-edit.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="MainTitle" datatype="html">
         <source>TFG-DAVID</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">App name</note>
@@ -14,36 +378,71 @@
       <trans-unit id="MainMainMenuHeader" datatype="html">
         <source>Main</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ShopsMainMenuItem" datatype="html">
         <source>Shops</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ProductsMainMenuItem" datatype="html">
         <source>Products</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="AboutMainMenuHeader" datatype="html">
         <source>About</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="InformationMainMenuItem" datatype="html">
         <source>Information</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-List-Title" datatype="html">
+        <source>Shops</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-list.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-List-Search" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-list.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-List-NoShops" datatype="html">
+        <source>There is no shop.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\shop\shop-list.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Product-Item-NoPrice" datatype="html">
+        <source>Price not available</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product-item.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Shop-Seach-Search" datatype="html">
+        <source>Seach</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\search\search.component.ts</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
     </body>

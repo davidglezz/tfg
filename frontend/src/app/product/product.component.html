@@ -4,36 +4,38 @@
 
       <mat-expansion-panel class="filter-price" [expanded]="filter.price.active" (opened)="setFilter('price',true)" (closed)="setFilter('price',false)">
         <mat-expansion-panel-header>
-          <mat-panel-title>Precio</mat-panel-title>
+          <mat-panel-title i18n="@@Product-Filter-Price-Title">Price</mat-panel-title>
           <mat-panel-description *ngIf="filter.price.active">
             {{filter.price.data.min}} - {{filter.price.data.max}}€
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-form-field>
-          <input matInput type="number" placeholder="Desde" [(ngModel)]="filter.price.data.min" (input)="updateFilter()">
+          <input matInput type="number" placeholder="From" i18n-placeholder="@@Product-Filter-Price-From" [(ngModel)]="filter.price.data.min"
+            (input)="updateFilter()">
           <span matSuffix>€</span>
         </mat-form-field>
         <br />
         <mat-form-field>
-          <input matInput type="number" placeholder="Hasta" [(ngModel)]="filter.price.data.max" (input)="updateFilter()">
+          <input matInput type="number" placeholder="To" i18n-placeholder="@@Product-Filter-Price-To" [(ngModel)]="filter.price.data.max"
+            (input)="updateFilter()">
           <span matSuffix>€</span>
         </mat-form-field>
       </mat-expansion-panel>
 
       <mat-expansion-panel class="filter-rating" [expanded]="filter.rating.active" (opened)="setFilter('rating',true)" (closed)="setFilter('rating',false)">
         <mat-expansion-panel-header>
-          <mat-panel-title>Valoración</mat-panel-title>
+          <mat-panel-title i18n="@@Product-Filter-Rating-Title">Rating</mat-panel-title>
           <mat-panel-description *ngIf="filter.rating.active">
             ≥ {{filter.rating.data | number:'1.1-1'}}
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-slider class="filter-slider first" min="1" max="5" thumbLabel step="0.1" tickInterval="10" (change)="updateFilter()"
+        <mat-slider class="filter-slider first" min="0" max="5" thumbLabel step="0.1" tickInterval="10" (change)="updateFilter()"
           [(ngModel)]="filter.rating.data"></mat-slider>
       </mat-expansion-panel>
 
       <mat-expansion-panel class="filter-shop" [expanded]="filter.shop.active" (opened)="setFilter('shop',true)" (closed)="setFilter('shop',false)">
         <mat-expansion-panel-header>
-          <mat-panel-title>Tienda</mat-panel-title>
+          <mat-panel-title i18n="@@Product-Filter-Shop-Title">Shop</mat-panel-title>
           <mat-panel-description *ngIf="filter.shop.active">{{filterShops.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list dense #filterShops class="filter-list">
@@ -44,14 +46,14 @@
           </mat-list-option>
         </mat-selection-list>
         <mat-action-row>
-          <button mat-button class="center" color="primary" (click)="filterShops.deselectAll();updateFilter()">Ninguno</button>
-          <button mat-button class="center" color="primary" (click)="filterShops.selectAll();updateFilter()">Todos</button>
+          <button mat-button class="center" color="primary" (click)="filterShops.deselectAll();updateFilter()" i18n="@@Product-Filter-SelectNoneBtn">Select None</button>
+          <button mat-button class="center" color="primary" (click)="filterShops.selectAll();updateFilter()" i18n="@@Product-Filter-SelectAllBtn">Select All</button>
         </mat-action-row>
       </mat-expansion-panel>
 
       <mat-expansion-panel class="filter-brand" [expanded]="filter.brand.active" (opened)="setFilter('brand',true)" (closed)="setFilter('brand',false)">
         <mat-expansion-panel-header>
-          <mat-panel-title>Marca</mat-panel-title>
+          <mat-panel-title i18n="@@Product-Filter-Brand-Title">Brand</mat-panel-title>
           <mat-panel-description *ngIf="filter.brand.active">{{filterBrand.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list dense #filterBrand class="filter-list" (selectChange)="log($event)" (ngModelChange)="log($event)" (change)="log($event)">
@@ -63,15 +65,15 @@
           </mat-list-option>
         </mat-selection-list>
         <mat-action-row>
-          <button mat-button class="center" color="primary" (click)="filterBrand.deselectAll();updateFilter()">Ninguno</button>
-          <button mat-button class="center" color="primary" (click)="filterBrand.selectAll();updateFilter()">Todos</button>
+          <button mat-button class="center" color="primary" (click)="filterBrand.deselectAll();updateFilter()" i18n="@@Product-Filter-SelectNoneBtn">Select None</button>
+          <button mat-button class="center" color="primary" (click)="filterBrand.selectAll();updateFilter()" i18n="@@Product-Filter-SelectAllBtn">Select All</button>
         </mat-action-row>
       </mat-expansion-panel>
 
       <mat-expansion-panel class="filter-availability" [expanded]="filter.availability.active" (opened)="setFilter('availability',true)"
         (closed)="setFilter('availability',false)">
         <mat-expansion-panel-header>
-          <mat-panel-title>Disponibilidad</mat-panel-title>
+          <mat-panel-title i18n="@@Product-Filter-Availability-Title">Availability</mat-panel-title>
           <mat-panel-description *ngIf="filter.availability.active">{{filterAvailability.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list dense #filterAvailability class="filter-list">
@@ -86,7 +88,7 @@
 
       <mat-expansion-panel class="filter-language" [expanded]="filter.language.active" (opened)="setFilter('language',true)" (closed)="setFilter('language',false)">
         <mat-expansion-panel-header>
-          <mat-panel-title>Idioma</mat-panel-title>
+          <mat-panel-title i18n="@@Product-Filter-Language-Title">Language</mat-panel-title>
           <mat-panel-description *ngIf="filter.language.active">{{filterLanguage.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list dense #filterLanguage class="filter-list" (selectChange)="log($event)" (ngModelChange)="log($event)"
@@ -99,8 +101,8 @@
           </mat-list-option>
         </mat-selection-list>
         <mat-action-row>
-          <button mat-button class="center" color="primary" (click)="filterLanguage.deselectAll();updateFilter()">Ninguno</button>
-          <button mat-button class="center" color="primary" (click)="filterLanguage.selectAll();updateFilter()">Todos</button>
+          <button mat-button class="center" color="primary" (click)="filterLanguage.deselectAll();updateFilter()" i18n="@@Product-Filter-SelectNoneBtn">Select None</button>
+          <button mat-button class="center" color="primary" (click)="filterLanguage.selectAll();updateFilter()" i18n="@@Product-Filter-SelectAllBtn">Select All</button>
         </mat-action-row>
       </mat-expansion-panel>
 
@@ -108,20 +110,22 @@
   </mat-sidenav>
 
   <mat-toolbar>
-    <span>Productos</span>
+    <span i18n="@@Product-List-Title">Products</span>
     <span class="fill-remaining-space"></span>
+    <!-- 
     <div class="status">
-      Mostrando
+       Showing
       <span class="badge">{{indices?.start + 1}}</span>-
-      <span class="badge">{{indices ? indices.end : 1}}</span> de
+      <span class="badge">{{indices ? indices.end : 1}}</span> of
       <span class="badge">{{items?.length}}</span>
     </div>
-    <!-- This fills the remaining space of the current row -->
+    -->
+    <!-- fill the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
     <!-- 
     <mat-icon class="example-icon">favorite</mat-icon>
     <mat-icon class="example-icon">delete</mat-icon>
-  -->
+    -->
   </mat-toolbar>
 
   <virtual-scroll #productVirtualScroll [items]="items" (update)="scrollItems = $event" (end)="fetchMore($event)" [childWidth]="249"
