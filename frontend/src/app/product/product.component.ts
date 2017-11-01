@@ -111,7 +111,6 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   filterBrands(query) {
-    //console.log('filterBrands', query)
     let nbResults = 0;
     query = query.toLowerCase();
     this.filter.brand.data.filtered = this.filter.brand.data.all.filter((value: any, index: number, array: any[]) => {
@@ -120,8 +119,6 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   filterBrandsAdd(event: any): boolean {
-    //console.log('filterBrandsAdd', event)
-
     if (this.separatorKeysCodes.indexOf(event.keyCode) < 0) {
       return;
     }

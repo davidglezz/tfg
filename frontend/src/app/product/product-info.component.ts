@@ -82,7 +82,7 @@ export class ProductInfoComponent implements OnInit {
                   }
                 }
               }
-              console.log(this.prices)
+              // console.log(this.prices)
             }, console.error);
         }
       })

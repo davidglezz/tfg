@@ -20,7 +20,6 @@ export class ShopEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.isNew = this.router.isActive(this.router.createUrlTree(['/shop', 'add']), true);
-    console.log('isNew', this.isNew)
     if (!this.isNew) {
       this.route.params
         .switchMap((params: Params) => this.shopService.getShopById(+params['id']))

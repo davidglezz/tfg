@@ -57,7 +57,7 @@ export class ShopComponent implements OnInit {
    * @param pageInfo The page to select object{count, limit, offset, pageSize}
    */
   setPage(pageInfo: any) {
-    console.log('setPage Event', pageInfo);
+    // console.log('setPage Event', pageInfo);
     this.page.pageNumber = pageInfo.offset;
 
     // cache results
@@ -68,7 +68,7 @@ export class ShopComponent implements OnInit {
   }
 
   onSort(shortInfo) {
-    console.log('Sort Event', shortInfo);
+    // console.log('Sort Event', shortInfo);
     this.page.pageNumber = 0;
     this.sort = shortInfo.sorts[0];
     this.cache = [];
