@@ -13,31 +13,40 @@
 
         <h2>Detalles</h2>
         <ul class="property-list">
-          <li *ngIf="product.brand">Marca:
+          <li *ngIf="product.brand">
+            <span i18n="@@Product-Info-Brand">Brand:</span>
             <strong>{{product.brand}}</strong>
           </li>
-          <li *ngIf="product.color">Color:
+          <li *ngIf="product.color">
+            <span i18n="@@Product-Info-Color">Color:</span>
             <strong>{{product.color}}</strong>
           </li>
-          <li *ngIf="product.gtin13">EAN13:
+          <li *ngIf="product.gtin13">
+            <span i18n="@@Product-Info-EAN13">EAN13:</span>
             <strong>{{product.gtin13}}</strong>
           </li>
-          <li *ngIf="product.mpn">MPN:
+          <li *ngIf="product.mpn">
+            <span i18n="@@Product-Info-MPN">MPN:</span>
             <strong>{{product.mpn}}</strong>
           </li>
-          <li *ngIf="product.sku">SKU:
+          <li *ngIf="product.sku">
+            <span i18n="@@Product-Info-SKU">SKU:</span>
             <strong>{{product.sku}}</strong>
           </li>
-          <li *ngIf="product.productID">Product ID:
+          <li *ngIf="product.productID">:
+            <span i18n="@@Product-Info-ProductID">Product ID:</span>
             <strong>{{product.productID}}</strong>
           </li>
-          <li *ngIf="product.language">Idioma:
+          <li *ngIf="product.language">
+            <span i18n="@@Product-Info-Language">Language:</span>
             <strong>{{product.language}}</strong>
           </li>
-          <li>Actualizado el:
+          <li>
+            <span i18n="@@Product-Info-UpdatedOn">Updated on:</span>
             <strong>{{product.dateUpd | date:"dd/MM/yyyy hh:mm"}}</strong>
           </li>
-          <li>Encontrado el:
+          <li>
+            <span i18n="@@Product-Info-FoundOn">Found on:</span>
             <strong>{{product.dateAdd | date:"dd/MM/yyyy hh:mm"}}</strong>
           </li>
         </ul>
@@ -51,12 +60,13 @@
             </span>
           </div>
           <p class="rating-results">
-            Tiene una valoración de
-            <strong>{{product.ratingValue * 5.0}} / 5</strong> con un total de
-            <strong>{{product.ratingCount}}</strong> valoraciones.
+            <ng-container i18n="@@Product-Info-Rating1">It has a rating of</ng-container> 
+            <strong> {{product.ratingValue * 5.0}} / 5 </strong> 
+            <ng-container i18n="@@Product-Info-Rating2">with a total of</ng-container>
+            <strong> {{product.ratingCount}} </strong>
+            <ng-container i18n="@@Product-Info-Rating3">reviews.</ng-container>
           </p>
         </div>
-
 
         <hr />
         <div class="price-content" *ngIf="product.price>0">
@@ -69,7 +79,6 @@
     </div>
 
     <mat-tab-group class="additional-info">
-
       <mat-tab label="Vendido por">
         <mat-nav-list *ngIf="urls.length > 0">
           <a mat-list-item target="_blank" href="{{url.href}}" *ngFor="let url of urls">
@@ -83,7 +92,7 @@
             </button>
           </a>
         </mat-nav-list>
-        <h3 class="muted center" *ngIf="urls.length === 0">¡Vaya! Nadie vende este artículo.</h3>
+        <h3 class="muted center" *ngIf="urls.length === 0" i18n="@@Product-Info-NoShops">Wow! Nobody sells this item.</h3>
 
         <div *ngIf="prices.values">
           <canvas baseChart [datasets]="prices.values" [labels]="prices.labels" [options]="prices.options" chartType="line"></canvas>
@@ -95,7 +104,7 @@
           <app-product-item *ngFor="let item of similar" [item]="item"></app-product-item>
         </div>
         <div class="tab-body-content" *ngIf="similar.length == 0">
-          <p>No se han encontrado productos similares.</p>
+          <p i18n="@@Product-Info-NoSimilar">No similar products found</p>
         </div>
       </mat-tab>
 
@@ -103,7 +112,6 @@
         <div class="tab-body-content">
           {{product.description}}
         </div>
-
       </mat-tab>
 
       <!--
