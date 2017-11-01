@@ -5,7 +5,7 @@ import { EntityFromParam, EntityFromBody, EntityFromBodyParam } from "typeorm-ro
 interface Dictionary<T> { [key: string]: T; }
 
 @JsonController('/api/brands')
-export class ShopController {
+export class BrandController {
     private connection: Connection
 
     constructor() {
