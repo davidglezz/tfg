@@ -1,14 +1,9 @@
 import { URL } from 'url';
 import * as Uri from 'urijs';
 
-/* Alternatives
- * - https://github.com/medialize/URI.js
- * - https://github.com/garycourt/uri-js
- * - https://github.com/sindresorhus/normalize-url
- * See
- * - https://nodejs.org/api/url.html#url_url_resolve_from_to
-*/
-
+/**
+ * From Simplecrawler : https://github.com/simplecrawler/simplecrawler
+ */
 export default class UrlScraper {
     public parseScriptTags: boolean = true;
     public parseHTMLComments: boolean = true;

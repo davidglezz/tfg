@@ -31,7 +31,7 @@ export class ProductController {
         @QueryParam("orderWay") orderWay: 'ASC' | 'DESC' = 'ASC',
         @QueryParam('filter') jsonfilter: string) {
 
-        // TODO mejorar seguridad
+        // TODO Improve security - Possible SQL injection
         //const queryBuilder = this.repository.createQueryBuilder('product')
         let query = `
             SELECT 

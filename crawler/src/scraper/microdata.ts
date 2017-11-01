@@ -100,7 +100,7 @@ export function productFromMetadata(metadata: Result): ProductDTO {
     })
 
     // TODO
-    /* elcorteingles does not show brand name directly
+    /* elcorteingles.es does not show brand name directly
     brand
         @type: Thing
         name: HP

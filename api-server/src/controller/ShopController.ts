@@ -2,8 +2,7 @@ import { DeepPartial } from 'typeorm/common/DeepPartial'
 import { JsonController, Get, Post, Patch, Put, Delete, Authorized, Param, QueryParam } from "routing-controllers"
 import { Connection, getConnectionManager, Repository, FindManyOptions } from 'typeorm';
 import { EntityFromParam, EntityFromBody, EntityFromBodyParam } from "typeorm-routing-controllers-extensions"
-import { Shop } from "../persistence"
-import { Url } from '../persistence/entities/Url';
+import { Shop, Url } from "../persistence"
 
 interface Dictionary<T> { [key: string]: T; }
 

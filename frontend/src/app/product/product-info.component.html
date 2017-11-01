@@ -79,7 +79,7 @@
     </div>
 
     <mat-tab-group class="additional-info">
-      <mat-tab label="Vendido por">
+      <mat-tab label="Sellers" i18n-label="@@Product-Info-Tab-Sellers">
         <mat-nav-list *ngIf="urls.length > 0">
           <a mat-list-item target="_blank" href="{{url.href}}" *ngFor="let url of urls">
             <img matListAvatar src="https://api.statvoo.com/favicon/?url={{url.shop.domain}}" alt="{{url.shop.name}} Icon">
@@ -99,7 +99,7 @@
         </div><!-- -->
       </mat-tab>
 
-      <mat-tab label="Similares">
+      <mat-tab label="Similar" i18n-label="@@Product-Info-Tab-Similar">
         <div class="tab-body-content" *ngIf="similar.length > 0">
           <app-product-item *ngFor="let item of similar" [item]="item"></app-product-item>
         </div>
@@ -108,14 +108,14 @@
         </div>
       </mat-tab>
 
-      <mat-tab label="Descripción">
+      <mat-tab label="Description" i18n-label="@@Product-Info-Tab-Description">
         <div class="tab-body-content">
           {{product.description}}
         </div>
       </mat-tab>
 
       <!--
-      <mat-tab label="Valoraciones">
+      <mat-tab label="Reviews">
         TODO
       </mat-tab>
        -->
