@@ -27,7 +27,6 @@ virtual-scroll {
 
 .product-filters-sidenav {
   padding: 1rem;
-  /*margin: 0 -1rem;*/
   background: transparent;
   max-width: 18rem;
 }
@@ -74,4 +73,12 @@ virtual-scroll {
 
 .filter-slider.first {
   margin-top: 1rem;
+}
+
+.filter-brand .chip {
+	margin: 3px !important;
+}
+
+.filter-brand .chip:last-child {
+	margin-bottom: 11px !important;
 }

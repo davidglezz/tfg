@@ -44,26 +44,17 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Filter-SelectAllBtn" datatype="html" approved="yes">
-        <source>Select All</source>
-        <target state="translated">Todos</target><context-group purpose="location">
+        <source>Select All</source> <target state="translated">Todos</target><context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
           <context context-type="linenumber">50</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Filter-Brand-Title" datatype="html" approved="yes">
@@ -73,25 +64,31 @@
           <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="Product-Filter-Brand-Add" datatype="html" approved="yes">
+        <source>Add brand</source> <target state="translated">Añadir marca</target><context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="Product-Filter-Availability-Title" datatype="html" approved="yes">
         <source>Availability</source>
         <target state="translated">Disponibilidad</target><context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Filter-Language-Title" datatype="html" approved="yes">
         <source>Language</source>
         <target state="translated">Idioma</target><context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-List-Title" datatype="html" approved="yes">
         <source>Products</source>
         <target state="translated">Productos</target><context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Info-Brand" datatype="html" approved="yes">
@@ -375,27 +372,31 @@
         <note priority="1" from="meaning">MainTitle</note>
       <note>App name
 MainTitle
-App name MainTitle App name MainTitle App name MainTitle App name MainTitle</note></trans-unit>
+App name MainTitle App name MainTitle App name MainTitle App name MainTitle App name MainTitle</note></trans-unit>
       <trans-unit id="Main-Language-Current" datatype="html" approved="yes">
-        <source>EN</source> <target state="translated">ES</target><context-group purpose="location">
+        <source>EN</source>
+        <target state="translated">ES</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Main-Language-EN" datatype="html" approved="yes">
-        <source>English</source> <target state="translated">Inglés</target><context-group purpose="location">
+        <source>English</source>
+        <target state="translated">Inglés</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Main-Language-ES" datatype="html" approved="yes">
-        <source>Spanish</source> <target state="translated">Español</target><context-group purpose="location">
+        <source>Spanish</source>
+        <target state="translated">Español</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="MainMainMenuHeader" datatype="html" approved="yes">
-        <source>Main</source> <target state="translated">Principal</target><context-group purpose="location">
+        <source>Main</source>
+        <target state="translated">Principal</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
           <context context-type="linenumber">20</context>
         </context-group>

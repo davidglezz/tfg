@@ -45,11 +45,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Filter-SelectAllBtn" datatype="html">
@@ -60,11 +56,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Filter-Brand-Title" datatype="html">
@@ -74,25 +66,32 @@
           <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="Product-Filter-Brand-Add" datatype="html">
+        <source>Add brand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\product\product.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="Product-Filter-Availability-Title" datatype="html">
         <source>Availability</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Filter-Language-Title" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-List-Title" datatype="html">
         <source>Products</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\product\product.component.ts</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Info-Brand" datatype="html">

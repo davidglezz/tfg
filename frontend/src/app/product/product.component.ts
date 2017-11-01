@@ -9,6 +9,9 @@ import { ShopService, PartialShop } from '../shop/shop.service';
 import { SearchService } from '../search/search.service';
 import { Observable } from 'rxjs/Rx';
 import { Url } from '../url/url.interface';
+import { FormControl } from '@angular/forms';
+
+const COMMA = 188, ENTER = 13;
 
 @Component({
   selector: 'app-product',
@@ -36,6 +39,8 @@ export class ProductComponent implements OnInit, OnChanges {
   @ViewChild('filterAvailability') filterAvailability;
   @ViewChild('filterLanguage') filterLanguage;
 
+  separatorKeysCodes = [ENTER, COMMA];
+
   productFilter = {} as ProductFilter;
   filter = {
     'price': {
@@ -55,7 +60,12 @@ export class ProductComponent implements OnInit, OnChanges {
     },
     'brand': {
       'active': false,
-      'data': {}
+      'data': {
+        'selected': [],
+        'all': [],
+        'value': '',
+        'filtered': []
+      },
     },
     'availability': {
       'active': false,
@@ -80,6 +90,7 @@ export class ProductComponent implements OnInit, OnChanges {
       'data': ''
     }
   }
+
   constructor(
     private productService: ProductService,
     private shopService: ShopService,
@@ -87,35 +98,70 @@ export class ProductComponent implements OnInit, OnChanges {
     private searchService: SearchService) { }
 
   ngOnInit() {
+    this.reset();
     this.setSearchListener()
-    this.shopService.getShopsList().subscribe(list => {
-      // const result = []
-      // list.forEach(shop => result[shop.id as number] = shop)
-      // this.filter.shop.data = result
-      this.filter.shop.data = list
-      // console.log(this.filter.shop.data)
-    });
-
-    this.brandService.getBrandList().subscribe(list => {
-      const result = {}
-      list.forEach(brand => result[brand as string] = false)
-      // this.filter.brand.data = result // Disabled for performance
-    });
+    this.shopService.getShopsList().subscribe(list => this.filter.shop.data = list);
+    this.brandService.getBrandList().subscribe(list => this.filter.brand.data.all = list);
 
     this.productService.getLanguages().subscribe(list => {
       const result = {}
       list.forEach(language => result[language as string] = false)
       this.filter.language.data = result
     });
+  }
 
-    this.reset();
+  filterBrands(query) {
+    //console.log('filterBrands', query)
+    let nbResults = 0;
+    query = query.toLowerCase();
+    this.filter.brand.data.filtered = this.filter.brand.data.all.filter((value: any, index: number, array: any[]) => {
+      return this.filter.brand.data.selected.indexOf(value) < 0 && this.fuzzysearch(query, value.toLowerCase()) && ++nbResults < 25
+    })
+  }
+
+  filterBrandsAdd(event: any): boolean {
+    //console.log('filterBrandsAdd', event)
+
+    if (this.separatorKeysCodes.indexOf(event.keyCode) < 0) {
+      return;
+    }
+
+    const input = event.target;
+    const value = (event.target.value || '').trim().toLowerCase();
+
+    if (value) {
+      const newBrand = this.filter.brand.data.all.find(brand => {
+        return this.filter.brand.data.selected.indexOf(brand) < 0 && this.fuzzysearch(value, brand.toLowerCase())
+      })
+
+      if (newBrand) {
+        this.filter.brand.data.selected.push(newBrand);
+        // Reset the input value
+        if (input) {
+          input.value = '';
+        }
+      }
+    }
+
+    this.updateFilter()
+
+    event.preventDefault();
+    return false;
+  }
+
+  filterBrandsRemove(item: any): void {
+    const index = this.filter.brand.data.selected.indexOf(item);
+
+    if (index >= 0) {
+      this.filter.brand.data.selected.splice(index, 1);
+    }
   }
 
   ngOnChanges() {
     this.reset();
   }
 
-  // call this function after resize + animation end
+  // Call this function after resize + animation end
   afterResize() {
     this.productVirtualScroll.refresh();
   }
@@ -126,7 +172,7 @@ export class ProductComponent implements OnInit, OnChanges {
     this.loading = true;
     this.productService
       .getProducts(0, this.pageSize, this.productFilter)
-      .subscribe(data => this.items = data.map(product => ({ product }) ) as Url[], console.error, () => {
+      .subscribe(data => this.items = data.map(product => ({ product })) as Url[], console.error, () => {
         this.loading = false
         this.productVirtualScroll.refresh()
         if (this.items && this.items.length) {
@@ -134,7 +180,7 @@ export class ProductComponent implements OnInit, OnChanges {
         }
       })
 
-    // Esto deberia fincionar, pero no
+    // This should work, but not
     // this.items = []
     // this.fetchMore({ start: 0, end: this.pageSize })
   }
@@ -213,9 +259,8 @@ export class ProductComponent implements OnInit, OnChanges {
     }
 
     if (this.filter.brand.active
-      && this.filterBrand.selectedOptions.selected.length > 0
-      && this.filterBrand.selectedOptions.selected.length < Object.keys(this.filter.brand.data).length) {
-      filter.brand = this.filterBrand.selectedOptions.selected.map(listOption => listOption.value)
+      && this.filter.brand.data.selected.length > 0) {
+      filter.brand = this.filter.brand.data.selected
     }
 
     if (this.filter.availability.active
@@ -236,6 +281,28 @@ export class ProductComponent implements OnInit, OnChanges {
 
     // console.log(filter)
     return filter;
+  }
+
+  // https://github.com/bevacqua/fuzzysearch/
+  fuzzysearch(needle, haystack) {
+    const hlen = haystack.length;
+    const nlen = needle.length;
+    if (nlen > hlen) {
+      return false;
+    }
+    if (nlen === hlen) {
+      return needle === haystack;
+    }
+    outer: for (let i = 0, j = 0; i < nlen; i++) {
+      const nch = needle.charCodeAt(i);
+      while (j < hlen) {
+        if (haystack.charCodeAt(j++) === nch) {
+          continue outer;
+        }
+      }
+      return false;
+    }
+    return true;
   }
 
 

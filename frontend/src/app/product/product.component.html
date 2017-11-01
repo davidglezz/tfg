@@ -54,20 +54,27 @@
       <mat-expansion-panel class="filter-brand" [expanded]="filter.brand.active" (opened)="setFilter('brand',true)" (closed)="setFilter('brand',false)">
         <mat-expansion-panel-header>
           <mat-panel-title i18n="@@Product-Filter-Brand-Title">Brand</mat-panel-title>
-          <mat-panel-description *ngIf="filter.brand.active">{{filterBrand.selectedOptions.selected.length}}</mat-panel-description>
+          <mat-panel-description *ngIf="filter.brand.active">{{filter.brand.data.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-selection-list dense #filterBrand class="filter-list" (selectChange)="log($event)" (ngModelChange)="log($event)" (change)="log($event)">
-          <mat-list-option class="filter-list-item" *ngFor="let brand of filter.brand.data | objectKeys" [value]="brand" [selected]="filter.brand.data[brand]"
-            (selectChange)="log($event)" (deselected)="log($event)" (ngModelChange)="log($event)" (change)="log($event)" (click)="updateFilter()">
-            <div class="filter-list-item-content">
-              {{brand}}
-            </div>
-          </mat-list-option>
-        </mat-selection-list>
-        <mat-action-row>
-          <button mat-button class="center" color="primary" (click)="filterBrand.deselectAll();updateFilter()" i18n="@@Product-Filter-SelectNoneBtn">Select None</button>
-          <button mat-button class="center" color="primary" (click)="filterBrand.selectAll();updateFilter()" i18n="@@Product-Filter-SelectAllBtn">Select All</button>
-        </mat-action-row>
+
+        <mat-chip-list matPrefix #brandChipList>
+          <mat-chip *ngFor="let brand of filter.brand.data.selected" class="chip" selectable="false" removable="true" (remove)="filterBrandsRemove(brand)">
+            {{brand}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+
+        <form>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Add brand" i18n-placeholder="@@Product-Filter-Brand-Add" aria-label="Brand" (keyup)="filterBrands($event.target.value)" (keydown)="filterBrandsAdd($event)"
+              [matAutocomplete]="brandResult">
+            <mat-autocomplete #brandResult="matAutocomplete">
+              <mat-option *ngFor="let option of filter.brand.data.filtered" [value]="option" >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
       </mat-expansion-panel>
 
       <mat-expansion-panel class="filter-availability" [expanded]="filter.availability.active" (opened)="setFilter('availability',true)"
