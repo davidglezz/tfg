@@ -375,39 +375,60 @@
         <note priority="1" from="description">App name</note>
         <note priority="1" from="meaning">MainTitle</note>
       </trans-unit>
+      <trans-unit id="Main-Language-Current" datatype="html">
+        <source>EN</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\app.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Main-Language-EN" datatype="html">
+        <source>English</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\app.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Main-Language-ES" datatype="html">
+        <source>Spanish</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\app.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="MainMainMenuHeader" datatype="html">
         <source>Main</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ShopsMainMenuItem" datatype="html">
         <source>Shops</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ProductsMainMenuItem" datatype="html">
         <source>Products</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="AboutMainMenuHeader" datatype="html">
         <source>About</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="InformationMainMenuItem" datatype="html">
         <source>Information</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Shop-List-Title" datatype="html">

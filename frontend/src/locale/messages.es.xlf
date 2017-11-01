@@ -158,7 +158,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Info-Rating1" datatype="html" approved="yes">
-        <source>It has a rating of</source> <target state="translated">Tiene una valoración de</target><context-group purpose="location">
+        <source>It has a rating of</source>
+        <target state="translated">Tiene una valoración de</target><context-group purpose="location">
           <context context-type="sourcefile">app\product\product-info.component.ts</context>
           <context context-type="linenumber">63</context>
         </context-group>
@@ -178,7 +179,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="Product-Info-NoShops" datatype="html" approved="yes">
-        <source>Wow! Nobody sells this item.</source> <target state="translated">¡Vaya! Nadie vende este artículo.</target><context-group purpose="location">
+        <source>Wow! Nobody sells this item.</source>
+        <target state="translated">¡Vaya! Nadie vende este artículo.</target><context-group purpose="location">
           <context context-type="sourcefile">app\product\product-info.component.ts</context>
           <context context-type="linenumber">95</context>
         </context-group>
@@ -205,7 +207,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="About-Summary" datatype="html" approved="yes">
-        <source>Prototype of a web application that indexes microdata (schema.org) exposed by electronic stores and allows the search of products.</source> <target state="translated">Prototipo de una aplicación web que indexa los microdatos (schema.org) expuestos por las tiendas electrónicas y permite la búsqueda de productos.</target><context-group purpose="location">
+        <source>Prototype of a web application that indexes microdata (schema.org) exposed by electronic stores and allows the search of
+  products.</source>
+        <target state="translated">Prototipo de una aplicación web que indexa los microdatos (schema.org) expuestos por las tiendas electrónicas y permite la búsqueda de productos.</target><context-group purpose="location">
           <context context-type="sourcefile">app\about\about.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
@@ -371,40 +375,57 @@
         <note priority="1" from="meaning">MainTitle</note>
       <note>App name
 MainTitle
-App name MainTitle App name MainTitle App name MainTitle</note></trans-unit>
-      <trans-unit id="MainMainMenuHeader" datatype="html" approved="yes">
-        <source>Main</source>
-        <target state="translated">Principal</target><context-group purpose="location">
+App name MainTitle App name MainTitle App name MainTitle App name MainTitle</note></trans-unit>
+      <trans-unit id="Main-Language-Current" datatype="html" approved="yes">
+        <source>EN</source> <target state="translated">ES</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Main-Language-EN" datatype="html" approved="yes">
+        <source>English</source> <target state="translated">Inglés</target><context-group purpose="location">
+          <context context-type="sourcefile">app\app.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Main-Language-ES" datatype="html" approved="yes">
+        <source>Spanish</source> <target state="translated">Español</target><context-group purpose="location">
+          <context context-type="sourcefile">app\app.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MainMainMenuHeader" datatype="html" approved="yes">
+        <source>Main</source> <target state="translated">Principal</target><context-group purpose="location">
+          <context context-type="sourcefile">app\app.component.ts</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ShopsMainMenuItem" datatype="html" approved="yes">
         <source>Shops</source>
         <target state="translated">Tiendas</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ProductsMainMenuItem" datatype="html" approved="yes">
         <source>Products</source>
         <target state="translated">Productos</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="AboutMainMenuHeader" datatype="html" approved="yes">
         <source>About</source>
         <target state="translated">Acerca de</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="InformationMainMenuItem" datatype="html" approved="yes">
         <source>Information</source>
         <target state="translated">Información</target><context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Shop-List-Title" datatype="html" approved="yes">
