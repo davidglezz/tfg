@@ -1,10 +1,10 @@
 <mat-toolbar class="section-toolbar">
-  Tiendas ( {{shops.length}} )
+  <ng-container i18n="@@Shop-List-Title">Shops</ng-container> ( {{shops.length}} )
   <span class="fill-remaining-space"></span>
   <div class="filter">
     <mat-form-field floatPlaceholder="never">
       <!--<mat-icon matPrefix>search</mat-icon>-->
-      <input matInput [(ngModel)]="searchQuery" name="searchQuery" placeholder="Buscar" (keyup)="filter()">
+      <input matInput [(ngModel)]="searchQuery" name="searchQuery" placeholder="Search" i18n-placeholder="@@Shop-List-Search" (keyup)="filter()">
       <!--<mat-icon matSuffix>filter_list</mat-icon>-->
     </mat-form-field>
   </div>
@@ -17,10 +17,10 @@
       <img matListAvatar src="https://api.statvoo.com/favicon/?url={{shop.domain}}" alt="{{shop.name}} Icon">
       <span matLine>
         {{shop.name}}
-    </span>
+      </span>
       <span matLine>{{shop.domain}}</span>
     </mat-list-item>
   </ng-container>
 </mat-nav-list>
 
-<h3 class="muted center" *ngIf="shops.length === 0">Todavía no hay ninguna tienda.</h3>
+<h3 class="muted center" *ngIf="shops.length === 0" i18n="@@Shop-List-NoShops">There is no shop.</h3>

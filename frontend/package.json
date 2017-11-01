@@ -12,7 +12,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "i18n": "ng xi18n --i18nFormat=xlf"
+    "i18n": "ng xi18n --locale=en --output-path=src/locale/ --i18nFormat=xlf --progress"
   },
   "private": true,
   "dependencies": {
