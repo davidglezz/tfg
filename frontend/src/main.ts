@@ -6,10 +6,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-// Prod
+// AOT
 import { platformBrowser } from '@angular/platform-browser';
 platformBrowser().bootstrapModule(AppModule);
 
-// Dev
+// JIT
 // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // platformBrowserDynamic().bootstrapModule(AppModule);
