@@ -6,6 +6,10 @@ if (environment.production) {
   enableProdMode();
 }
 
+// Prod
 import { platformBrowser } from '@angular/platform-browser';
 platformBrowser().bootstrapModule(AppModule);
-// .then(success => console.log(`Bootstrap success`)).catch(err => console.error(err));
+
+// Dev
+// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// platformBrowserDynamic().bootstrapModule(AppModule);
