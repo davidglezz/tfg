@@ -99,7 +99,7 @@ export class ProductComponent implements OnInit, OnChanges {
     this.brandService.getBrandList().subscribe(list => {
       const result = {}
       list.forEach(brand => result[brand as string] = false)
-      this.filter.brand.data = result
+      // this.filter.brand.data = result // Disabled for performance
     });
 
     this.productService.getLanguages().subscribe(list => {

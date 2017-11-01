@@ -1,13 +1,14 @@
 <mat-toolbar color="primary" class="app-toolbar">
   <button mat-button class="app-toolbar-menu" (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
-  </button> TFG-DAVID
+  </button>
+  <span i18n="MainTitle|App name@@MainTitle">TFG-DAVID</span>
   <app-search></app-search>
   <span class="app-toolbar-filler"></span>
   <!--<mat-slide-toggle color="accent" [(ngModel)]="isDev">Dev Features</mat-slide-toggle>-->
 </mat-toolbar>
 
-<mat-sidenav-container [class.app-dark-theme]="!isDev" class="app-sidenav-container">
+<mat-sidenav-container class="app-sidenav-container">
   <mat-sidenav #sidenav mode="over" opened="false" class="app-sidenav" tabindex="-1">
     <mat-nav-list>
 
@@ -27,10 +28,10 @@
         <span mat-line>Productos</span>
       </a>
       <md-divider></md-divider>
-      <h3 matSubheader>Ayuda</h3>
+      <h3 matSubheader>About</h3>
       <a mat-list-item routerLinkActive="sidenav-item-selected" href="/about" [routerLink]="['/about']" (click)="sidenav.close()">
         <mat-icon mat-list-icon>help</mat-icon>
-        <span mat-line>Información</span>
+        <span mat-line>Information</span>
       </a>
 
     </mat-nav-list>
