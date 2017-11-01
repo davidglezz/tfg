@@ -1,16 +1,44 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<?xml version='1.0' encoding='utf-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="MainTitle" datatype="html">
-        <source>TFG-DAVID</source>
-        <target>¡Hola i18n!</target>
-        <context-group purpose="location">
+      <trans-unit id="MainTitle" datatype="html" approved="yes">
+        <source>TFG-DAVID</source> <target state="translated">TFG-DAVID</target><context-group purpose="location">
           <context context-type="sourcefile">src\app\app.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">App name</note>
         <note priority="1" from="meaning">MainTitle</note>
+      </trans-unit>
+      <trans-unit id="MainMainMenuHeader" datatype="html" approved="yes">
+        <source>Main</source> <target state="translated">Principal</target><context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ShopsMainMenuItem" datatype="html" approved="yes">
+        <source>Shops</source> <target state="translated">Tiendas</target><context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ProductsMainMenuItem" datatype="html" approved="yes">
+        <source>Products</source> <target state="translated">Productos</target><context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="AboutMainMenuHeader" datatype="html" approved="yes">
+        <source>About</source> <target state="translated">Acerca de</target><context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="InformationMainMenuItem" datatype="html" approved="yes">
+        <source>Information</source> <target state="translated">Información</target><context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
       </trans-unit>
     </body>
   </file>

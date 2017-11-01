@@ -11,6 +11,41 @@
         <note priority="1" from="description">App name</note>
         <note priority="1" from="meaning">MainTitle</note>
       </trans-unit>
+      <trans-unit id="MainMainMenuHeader" datatype="html">
+        <source>Main</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ShopsMainMenuItem" datatype="html">
+        <source>Shops</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ProductsMainMenuItem" datatype="html">
+        <source>Products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="AboutMainMenuHeader" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="InformationMainMenuItem" datatype="html">
+        <source>Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\app.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
