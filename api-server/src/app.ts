@@ -7,6 +7,9 @@ import { LoggingMiddleware } from './middleware/LoggingMiddleware'
 import { connectionOptions } from './persistence/connectionOptions'
 import { resolve } from 'path'
 import * as compression from 'compression'
+import { BrandController } from './controller/BrandController'
+import { ProductController } from './controller/ProductController'
+import { ShopController } from './controller/ShopController'
 
 const config = {
     port: 80
@@ -19,7 +22,7 @@ createConnection(connectionOptions)
             cors: true,
             development: true,
             middlewares: [LoggingMiddleware],
-            controllers: [__dirname + '/controller/*{.js,.ts}']
+            controllers: [BrandController, ShopController, ProductController]
         })
 
         app.use(compression())
