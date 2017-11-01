@@ -5,13 +5,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-es": "ng serve --aot --base-href=/es/ --locale=es --i18n-file=src/locale/messages.es.xlf --i18n-format=xlf",
     "build": "ng build",
-    "release": "ng build --prod --build-optimizer --base-href /en/",
-    "release-es": "ng build --prod --build-optimizer --base-href /es/ --locale es --i18n-file src/locale/messages.es.xlf --i18n-format xlf",
+    "release": "ng build --prod --build-optimizer --base-href=/en/",
+    "release-es": "ng build --prod --build-optimizer --base-href=/es/ --locale=es --i18n-file=src/locale/messages.es.xlf --i18n-format=xlf",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "i18n": "ng-xi18n --i18nFormat=xlf"
+    "i18n": "ng xi18n --i18nFormat=xlf"
   },
   "private": true,
   "dependencies": {
