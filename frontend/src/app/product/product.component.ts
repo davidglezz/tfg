@@ -118,13 +118,13 @@ export class ProductComponent implements OnInit, OnChanges {
     })
   }
 
-  filterBrandsAdd(event: any): boolean {
+  filterBrandsAdd(event: KeyboardEvent): boolean {
     if (this.separatorKeysCodes.indexOf(event.keyCode) < 0) {
       return;
     }
 
-    const input = event.target;
-    const value = (event.target.value || '').trim().toLowerCase();
+    const input = event.target as HTMLInputElement;
+    const value = (input.value || '').trim().toLowerCase();
 
     if (value) {
       const newBrand = this.filter.brand.data.all.find(brand => {
@@ -146,7 +146,7 @@ export class ProductComponent implements OnInit, OnChanges {
     return false;
   }
 
-  filterBrandsRemove(item: any): void {
+  filterBrandsRemove(item: String): void {
     const index = this.filter.brand.data.selected.indexOf(item);
 
     if (index >= 0) {
