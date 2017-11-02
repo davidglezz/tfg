@@ -1,5 +1,5 @@
 <mat-sidenav-container class="product-container">
-  <mat-sidenav #sidenav2 mode="side" align="start" opened="true" class="product-sidenav" tabindex="-1">
+  <mat-sidenav #productSidenav mode="side" align="start" opened="true" class="product-sidenav" tabindex="-1">
     <mat-accordion multi="true" class="product-filters">
 
       <mat-expansion-panel class="filter-price" [expanded]="filter.price.active">
@@ -116,22 +116,26 @@
   </mat-sidenav>
 
   <mat-toolbar>
+    <button mat-button (click)="productSidenav.toggle()">
+      <mat-icon>filter_list</mat-icon>
+      <span i18n="@@Product-Toolbar-FilterBtn">Filters</span>
+    </button>
+    <span class="fill-remaining-space"></span>
     <span i18n="@@Product-List-Title">Products</span>
+    <span class="status muted">&nbsp;
+      ({{indices?.start + 1}}-{{indices ? indices.end : 1}} <ng-container i18n="@@Product-Toolbar-Status-Of">of</ng-container> {{items?.length}})
+    </span>
     <span class="fill-remaining-space"></span>
-    <!-- 
-    <div class="status">
-       Showing
-      <span class="badge">{{indices?.start + 1}}</span>-
-      <span class="badge">{{indices ? indices.end : 1}}</span> of
-      <span class="badge">{{items?.length}}</span>
-    </div>
-    -->
-    <!-- fill the remaining space of the current row -->
-    <span class="fill-remaining-space"></span>
-    <!-- 
-    <mat-icon class="example-icon">favorite</mat-icon>
-    <mat-icon class="example-icon">delete</mat-icon>
-    -->
+    <button mat-button [matMenuTriggerFor]="sortMenu">
+      <mat-icon>sort</mat-icon>
+      <span i18n="@@Main-Language-Current">Sort</span>
+    </button>
+    <mat-menu #sortMenu>
+      <button mat-menu-item>Name</button>
+      <button mat-menu-item>Price</button>
+      <button mat-menu-item>Rating</button>
+    </mat-menu>
+
   </mat-toolbar>
 
   <virtual-scroll #productVirtualScroll [items]="items" (update)="scrollItems = $event" (end)="fetchMore($event)" [childWidth]="249"

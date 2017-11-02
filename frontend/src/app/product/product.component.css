@@ -11,6 +11,10 @@ virtual-scroll {
   margin-right: auto;
 }
 
+.muted {
+  color: rgba(0, 0, 0, .32);
+}
+
 .text-center {
   text-align: center;
 }
