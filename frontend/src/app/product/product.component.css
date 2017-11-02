@@ -25,60 +25,79 @@ virtual-scroll {
   box-sizing: border-box;
 }
 
-.product-filters-sidenav {
+.product-sidenav {
   padding: 1rem;
   background: transparent;
   max-width: 18rem;
 }
 
-.product-filters-sidenav .mat-list .mat-subheader,
-.product-filters-sidenav .mat-nav-list .mat-subheader {
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.product-filters .full-width {
+  width: 100%;
 }
 
-/* .mat-.. No funciona por la transclusion */
-.mat-expansion-panel-content,
-.filter-list {
-  overflow: scroll;
+.product-filters .no-padding .mat-expansion-panel-body {
+  margin: 0;
+}
+
+
+/* slider */
+
+.product-filters .slider-wrapper {
+  padding: 0 1rem 0.5rem 1rem;
+}
+
+.product-filters .filter-slider {
+  width: 100%;
+}
+
+.product-filters .filter-slider:first-child {
+  margin-top: 1rem;
+}
+
+
+/* selection-list */
+
+.product-filters .selection-list .mat-expansion-panel-body {
+  margin: 0;
+}
+
+.product-filters .selection-list .mat-action-row {
+  padding: 1rem;
+}
+
+.product-filters .selection-list .mat-action-row button.mat-button:first-child {
+  margin-left: 0;
+}
+
+.product-filters .selection-list .mat-selection-list {
+  overflow: hidden;
+  overflow-y: auto;
   max-height: 250px;
-  /*margin: 0 -1rem;*/
   outline: 0;
 }
 
-.mat-expansion-panel-body {
-  margin: 0;
-  overflow: visible;
+.product-filters .selection-list .mat-list-item .mat-list-text {
+  padding: 0 8px;
 }
 
-.filter-list .filter-list-item {
-  /* margin: 0 -1rem; */
+.product-filters .selection-list .mat-list-item .inner-content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.filter-list .filter-list-item .filter-list-item-content {
-  	overflow: hidden;
-  	white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-left: -1rem;
-}
-
-.filter-list .filter-list-item .filter-list-item-content img {
+.product-filters .selection-list .mat-list-item .inner-content img {
   vertical-align: text-bottom;
   margin-right: 0.5rem;
 }
 
-.filter-slider {
-  width: 100%;
+
+/* chips */
+
+.product-filters .chip-list .chip {
+  margin: 3px !important;
 }
 
-.filter-slider.first {
-  margin-top: 1rem;
-}
-
-.filter-brand .chip {
-	margin: 3px !important;
-}
-
-.filter-brand .chip:last-child {
-	margin-bottom: 11px !important;
+.product-filters .chip-list .chip:last-child {
+  margin-bottom: 11px !important;
 }
