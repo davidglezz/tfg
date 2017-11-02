@@ -2,8 +2,8 @@
   <mat-sidenav #sidenav2 mode="side" align="start" opened="true" class="product-filters-sidenav" tabindex="-1">
     <mat-accordion multi="true">
 
-      <mat-expansion-panel class="filter-price" [expanded]="filter.price.active" (opened)="setFilter('price',true)" (closed)="setFilter('price',false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel class="filter-price" [expanded]="filter.price.active">
+        <mat-expansion-panel-header (click)="setFilter('price',!filter.price.active)">
           <mat-panel-title i18n="@@Product-Filter-Price-Title">Price</mat-panel-title>
           <mat-panel-description *ngIf="filter.price.active">
             {{filter.price.data.min}} - {{filter.price.data.max}}€
@@ -22,8 +22,8 @@
         </mat-form-field>
       </mat-expansion-panel>
 
-      <mat-expansion-panel class="filter-rating" [expanded]="filter.rating.active" (opened)="setFilter('rating',true)" (closed)="setFilter('rating',false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel class="filter-rating" [expanded]="filter.rating.active">
+        <mat-expansion-panel-header (click)="setFilter('rating',!filter.rating.active)">
           <mat-panel-title i18n="@@Product-Filter-Rating-Title">Rating</mat-panel-title>
           <mat-panel-description *ngIf="filter.rating.active">
             ≥ {{filter.rating.data | number:'1.1-1'}}
@@ -33,8 +33,8 @@
           [(ngModel)]="filter.rating.data"></mat-slider>
       </mat-expansion-panel>
 
-      <mat-expansion-panel class="filter-shop" [expanded]="filter.shop.active" (opened)="setFilter('shop',true)" (closed)="setFilter('shop',false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel class="filter-shop" [expanded]="filter.shop.active">
+        <mat-expansion-panel-header (click)="setFilter('shop',!filter.shop.active)">
           <mat-panel-title i18n="@@Product-Filter-Shop-Title">Shop</mat-panel-title>
           <mat-panel-description *ngIf="filter.shop.active">{{filterShops.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
@@ -51,8 +51,8 @@
         </mat-action-row>
       </mat-expansion-panel>
 
-      <mat-expansion-panel class="filter-brand" [expanded]="filter.brand.active" (opened)="setFilter('brand',true)" (closed)="setFilter('brand',false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel class="filter-brand" [expanded]="filter.brand.active">
+        <mat-expansion-panel-header (click)="setFilter('brand',!filter.brand.active)">
           <mat-panel-title i18n="@@Product-Filter-Brand-Title">Brand</mat-panel-title>
           <mat-panel-description *ngIf="filter.brand.active">{{filter.brand.data.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
@@ -77,9 +77,8 @@
         </form>
       </mat-expansion-panel>
 
-      <mat-expansion-panel class="filter-availability" [expanded]="filter.availability.active" (opened)="setFilter('availability',true)"
-        (closed)="setFilter('availability',false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel class="filter-availability" [expanded]="filter.availability.active">
+        <mat-expansion-panel-header (click)="setFilter('availability',!filter.availability.active)">
           <mat-panel-title i18n="@@Product-Filter-Availability-Title">Availability</mat-panel-title>
           <mat-panel-description *ngIf="filter.availability.active">{{filterAvailability.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
@@ -93,8 +92,8 @@
         </mat-selection-list>
       </mat-expansion-panel>
 
-      <mat-expansion-panel class="filter-language" [expanded]="filter.language.active" (opened)="setFilter('language',true)" (closed)="setFilter('language',false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel class="filter-language" [expanded]="filter.language.active">
+        <mat-expansion-panel-header (click)="setFilter('language',!filter.language.active)">
           <mat-panel-title i18n="@@Product-Filter-Language-Title">Language</mat-panel-title>
           <mat-panel-description *ngIf="filter.language.active">{{filterLanguage.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
