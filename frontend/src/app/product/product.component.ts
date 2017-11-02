@@ -64,7 +64,8 @@ export class ProductComponent implements OnInit, OnChanges {
         'selected': [],
         'all': [],
         'value': '',
-        'filtered': []
+        'filtered': [],
+        'tmp': []
       },
     },
     'availability': {
@@ -101,7 +102,10 @@ export class ProductComponent implements OnInit, OnChanges {
     this.reset();
     this.setSearchListener()
     this.shopService.getShopsList().subscribe(list => this.filter.shop.data = list);
-    this.brandService.getBrandList().subscribe(list => this.filter.brand.data.all = list);
+    this.brandService.getBrandList().subscribe(list => {
+      this.filter.brand.data.all = list
+      this.filter.brand.data.tmp = list.map(e => ({ name: e, lower: e.toLowerCase(), value: 0 }))
+    });
 
     this.productService.getLanguages().subscribe(list => {
       const result = {}
@@ -111,11 +115,13 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   filterBrands(query) {
-    let nbResults = 0;
     query = query.toLowerCase();
-    this.filter.brand.data.filtered = this.filter.brand.data.all.filter((value: any, index: number, array: any[]) => {
-      return this.filter.brand.data.selected.indexOf(value) < 0 && this.fuzzysearch(query, value.toLowerCase()) && ++nbResults < 25
-    })
+    this.filter.brand.data.filtered = this.filter.brand.data.tmp
+      .map(e => { e.value = this.similar_text(query, e.lower, true); return e })
+      .filter(e => e.value > 50 && this.filter.brand.data.selected.indexOf(e.name) < 0)
+      .sort((a, b) => b.value - a.value)
+      .splice(0, 25)
+      .map(e => e.name)
   }
 
   filterBrandsAdd(event: KeyboardEvent): boolean {
@@ -127,20 +133,29 @@ export class ProductComponent implements OnInit, OnChanges {
     const value = (input.value || '').trim().toLowerCase();
 
     if (value) {
-      const newBrand = this.filter.brand.data.all.find(brand => {
-        return this.filter.brand.data.selected.indexOf(brand) < 0 && this.fuzzysearch(value, brand.toLowerCase())
+      let similarityValue = -Infinity;
+      let newBrand;
+      this.filter.brand.data.tmp.forEach(e => {
+        if (this.filter.brand.data.selected.indexOf(e.name) < 0) {
+          const currentSimilarityValue = this.similar_text(value, e.lower, true);
+          if (currentSimilarityValue > similarityValue) {
+            similarityValue = currentSimilarityValue;
+            newBrand = e.name;
+          }
+        }
       })
 
-      if (newBrand) {
+      if (newBrand && similarityValue > 50) {
         this.filter.brand.data.selected.push(newBrand);
+
         // Reset the input value
         if (input) {
           input.value = '';
         }
+
+        this.updateFilter()
       }
     }
-
-    this.updateFilter()
 
     event.preventDefault();
     return false;
@@ -280,29 +295,57 @@ export class ProductComponent implements OnInit, OnChanges {
     return filter;
   }
 
-  // https://github.com/bevacqua/fuzzysearch/
-  fuzzysearch(needle, haystack) {
-    const hlen = haystack.length;
-    const nlen = needle.length;
-    if (nlen > hlen) {
-      return false;
+  similar_text(first, second, percent = false) {
+    // discuss at: http://locutus.io/php/similar_text/
+    // original by: Rafał Kukawski (http://blog.kukawski.pl)
+    // bugfixed by: Chris McMacken
+    // bugfixed by: Jarkko Rantavuori (http://stackoverflow.com/questions/14136349/how-does-similar-text-work)
+    // improved by: Markus Padourek (taken from http://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
+
+    if (first === null ||
+      second === null ||
+      typeof first === 'undefined' ||
+      typeof second === 'undefined') {
+      return 0
     }
-    if (nlen === hlen) {
-      return needle === haystack;
-    }
-    outer: for (let i = 0, j = 0; i < nlen; i++) {
-      const nch = needle.charCodeAt(i);
-      while (j < hlen) {
-        if (haystack.charCodeAt(j++) === nch) {
-          continue outer;
+
+    first += ''
+    second += ''
+    let pos1 = 0
+    let pos2 = 0
+    let max = 0
+    let p, q, l, sum
+
+    const firstLength = first.length
+    const secondLength = second.length
+
+    for (p = 0; p < firstLength; p++) {
+      for (q = 0; q < secondLength; q++) {
+        for (l = 0; (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++) { }
+        if (l > max) {
+          max = l
+          pos1 = p
+          pos2 = q
         }
       }
-      return false;
     }
-    return true;
+
+    sum = max
+    if (sum) {
+      if (pos1 && pos2) {
+        sum += this.similar_text(first.substr(0, pos1), second.substr(0, pos2))
+      }
+      if ((pos1 + max < firstLength) && (pos2 + max < secondLength)) {
+        sum += this.similar_text(
+          first.substr(pos1 + max, firstLength - pos1 - max),
+          second.substr(pos2 + max,
+            secondLength - pos2 - max))
+      }
+    }
+    if (!percent) {
+      return sum
+    }
+    return (sum * 200) / (firstLength + secondLength)
   }
 
-
 }
-
-
