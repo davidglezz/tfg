@@ -1,4 +1,5 @@
-<mat-card class="product-item" [routerLink]="['/product',item.product.id]">
+<a [routerLink]="['/product',item.product.id]" class="product-item">
+<mat-card class="product-item-card" >
   <mat-card-header class="header" *ngIf="item.shop">
     <img mat-card-avatar src="https://api.statvoo.com/favicon/?url={{item.shop.domain}}" alt="{{item.shop.name}} Icon">
     <mat-card-title>{{item.shop.name}}</mat-card-title>
@@ -27,3 +28,4 @@
     <!-- availability , brand -->
   </mat-card-actions>
 </mat-card>
+</a>
