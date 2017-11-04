@@ -145,8 +145,8 @@
 
   </mat-toolbar>
 
-  <virtual-scroll #productVirtualScroll [items]="items" (update)="scrollItems = $event" (end)="fetchMore($event)" [childWidth]="249"
-    [childHeight]="360">
+  <virtual-scroll #productVirtualScroll [items]="items" (update)="scrollItems = $event" (end)="fetchMore($event)" [childWidth]="220"
+    [childHeight]="333">
     <app-product-item *ngFor="let item of scrollItems" [item]="item"></app-product-item>
     <!--<mat-progress-spinner *ngIf="loading" class="loader" color="primary" mode="indeterminate"></mat-progress-spinner>-->
     <mat-progress-bar *ngIf="loading" class="loader" color="primary" mode="indeterminate"></mat-progress-bar>

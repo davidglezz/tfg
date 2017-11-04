@@ -1,12 +1,18 @@
 :host {
   vertical-align: top;
   display: inline-block;
-  width: 249px;
+  width: 220px;
   /*max-height: 370px;*/
 }
 
 .product-item {
-  margin: 12px;
+  margin: 0.5rem;
+  display: block;
+  text-decoration: none;
+}
+
+.product-item-card {
+  margin: 0;
 }
 
 .header {
