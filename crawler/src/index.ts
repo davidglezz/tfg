@@ -1,14 +1,12 @@
 import { extractMicrodata, productFromMetadata } from './scraper/microdata';
 import 'reflect-metadata';
-import { createConnection, useContainer, ConnectionOptions, Connection } from "typeorm"
+import { createConnection, useContainer } from 'typeorm';
 import { Container } from "typedi"
-import { error, inspect } from 'util'
 import { connectionOptions } from './persistence'
-import { whilst, AsyncFunction } from 'async'
+import { whilst } from 'async'
 import { TaskUpdateSitemap } from './tasks/TaskUpdateSitemap'
 import { TaskUpdateUrls } from './tasks/TaskUpdateUrls';
-import { Url } from './persistence/entities/Url';
-import { Task } from './interfaces/Task';
+import { writeJsonFile } from './debug';
 
 process.setMaxListeners(0);
 require('events').EventEmitter.prototype._maxListeners = 250;

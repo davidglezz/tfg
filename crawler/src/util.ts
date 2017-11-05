@@ -1,6 +1,5 @@
 import { IncomingMessage as httpIncomingMessage } from 'http';
 import { IncomingMessage as httpsIncomingMessage } from 'https';
-import { Buffer } from 'buffer';
 
 /**
  * Generate a numeric hash of a string

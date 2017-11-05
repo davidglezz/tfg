@@ -1,14 +1,13 @@
 import { RequestResponse } from 'request';
-import { Readable } from 'stream';
-import * as zlib from 'zlib';
 import { Handler as metaparserHandler, Result, ResultJsonLd } from 'htmlmetaparser';
 import * as htmlparser from 'htmlparser2';
 import * as request from 'request';
 import { ProductDTO } from '../persistence/entities/Product';
-import * as iconv from 'iconv-lite';
-import { charset as getCharset, capitalize, parsePrice } from '../util';
-import { writeJsonFile } from '../debug';
+import { capitalize, parsePrice } from '../util';
 import { Dictionary } from '../interfaces/Dictionary';
+//import { Readable } from 'stream';
+//import * as zlib from 'zlib';
+//import * as iconv from 'iconv-lite';
 
 export async function extractMicrodata(url: string): Promise<microdataResult> {
     return new Promise<microdataResult>((resolve, reject) => {

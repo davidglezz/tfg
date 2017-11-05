@@ -1,12 +1,10 @@
 import 'reflect-metadata'
 import { getConnectionManager, Connection, Repository } from "typeorm"
-import { Container } from "typedi"
 import { Shop, Product, Url, PriceHistory } from '../persistence'
-import { eachSeries, eachLimit, ErrorCallback } from 'async'
-import { extractMicrodata, numberOfProducts, productFromMetadata, microdataResult } from '../scraper/microdata'
-import { writeJsonFile } from '../debug'
+import { eachLimit} from 'async'
+import { extractMicrodata, numberOfProducts, productFromMetadata } from '../scraper/microdata'
 import { ProductDTO } from '../persistence/entities/Product'
-import { groupBy, timestampToSql } from '../util'
+import { timestampToSql } from '../util'
 import { Dictionary } from '../interfaces/Dictionary';
 import { Task } from '../interfaces/Task';
 import { Result } from 'htmlmetaparser';
