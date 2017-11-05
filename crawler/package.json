@@ -4,7 +4,8 @@
   "description": "Procesa las web en busca de productos y monitoriza los precios",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "start": "npm run build && node ./build/index.js",
     "start:watch": "npm run build:watch & nodemon ./build/index.js",
     "build": "node_modules/.bin/tsc",
@@ -18,10 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "@types/async": "^2.0.44",
-    "@types/chai": "^4.0.4",
     "@types/dateformat": "^1.0.1",
     "@types/htmlparser2": "^3.7.31",
-    "@types/jasmine": "^2.6.0",
     "@types/merge2": "^1.1.2",
     "@types/node": "^8.0.45",
     "@types/normalize-url": "^1.9.1",
@@ -29,13 +28,11 @@
     "@types/sax": "^1.0.0",
     "@types/urijs": "^1.15.34",
     "async": "^2.5.0",
-    "chai": "^4.1.2",
     "charset": "^1.0.1",
     "dateformat": "^3.0.2",
     "htmlmetaparser": "^1.2.0",
     "htmlparser2": "^3.9.2",
     "iconv-lite": "^0.4.19",
-    "jasmine": "^2.8.0",
     "merge2": "^1.2.0",
     "mysql": "^2.15.0",
     "normalize-url": "^1.9.1",
@@ -46,5 +43,14 @@
     "typeorm": "^0.1.1",
     "urijs": "^1.19.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.1"
+  }
 }
