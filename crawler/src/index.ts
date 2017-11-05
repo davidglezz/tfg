@@ -15,7 +15,7 @@ process.on('uncaughtException', console.error);
 useContainer(Container)
 
 async function main() {
-    const connection: Connection = await createConnection(connectionOptions)
+    await createConnection(connectionOptions)
 
     let stats = {} as any
     (global as any).statistics = stats;
@@ -23,7 +23,7 @@ async function main() {
 
     // Concurrent tasks
     let task = [TaskUpdateSitemap, TaskUpdateUrls]
-    let taskPromise = task.map(async (task, index) => {
+    let taskPromise = task.map(async task => {
         return new Promise<void>(async (resolve, reject) => {
             console.info(`[START] ${task.name}`)
             stats[task.name] = {}

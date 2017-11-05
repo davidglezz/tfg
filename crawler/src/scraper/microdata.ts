@@ -33,6 +33,10 @@ export async function extractMicrodata(url: string): Promise<microdataResult> {
         }
 
         function onMetaparserEnd (err: Error | null, data: Result) {
+        function onMetaparserEnd(err: Error | null, data: Result) {
+            if (err)
+                console.warn("Metaparser error", err)
+
             result.data = data
             parseComplete = true
             if (requestCompleted)
@@ -66,7 +70,7 @@ function getStringValue(obj: Array<Dictionary<any>> | Dictionary<any> | undefine
         return value
 
     // If it is an array, only the first one is taken into account
-    // TODO improve support for multiple values
+        // TODO improve support for multiple values
     if (obj.constructor === Array)
         obj = (obj as Array<any>).shift()
 
@@ -90,7 +94,7 @@ export function productFromMetadata(metadata: Result): ProductDTO {
         product['language'] = productMicrodata.name['@language']
 
     let fields = ['name', 'description', 'image', 'productID', 'gtin13', 'mpn', 'sku', 'brand', 'color']
-    fields.forEach((prop, index) => {
+    fields.forEach(prop => {
         if (productMicrodata.hasOwnProperty(prop)) {
             let value = getStringValue(productMicrodata[prop])
             if (value)

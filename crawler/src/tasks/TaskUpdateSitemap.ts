@@ -102,7 +102,7 @@ export class TaskUpdateSitemap implements Task {
         let now = Date.now()
         shop.dateNextUpd = new Date(now + shop.sitemapUpdInterval)
         return this.repository.shop.save(shop)
-            .catch((e) => { console.error("[ERROR] on database...") })
+            .catch(e => { console.error("[ERROR] on database", e) })
     }
 
     /**

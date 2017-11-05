@@ -71,7 +71,7 @@ export default class UrlScraper {
      * @param  {URL|String} from       url that represents the fetched document body
      * @return {}               Response TODO
      */
-    public scrape(resourceData: string, from: URL | string, options?: { [key: string]: any; }): { [key: string]: any; } {
+    public scrape(resourceData: string, from: URL | string): { [key: string]: any; } {
         if (typeof from === 'string') {
             from = new URL(from);
         }
@@ -228,8 +228,4 @@ export default class UrlScraper {
             .normalize()
             .href()
     }
-}
-
-interface UrlScraperResult {
-    foundUrls: string[];
 }
