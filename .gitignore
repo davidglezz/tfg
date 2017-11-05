@@ -68,7 +68,7 @@ persistence/src/connectionOptions.ts
 api-server/src/persistence/*
 api-server/public/*
 crawler/src/persistence/*
-crawler/build
+crawler/dist
 crawler/test
 
 # exclusiones temporales
@@ -81,4 +81,3 @@ crawler/src/scraper/SitemapParser3.ts
 crawler/src/scraper/SitemapParser.ts
 crawler/src/request.ts
 crawler/.vscode
-
