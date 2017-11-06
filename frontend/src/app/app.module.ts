@@ -38,7 +38,6 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import 'hammerjs';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { VirtualScrollModule } from 'angular2-virtual-scroll';
 import { AppComponent/*, DialogContent*/ } from './app.component';
@@ -91,7 +90,6 @@ import { TimespanPipe } from './timespan.pipe';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxDatatableModule,
     ChartsModule,
     VirtualScrollModule,
     MatAutocompleteModule,
