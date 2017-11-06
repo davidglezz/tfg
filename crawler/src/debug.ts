@@ -1,10 +1,14 @@
-import * as fs from 'fs';
-import * as dateFormat from 'dateformat';
+import * as fs from 'fs'
+import * as dateFormat from 'dateformat'
 
-export function writeJsonFile(obj: any) {
-    let name = dateFormat(new Date(), "yyyy-mm-dd_HH-MM-ss_l")
-    let path = `${__dirname}/../debug/${name}.json`;
-    fs.writeFile(path, JSON.stringify(obj), () => { })
+export function writeJsonFile (obj: any) {
+  let name = dateFormat(new Date(), 'yyyy-mm-dd_HH-MM-ss_l')
+  let path = `${__dirname}/../debug/${name}.json`
+  fs.writeFile(path, JSON.stringify(obj), (e) => {
+    if (e) {
+      console.error(e)
+    }
+  })
 }
 
 /*

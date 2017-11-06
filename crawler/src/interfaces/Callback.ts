@@ -1,5 +1,5 @@
 export interface ICallback {
-    (error?: Error | null, result?: any): void;
+    (error?: Error | null, result?: any): void
 }
 
 export type Callback<E, R> = (e: E, r: R) => void

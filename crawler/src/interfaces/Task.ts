@@ -1,3 +1,3 @@
 export interface Task {
-    run():Promise<void>
+    run (): Promise<void>
 }
