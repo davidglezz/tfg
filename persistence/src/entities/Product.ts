@@ -30,18 +30,21 @@ export class Product implements ProductDTO {
   @PrimaryGeneratedColumn()
     id: number
 
+  @Index()
     @Column('char', {
       nullable: true,
       length: 5
     })
     language: string
 
+  @Index()
     @Column('varchar', {
       nullable: true,
       length: 255
     })
     name: string
 
+  @Index()
     @Column('float', {
       nullable: true
     })
@@ -52,6 +55,7 @@ export class Product implements ProductDTO {
   })
     ratingCount: number
 
+  @Index()
     @Column('varchar', {
       nullable: true,
       length: 45
@@ -64,30 +68,35 @@ export class Product implements ProductDTO {
   })
     color: string
 
+  @Index()
     @Column('bigint', {
       nullable: true,
       default: 0
     })
     gtin13: number
 
+  @Index()
     @Column('varchar', {
       nullable: true,
       length: 45
     })
     mpn: string
 
+  @Index()
     @Column('varchar', {
       nullable: true,
       length: 45
     })
     sku: string
 
+  @Index()
     @Column('varchar', {
       nullable: true,
       length: 45
     })
     productID: string
 
+  @Index()
     @Column('double', {
       nullable: true
     })
@@ -100,6 +109,7 @@ export class Product implements ProductDTO {
   })
     priceCurrency: string
 
+  @Index()
     @Column('double', {
       nullable: true
     })
@@ -116,6 +126,7 @@ export class Product implements ProductDTO {
   })
     image: string
 
+  @Index()
     @Column({
       type: 'enum',
       enum: ['Discontinued', 'InStock', 'InStoreOnly', 'LimitedAvailability',

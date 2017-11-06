@@ -47,6 +47,7 @@ export class Url {
   })
   dateAdd: Date
 
+  @Index()
   @UpdateDateColumn({
     type: 'timestamp',
     nullable: false
