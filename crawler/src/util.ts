@@ -1,5 +1,4 @@
 import { IncomingMessage as httpIncomingMessage } from 'http'
-import { IncomingMessage as httpsIncomingMessage } from 'https'
 
 /**
  * Generate a numeric hash of a string
@@ -174,7 +173,7 @@ const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w\-]{1,
  *  If can\'t guest, return null
  * @api public
  */
-export function charset (obj: String | httpIncomingMessage | httpsIncomingMessage | Object, data?: Buffer, peekSize?: number) {
+export function charset (obj: String | httpIncomingMessage | Object, data?: Buffer, peekSize?: number) {
   let matchs = null
   let end = 0
   if (data) {
@@ -184,7 +183,7 @@ export function charset (obj: String | httpIncomingMessage | httpsIncomingMessag
   // charset('text/html;charset=gbk')
   let contentType = obj
   if (contentType && typeof contentType !== 'string') {
-    let headers: any = obj.hasOwnProperty('headers') ? (obj as httpIncomingMessage | httpsIncomingMessage).headers : obj
+    let headers: any = obj.hasOwnProperty('headers') ? (obj as httpIncomingMessage).headers : obj
     contentType = headers['content-type'] || headers['Content-Type']
   }
   if (contentType) {
