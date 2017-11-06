@@ -88,12 +88,8 @@ export function capitalize (str: string) {
 }
 
 /**
- *
  * @param value String value that you want to convert
  * @param decimal String Separator character like ',' or '.', if it is not provided, it is autodetected.
- *
- * let testNums = ['5', '25', '1.2', '1,2', '-12,25€', '5-5', '1.256.000', '1,213.12','.25',',0025']
- *  testNums.forEach((val:string) => console.log(val, parsePrice(val)));
  */
 export function parsePrice (value: string | string[], decimal?: string): Number | Number[] {
   // Recursively unformat arrays:
