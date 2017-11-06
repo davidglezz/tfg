@@ -10,7 +10,7 @@ import { Dictionary } from '../interfaces/Dictionary'
 
 export async function extractMicrodata (url: string): Promise<MicrodataResult> {
   return new Promise<MicrodataResult>((resolve, reject) => {
-    url = encodeURI(url)
+    // url = encodeURI(decodeURI(url))
     let result: MicrodataResult = {
       'url': url,
       'status': 200
