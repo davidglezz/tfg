@@ -10,6 +10,7 @@ import { SearchService } from '../search/search.service';
 import { Observable } from 'rxjs/Rx';
 import { Url } from '../url/url.interface';
 import { FormControl } from '@angular/forms';
+import { SimilarText } from '../util';
 
 const COMMA = 188, ENTER = 13;
 
@@ -117,7 +118,7 @@ export class ProductComponent implements OnInit, OnChanges {
   filterBrands(query) {
     query = query.toLowerCase();
     this.filter.brand.data.filtered = this.filter.brand.data.tmp
-      .map(e => { e.value = this.similar_text(query, e.lower, true); return e })
+      .map(e => { e.value = SimilarText(query, e.lower, true); return e })
       .filter(e => e.value > 50 && this.filter.brand.data.selected.indexOf(e.name) < 0)
       .sort((a, b) => b.value - a.value)
       .splice(0, 25)
@@ -137,7 +138,7 @@ export class ProductComponent implements OnInit, OnChanges {
       let newBrand;
       this.filter.brand.data.tmp.forEach(e => {
         if (this.filter.brand.data.selected.indexOf(e.name) < 0) {
-          const currentSimilarityValue = this.similar_text(value, e.lower, true);
+          const currentSimilarityValue = SimilarText(value, e.lower, true);
           if (currentSimilarityValue > similarityValue) {
             similarityValue = currentSimilarityValue;
             newBrand = e.name;
@@ -295,57 +296,6 @@ export class ProductComponent implements OnInit, OnChanges {
     return filter;
   }
 
-  similar_text(first, second, percent = false) {
-    // discuss at: http://locutus.io/php/similar_text/
-    // original by: Rafał Kukawski (http://blog.kukawski.pl)
-    // bugfixed by: Chris McMacken
-    // bugfixed by: Jarkko Rantavuori (http://stackoverflow.com/questions/14136349/how-does-similar-text-work)
-    // improved by: Markus Padourek (taken from http://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
-
-    if (first === null ||
-      second === null ||
-      typeof first === 'undefined' ||
-      typeof second === 'undefined') {
-      return 0
-    }
-
-    first += ''
-    second += ''
-    let pos1 = 0
-    let pos2 = 0
-    let max = 0
-    let p, q, l, sum
-
-    const firstLength = first.length
-    const secondLength = second.length
-
-    for (p = 0; p < firstLength; p++) {
-      for (q = 0; q < secondLength; q++) {
-        for (l = 0; (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++) { }
-        if (l > max) {
-          max = l
-          pos1 = p
-          pos2 = q
-        }
-      }
-    }
-
-    sum = max
-    if (sum) {
-      if (pos1 && pos2) {
-        sum += this.similar_text(first.substr(0, pos1), second.substr(0, pos2))
-      }
-      if ((pos1 + max < firstLength) && (pos2 + max < secondLength)) {
-        sum += this.similar_text(
-          first.substr(pos1 + max, firstLength - pos1 - max),
-          second.substr(pos2 + max,
-            secondLength - pos2 - max))
-      }
-    }
-    if (!percent) {
-      return sum
-    }
-    return (sum * 200) / (firstLength + secondLength)
-  }
+  
 
 }
