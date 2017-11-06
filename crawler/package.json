@@ -4,8 +4,8 @@
   "description": "Procesa las web en busca de productos y monitoriza los precios",
   "main": "index.js",
   "scripts": {
-    "lint": "tslint \"src/**/*.ts\"",
-    "lint-fix": "tslint --fix tests/*.ts -t verbose",
+    "lint": "tslint src/**/*.ts",
+    "lint-fix": "tslint --fix src/**/*.ts -t verbose",
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "start": "npm run build && node ./build/index.js",
     "start:watch": "npm run build:watch & nodemon ./build/index.js",
