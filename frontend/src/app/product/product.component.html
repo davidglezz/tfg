@@ -116,33 +116,34 @@
   </mat-sidenav>
 
   <mat-toolbar>
-    <button mat-button (click)="productSidenav.toggle()">
-      <mat-icon>filter_list</mat-icon>
-      <span i18n="@@Product-Toolbar-FilterBtn">Filters</span>
-    </button>
-    <span class="fill-remaining-space"></span>
-    <span i18n="@@Product-List-Title">Products</span>
-    <span class="status muted">&nbsp;
-      ({{indices?.start + 1}}-{{indices ? indices.end : 1}} <ng-container i18n="@@Product-Toolbar-Status-Of">of</ng-container> {{items?.length}})
-    </span>
-    <span class="fill-remaining-space"></span>
-    <button mat-button [matMenuTriggerFor]="sortMenu">
-      <mat-icon>sort</mat-icon>
-      <span i18n="@@Product-Toolbar-SortBtn">Sort</span>
-    </button>
-    <mat-menu #sortMenu>
-      <button mat-menu-item i18n="@@Product-Sort-NoSort">Without order</button>
-      <button mat-menu-item i18n="@@Product-Sort-NameAZ">Name (A to Z)</button>
-      <button mat-menu-item i18n="@@Product-Sort-NameZA">Name (Z to A)</button>
-      <button mat-menu-item i18n="@@Product-Sort-PriceCheapest">Price (Cheapest first)</button>
-      <button mat-menu-item i18n="@@Product-Sort-PriceExpensive">Price (Expensive first)</button>
-      <button mat-menu-item i18n="@@Product-Sort-TotalPriceCheapest">Total Price (Cheaper first)</button>
-      <button mat-menu-item i18n="@@Product-Sort-TotalPriceExpensive">Total Price (Expensive first)</button>
-      <button mat-menu-item i18n="@@Product-Sort-Rating">Rating </button>
-      <button mat-menu-item i18n="@@Product-Sort-Newest">Newest</button>
-      <button mat-menu-item i18n="@@Product-Sort-Reviews">Most Reviews </button>
-    </mat-menu>
-
+    <mat-toolbar-row>
+      <button mat-button (click)="productSidenav.toggle()">
+        <mat-icon>filter_list</mat-icon>
+        <span i18n="@@Product-Toolbar-FilterBtn">Filters</span>
+      </button>
+      <span class="fill-remaining-space"></span>
+      <span i18n="@@Product-List-Title">Products</span>
+      <span class="status muted">&nbsp; ({{indices?.start + 1}}-{{indices ? indices.end : 1}}
+        <ng-container i18n="@@Product-Toolbar-Status-Of">of</ng-container> {{items?.length}})
+      </span>
+      <span class="fill-remaining-space"></span>
+      <button mat-button [matMenuTriggerFor]="sortMenu">
+        <mat-icon>sort</mat-icon>
+        <span i18n="@@Product-Toolbar-SortBtn">Sort</span>
+      </button>
+      <mat-menu #sortMenu>
+        <button mat-menu-item i18n="@@Product-Sort-NoSort">Without order</button>
+        <button mat-menu-item i18n="@@Product-Sort-NameAZ">Name (A to Z)</button>
+        <button mat-menu-item i18n="@@Product-Sort-NameZA">Name (Z to A)</button>
+        <button mat-menu-item i18n="@@Product-Sort-PriceCheapest">Price (Cheapest first)</button>
+        <button mat-menu-item i18n="@@Product-Sort-PriceExpensive">Price (Expensive first)</button>
+        <button mat-menu-item i18n="@@Product-Sort-TotalPriceCheapest">Total Price (Cheaper first)</button>
+        <button mat-menu-item i18n="@@Product-Sort-TotalPriceExpensive">Total Price (Expensive first)</button>
+        <button mat-menu-item i18n="@@Product-Sort-Rating">Rating </button>
+        <button mat-menu-item i18n="@@Product-Sort-Newest">Newest</button>
+        <button mat-menu-item i18n="@@Product-Sort-Reviews">Most Reviews </button>
+      </mat-menu>
+    </mat-toolbar-row>
   </mat-toolbar>
 
   <virtual-scroll #productVirtualScroll [items]="items" (update)="scrollItems = $event" (end)="fetchMore($event)" [childWidth]="220"

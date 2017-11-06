@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
+import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http'; //DEPRECATED
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -11,7 +12,7 @@ export class ShopService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private endpoint = API.baseHref + '/shops';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private newhttp: HttpClient) { }
 
     getShops(page: number = 0, limit: number = 100, orderBy = 'name', orderWay: 'ASC' | 'DESC' = 'ASC'): Observable<Shop[]> {
         const params: RequestOptionsArgs = {

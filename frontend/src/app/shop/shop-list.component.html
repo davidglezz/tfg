@@ -1,13 +1,15 @@
 <mat-toolbar class="section-toolbar">
-  <ng-container i18n="@@Shop-List-Title">Shops</ng-container> ( {{shops.length}} )
-  <span class="fill-remaining-space"></span>
-  <div class="filter">
-    <mat-form-field floatPlaceholder="never">
-      <!--<mat-icon matPrefix>search</mat-icon>-->
-      <input matInput [(ngModel)]="searchQuery" name="searchQuery" placeholder="Search" i18n-placeholder="@@Shop-List-Search" (keyup)="filter()">
-      <!--<mat-icon matSuffix>filter_list</mat-icon>-->
-    </mat-form-field>
-  </div>
+  <mat-toolbar-row>
+    <ng-container i18n="@@Shop-List-Title">Shops</ng-container> ( {{shops.length}} )
+    <span class="fill-remaining-space"></span>
+    <div class="filter">
+      <mat-form-field floatPlaceholder="never">
+        <!--<mat-icon matPrefix>search</mat-icon>-->
+        <input matInput [(ngModel)]="searchQuery" name="searchQuery" placeholder="Search" i18n-placeholder="@@Shop-List-Search" (keyup)="filter()">
+        <!--<mat-icon matSuffix>filter_list</mat-icon>-->
+      </mat-form-field>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-nav-list *ngIf="shops.length > 0">
