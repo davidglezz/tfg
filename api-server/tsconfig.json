@@ -1,7 +1,8 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./build",
+    "outDir": "dist",
+    "rootDir": "src",
     "module": "commonjs",
     "target": "es2017",
     "lib": [
@@ -10,17 +11,27 @@
       "es2015"
     ],
     "moduleResolution": "node",
+    "declaration": false,
+    "removeComments": true,
+    "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "types": [
-      "node"
-    ],
-    "sourceMap": true,
-    "sourceRoot": "./src"
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "stripInternal": true,
+    "inlineSources": false,
+    "sourceMap": false,
+    "types": ["node"]
   },
   "exclude": [
-    "*/node_modules/*",
+    "./node_modules/**",
+    "./dist",
     "build"
   ]
 }

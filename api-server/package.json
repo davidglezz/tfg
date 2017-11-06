@@ -5,6 +5,8 @@
   "description": "Servidor para la API",
   "license": "MIT",
   "scripts": {
+    "lint": "tslint src/**/*.ts",
+    "lint-fix": "tslint --fix src/**/*.ts -t verbose",
     "start": "npm run build && node ./build/app.js",
     "start:watch": "npm run build:watch & nodemon ./build/app.js",
     "build": "node_modules/.bin/tsc",
@@ -32,7 +34,7 @@
     "@types/compression": "0.0.34",
     "@types/cors": "^2.8.1",
     "@types/express": "^4.0.39",
-    "@types/node": "^8.0.47",
+    "@types/node": "^8.0.48",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "cors": "^2.8.4",
@@ -42,9 +44,17 @@
     "routing-controllers": "^0.7.6",
     "sqlite3": "^3.1.13",
     "typedi": "0.5.2",
-    "typeorm": "^0.1.1",
-    "typeorm-routing-controllers-extensions": "^0.1.0",
-    "typescript": "^2.6.1"
+    "typeorm": "^0.1.2",
+    "typeorm-routing-controllers-extensions": "^0.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.1"
+  }
 }

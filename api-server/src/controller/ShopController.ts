@@ -1,99 +1,97 @@
-import { DeepPartial } from 'typeorm/common/DeepPartial'
-import { JsonController, Get, Post, Patch, Put, Delete, Authorized, Param, QueryParam } from "routing-controllers"
-import { Connection, getConnectionManager, Repository, FindManyOptions } from 'typeorm';
-import { EntityFromParam, EntityFromBody, EntityFromBodyParam } from "typeorm-routing-controllers-extensions"
-import { Shop, Url } from "../persistence"
-
-interface Dictionary<T> { [key: string]: T; }
+import { JsonController, Get, QueryParam, Param, Post, Put, Delete } from 'routing-controllers'
+import { Connection, Repository, getConnectionManager } from 'typeorm'
+import { EntityFromParam, EntityFromBody } from 'typeorm-routing-controllers-extensions'
+import { Shop, Url } from '../persistence'
 
 @JsonController('/api/shops')
 export class ShopController {
-    private connection: Connection
-    private repository: Repository<Shop>
+  private connection: Connection
+  private repository: Repository<Shop>
 
-    constructor() {
-        this.connection = getConnectionManager().get()
-        this.repository = this.connection.getRepository(Shop)
-    }
+  constructor () {
+    this.connection = getConnectionManager().get()
+    this.repository = this.connection.getRepository(Shop)
+  }
 
-    @Get("/")
-    getAll( @QueryParam("page") page = 0,
-        @QueryParam("limit") limit = 1000,
-        @QueryParam("orderBy") orderBy: string,
-        @QueryParam("orderWay") orderWay: 'ASC' | 'DESC' = 'ASC',
-        @QueryParam("type") type: 'full' | 'simple' = 'full',
+  @Get('/')
+  getAll (@QueryParam('page') page = 0,
+    @QueryParam('limit') limit = 1000,
+    @QueryParam('orderBy') orderBy: string,
+    @QueryParam('orderWay') orderWay: 'ASC' | 'DESC' = 'ASC',
+    @QueryParam('type') type: 'full' | 'simple' = 'full'
     ) {
 
-        const query = this.repository.createQueryBuilder("shop")
+    const query = this.repository.createQueryBuilder('shop')
 
-        if (type === 'simple') {
-            query.select([
-                "shop.id",
-                "shop.name",
-                "shop.domain"
-            ])
-        }
-
-        if (limit !== 0) {
-            query.skip(page * limit).take(limit)
-        }
-
-        if (orderBy) {
-            query.orderBy(orderBy, orderWay)
-        }
-
-        return query.getMany()
+    if (type === 'simple') {
+      query.select([
+        'shop.id',
+        'shop.name',
+        'shop.domain'
+      ])
     }
 
-    @Get("/urls/waiting")
-    getAllPendingUrls() {
-        return this.connection
-            .query('SELECT count(1) as waiting FROM url WHERE url.dateNextUpd < now()')
-            .then(data => data[0])
+    if (limit !== 0) {
+      query.skip(page * limit).take(limit)
     }
 
-    @Get("/:id/urls/waiting")
-    getPendingUrls( @Param("id") id: number) {
-        id = Number(id)
-        if (isNaN(id) || id < 0)
-            id = 0 // TODO throw error    
-        return this.connection
-            .query(`SELECT count(1) as waiting FROM url WHERE url.shopId = ${id} AND url.dateNextUpd < now()`)
-            .then(data => data[0])
+    if (orderBy) {
+      query.orderBy(orderBy, orderWay)
     }
 
-    @Get("/:id")
-    getById( @EntityFromParam("id", { required: true }) shop: Shop) {
-        return shop
-    }
+    return query.getMany()
+  }
 
-    @Post("/")
-    create( @EntityFromBody({ required: true }) shop: Shop) {
-        return this.repository.save(shop)
-    }
+  @Get('/urls/waiting')
+  getAllPendingUrls () {
+    return this.connection
+      .query('SELECT count(1) as waiting FROM url WHERE url.dateNextUpd < now()')
+      .then(data => data[0])
+  }
 
-    @Post("/:id")
-    updateOne( @EntityFromBody({ required: true }) shop: Shop) {
-        return this.repository.save(shop);
-    }
+  @Get('/:id/urls/waiting')
+  getPendingUrls (@Param('id') id: number) {
+    id = Number(id)
+    if (isNaN(id) || id < 0) {
+      id = 0
+    } // TODO throw error
+    return this.connection
+      .query(`SELECT count(1) as waiting FROM url WHERE url.shopId = ${id} AND url.dateNextUpd < now()`)
+      .then(data => data[0])
+  }
 
-    @Put("/")
-    createMany( @EntityFromBody({ required: true, type: Shop }) shops: Array<Shop>) {
-        console.log(shops)
-        shops.forEach(shop => shop.hash = Url.getHashCode(shop.domain))
-        return this.repository.save(shops);
-    }
+  @Get('/:id')
+  getById (@EntityFromParam('id', { required: true }) shop: Shop) {
+    return shop
+  }
 
-    @Delete("/")
-    deleteAll( @QueryParam("confirm") confirm = false) {
-        throw new Error("Disabled until there is an authentication system")
-        /*if (confirm)
-            return this.repository.clear();*/
-    }
+  @Post('/')
+  create (@EntityFromBody({ required: true }) shop: Shop) {
+    return this.repository.save(shop)
+  }
 
-    @Delete("/:id")
-    deleteOne( @Param("id") id: number) {
-        throw new Error("Disabled until there is an authentication system")
-        /*return this.repository.removeById(id);*/
-    }
+  @Post('/:id')
+  updateOne (@EntityFromBody({ required: true }) shop: Shop) {
+    return this.repository.save(shop)
+  }
+
+  @Put('/')
+  createMany (@EntityFromBody({ required: true, type: Shop }) shops: Array<Shop>) {
+    console.log(shops)
+    shops.forEach(shop => shop.hash = Url.getHashCode(shop.domain))
+    return this.repository.save(shops)
+  }
+
+  @Delete('/')
+  deleteAll (@QueryParam('confirm') confirm = false) {
+    throw new Error('Disabled until there is an authentication system')
+    /*if (confirm)
+        return this.repository.clear();*/
+  }
+
+  @Delete('/:id')
+  deleteOne (@Param('id') id: number) {
+    throw new Error('Disabled until there is an authentication system')
+    /*return this.repository.removeById(id);*/
+  }
 }

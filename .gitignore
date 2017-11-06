@@ -67,6 +67,7 @@ persistence/src/ormconfig.json
 persistence/src/connectionOptions.ts
 api-server/src/persistence/*
 api-server/public/*
+api-server/dist/*
 crawler/src/persistence/*
 crawler/dist
 crawler/test
