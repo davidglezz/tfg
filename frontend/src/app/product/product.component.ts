@@ -291,11 +291,7 @@ export class ProductComponent implements OnInit, OnChanges {
     if (this.filter.search.active && this.filter.search.data) {
       filter.search = this.filter.search.data
     }
-
-    // console.log(filter)
+    
     return filter;
   }
-
-  
-
 }
