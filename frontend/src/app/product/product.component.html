@@ -40,7 +40,7 @@
           <mat-panel-description *ngIf="filter.shop.active">{{filterShops.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list dense #filterShops>
-          <mat-list-option *ngFor="let shop of filter.shop.data" [value]="shop.id" (click)="updateFilter()">
+          <mat-list-option *ngFor="let shop of filter.shop.data" [value]="shop.id" (selectionChange)="updateFilter()">
             <div class="inner-content">
               <img src="http://www.google.com/s2/favicons?domain={{shop.domain}}" alt="Icon" width="16" height="16"> {{shop.name}}
             </div>
@@ -57,15 +57,12 @@
           <mat-panel-title i18n="@@Product-Filter-Brand-Title">Brand</mat-panel-title>
           <mat-panel-description *ngIf="filter.brand.active">{{filter.brand.data.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
-
         <mat-chip-list matPrefix #brandChipList>
-          <mat-chip *ngFor="let brand of filter.brand.data.selected" class="chip" selectable="false" removable="true" (remove)="filterBrandsRemove(brand)">
+          <mat-chip *ngFor="let brand of filter.brand.data.selected" class="chip" selectable="false" removable="true" (removed)="filterBrandsRemove(brand)">
             {{brand}}
             <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip>
         </mat-chip-list>
-
-
         <mat-form-field class="full-width">
           <input matInput type="text" placeholder="Add brand" i18n-placeholder="@@Product-Filter-Brand-Add" aria-label="Brand" (keyup)="filterBrands($event.target.value)"
             (keydown)="filterBrandsAdd($event)" [matAutocomplete]="brandResult">
@@ -75,7 +72,6 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-
       </mat-expansion-panel>
 
       <mat-expansion-panel class="filter-availability selection-list" [expanded]="filter.availability.active">
@@ -85,7 +81,7 @@
         </mat-expansion-panel-header>
         <mat-selection-list dense #filterAvailability>
           <mat-list-option *ngFor="let availability of filter.availability.data | objectKeys" [value]="availability" [selected]="filter.availability.data[availability]"
-            (click)="updateFilter()">
+            (selectionChange)="updateFilter()">
             <div class="inner-content">
               {{availability}}
             </div>
@@ -98,9 +94,9 @@
           <mat-panel-title i18n="@@Product-Filter-Language-Title">Language</mat-panel-title>
           <mat-panel-description *ngIf="filter.language.active">{{filterLanguage.selectedOptions.selected.length}}</mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-selection-list dense #filterLanguage (selectChange)="log($event)" (ngModelChange)="log($event)" (change)="log($event)">
+        <mat-selection-list dense #filterLanguage>
           <mat-list-option *ngFor="let language of filter.language.data | objectKeys" [value]="language" [selected]="filter.language.data[language]"
-            (selectChange)="updateFilter()" (deselected)="updateFilter()" (click)="updateFilter()">
+            (selectionChange)="updateFilter()">
             <div class="inner-content">
               {{language}}
             </div>
