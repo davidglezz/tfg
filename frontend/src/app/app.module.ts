@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http'; // DEPRECATED
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -85,7 +84,6 @@ import { TimespanPipe } from './timespan.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
-    HttpModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
