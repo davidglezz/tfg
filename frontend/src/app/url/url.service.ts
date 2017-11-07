@@ -1,80 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Url } from './url.interface'
 import { API } from '../api.config';
 
 @Injectable()
 export class UrlService {
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private headers = { 'Content-Type': 'application/json' };
     private baseUri = API.baseHref + '/shop/urls';
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getUrls(skip: number = 0, limit: number = 100): Observable<Url[]> {
-        const params: RequestOptionsArgs = {
+        const options = {
+            headers: this.headers,
             params: {
-                'skip': skip,
-                'limit': limit
+                'skip': String(skip),
+                'limit': String(limit)
             }
         }
-        return this.http.get(this.baseUri, params)
-            .map((res: Response) => res.json())
+        return this.http.get<Url[]>(this.baseUri, options)
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    getUrlsResultSet(page: number = 0, limit: number = 100): Observable<ResultSet<Url>> {
-        const params: RequestOptionsArgs = {
-            params: {
-                'page': page,
-                'limit': limit
-            }
-        }
-        return this.http.get(this.baseUri, params)
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-    }
-
-    getUrlById(id: number): Promise<Url> {
+    getUrlById(id: number): Observable<Url> {
         const uri = `${this.baseUri}/${id}`;
-        return this.http.get(uri)
-            .toPromise()
-            .then(response => response.json().data as Url)
-            .catch(this.handleError);
+        return this.http.get<Url>(uri, { headers: this.headers })
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-
-    createUrl(url: Url): Promise<Url> {
-        return this.http
-            .post(this.baseUri, JSON.stringify(url), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json().data as Url)
-            .catch(this.handleError);
+    createUrl(url: Url): Observable<Url> {
+        return this.http.post<Url>(this.baseUri, JSON.stringify(url), { headers: this.headers })
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    updateUrl(url: Url): Promise<Url> {
+    updateUrl(url: Url): Observable<Url> {
         const uri = `${this.baseUri}/${url.hash}`;
-        return this.http
-            .put(uri, JSON.stringify(url), { headers: this.headers })
-            .toPromise()
-            .then(() => url)
-            .catch(this.handleError);
+        return this.http.put<Url>(uri, JSON.stringify(url), { headers: this.headers })
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    deleteUrl(url: Url): Promise<void> {
+    deleteUrl(url: Url): Observable<Url> {
         const uri = `${this.baseUri}/${url.hash}`;
-        return this.http.delete(uri, { headers: this.headers })
-            .toPromise()
-            .then(() => null)
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
+        return this.http.delete<Url>(uri, { headers: this.headers })
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 }
 

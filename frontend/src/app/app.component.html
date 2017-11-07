@@ -1,16 +1,21 @@
 <mat-toolbar color="primary" class="app-toolbar">
-  <button mat-button class="app-toolbar-menu" (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span i18n="MainTitle|App name@@MainTitle">TFG-DAVID</span>
-  <app-search></app-search>
-  <span class="app-toolbar-filler"></span>
-  <!--<mat-slide-toggle color="accent" [(ngModel)]="isDev">Dev Features</mat-slide-toggle>-->
-  <button mat-button [matMenuTriggerFor]="languageMenu"><mat-icon>language</mat-icon> <span i18n="@@Main-Language-Current">EN</span></button>
-  <mat-menu #languageMenu>
-    <a href="/en/" mat-menu-item i18n="@@Main-Language-EN">English</a>
-    <a href="/es/" mat-menu-item i18n="@@Main-Language-ES">Spanish</a>
-  </mat-menu>
+  <mat-toolbar-row>
+    <button mat-button class="app-toolbar-menu" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span i18n="MainTitle|App name@@MainTitle">TFG-DAVID</span>
+    <app-search></app-search>
+    <span class="app-toolbar-filler"></span>
+    <!--<mat-slide-toggle color="accent" [(ngModel)]="isDev">Dev Features</mat-slide-toggle>-->
+    <button mat-button [matMenuTriggerFor]="languageMenu">
+      <mat-icon>language</mat-icon>
+      <span i18n="@@Main-Language-Current">EN</span>
+    </button>
+    <mat-menu #languageMenu>
+      <a href="/en/" mat-menu-item i18n="@@Main-Language-EN">English</a>
+      <a href="/es/" mat-menu-item i18n="@@Main-Language-ES">Spanish</a>
+    </mat-menu>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-sidenav-container">

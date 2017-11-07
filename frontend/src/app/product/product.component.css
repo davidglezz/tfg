@@ -6,6 +6,10 @@ virtual-scroll {
   /*margin: 0 -16px;*/
 }
 
+virtual-scroll .scrollable-content {
+  text-align: center;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;

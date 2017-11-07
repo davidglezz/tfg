@@ -167,6 +167,7 @@ export class ProductComponent implements OnInit, OnChanges {
 
     if (index >= 0) {
       this.filter.brand.data.selected.splice(index, 1);
+      this.updateFilter();
     }
   }
 
@@ -292,10 +293,6 @@ export class ProductComponent implements OnInit, OnChanges {
       filter.search = this.filter.search.data
     }
 
-    // console.log(filter)
     return filter;
   }
-
-  
-
 }

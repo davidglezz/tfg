@@ -1,11 +1,11 @@
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http'; // DEPRECATED
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
-import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table'
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
@@ -86,10 +86,10 @@ import { TimespanPipe } from './timespan.pipe';
     BrowserAnimationsModule,
     CommonModule,
     HttpModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     ChartsModule,
     VirtualScrollModule,
     MatAutocompleteModule,
@@ -160,8 +160,7 @@ import { TimespanPipe } from './timespan.pipe';
     ShopService,
     ProductService,
     UrlService,
-    BrandService,
-    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }
+    BrandService
   ],
   entryComponents: [/*DialogContent*/],
   bootstrap: [AppComponent]
