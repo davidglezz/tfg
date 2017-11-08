@@ -45,6 +45,7 @@ virtual-scroll .scrollable-content {
 
 .product-filters .no-padding .mat-expansion-panel-body {
   margin: 0;
+  padding: 0;
 }
 
 
@@ -67,6 +68,7 @@ virtual-scroll .scrollable-content {
 
 .product-filters .selection-list .mat-expansion-panel-body {
   margin: 0;
+  padding: 0;
 }
 
 .product-filters .selection-list .mat-action-row {
