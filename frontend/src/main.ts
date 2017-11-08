@@ -7,9 +7,9 @@ if (environment.production) {
 }
 
 // AOT
-import { platformBrowser } from '@angular/platform-browser';
-platformBrowser().bootstrapModule(AppModule);
+// import { platformBrowser } from '@angular/platform-browser';
+// platformBrowser().bootstrapModule(AppModule);
 
 // JIT
-// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-// platformBrowserDynamic().bootstrapModule(AppModule);
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+platformBrowserDynamic().bootstrapModule(AppModule);
