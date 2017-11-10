@@ -13,12 +13,14 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    getProducts(skip: number = 0, limit: number = 100, filter?: ProductFilter): Observable<Product[]> {
+    getProducts(skip = 0, limit = 100, orderBy: string, orderWay: 'ASC' | 'DESC' = 'ASC', filter?: ProductFilter): Observable<Product[]> {
         const options = {
             headers: this.headers,
             params: {
                 'skip': String(skip),
                 'limit': String(limit),
+                'orderBy': orderBy,
+                'orderWay': orderWay,
                 'filter': encodeURI(filter ? JSON.stringify(filter) : '{}')
             }
         }

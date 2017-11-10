@@ -128,16 +128,16 @@
         <span i18n="@@Product-Toolbar-SortBtn">Sort</span>
       </button>
       <mat-menu #sortMenu>
-        <button mat-menu-item i18n="@@Product-Sort-NoSort">Without order</button>
-        <button mat-menu-item i18n="@@Product-Sort-NameAZ">Name (A to Z)</button>
-        <button mat-menu-item i18n="@@Product-Sort-NameZA">Name (Z to A)</button>
-        <button mat-menu-item i18n="@@Product-Sort-PriceCheapest">Price (Cheapest first)</button>
-        <button mat-menu-item i18n="@@Product-Sort-PriceExpensive">Price (Expensive first)</button>
-        <button mat-menu-item i18n="@@Product-Sort-TotalPriceCheapest">Total Price (Cheaper first)</button>
-        <button mat-menu-item i18n="@@Product-Sort-TotalPriceExpensive">Total Price (Expensive first)</button>
-        <button mat-menu-item i18n="@@Product-Sort-Rating">Rating </button>
-        <button mat-menu-item i18n="@@Product-Sort-Newest">Newest</button>
-        <button mat-menu-item i18n="@@Product-Sort-Reviews">Most Reviews </button>
+        <!--<button mat-menu-item i18n="@@Product-Sort-NoSort">Without order</button>-->
+        <button mat-menu-item (click)="setSort('dateAdd','DESC')" i18n="@@Product-Sort-Newest">Newest</button>
+        <button mat-menu-item (click)="setSort('name','ASC')" i18n="@@Product-Sort-NameAZ">Name (A to Z)</button>
+        <button mat-menu-item (click)="setSort('name','DESC')"i18n="@@Product-Sort-NameZA">Name (Z to A)</button>
+        <button mat-menu-item (click)="setSort('price','ASC')"i18n="@@Product-Sort-PriceCheapest">Price (Cheapest first)</button>
+        <button mat-menu-item (click)="setSort('price','DESC')"i18n="@@Product-Sort-PriceExpensive">Price (Expensive first)</button>
+        <button mat-menu-item (click)="setSort('priceTotal','ASC')"i18n="@@Product-Sort-TotalPriceCheapest">Total Price (Cheaper first)</button>
+        <button mat-menu-item (click)="setSort('priceTotal','DESC')"i18n="@@Product-Sort-TotalPriceExpensive">Total Price (Expensive first)</button>
+        <button mat-menu-item (click)="setSort('ratingValue','DESC')"i18n="@@Product-Sort-Rating">Rating </button>
+        <button mat-menu-item (click)="setSort('ratingCount','DESC')"i18n="@@Product-Sort-Reviews">Most Reviews </button>
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
