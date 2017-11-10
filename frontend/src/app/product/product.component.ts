@@ -34,6 +34,10 @@ export class ProductComponent implements OnInit, OnChanges {
   @ViewChild('productVirtualScroll')
   productVirtualScroll: VirtualScrollComponent;
 
+  // Sort
+  orderBy = 'dateAdd'
+  orderWay: 'DESC' | 'ASC' = 'DESC'
+
   // Filters
   @ViewChild('filterShops') filterShops;
   @ViewChild('filterBrand') filterBrand;
@@ -184,8 +188,9 @@ export class ProductComponent implements OnInit, OnChanges {
     this.indices = { start: 0, end: this.pageSize }
     this.noMoreProducts = false
     this.loading = true;
+    this.items = [];
     this.productService
-      .getProducts(0, this.pageSize, this.productFilter)
+      .getProducts(0, this.pageSize, this.orderBy, this.orderWay, this.productFilter)
       .subscribe(data => this.items = data.map(product => ({ product })) as Url[], console.error, () => {
         this.loading = false
         this.productVirtualScroll.refresh()
@@ -205,7 +210,7 @@ export class ProductComponent implements OnInit, OnChanges {
       this.loading = true;
       const nbProducts = this.items.length
       this.productService
-        .getProducts(this.items.length, this.pageSize, this.productFilter)
+        .getProducts(this.items.length, this.pageSize, this.orderBy, this.orderWay, this.productFilter)
         .subscribe(data => this.items = this.items.concat(data.map((product) => ({ product })) as Url[]), console.error, () => {
           this.loading = false
           this.noMoreProducts = nbProducts === this.items.length
@@ -236,6 +241,14 @@ export class ProductComponent implements OnInit, OnChanges {
   setFilter(name: string, status: boolean) {
     this.filter[name].active = status
     this.updateFilter()
+  }
+
+  setSort(orderBy: string, orderWay: 'DESC' | 'ASC') {
+    if (this.orderBy !== orderBy || this.orderWay !== orderWay) {
+      this.orderBy = orderBy;
+      this.orderWay = orderWay;
+      this.reset()
+    }
   }
 
   updateFilter() {
