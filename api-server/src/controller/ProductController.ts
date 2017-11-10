@@ -69,7 +69,7 @@ export class ProductController {
     if (filter) {
       console.log(filter)
       // queryBuilder.where('TRUE')
-      query += ` WHERE TRUE `
+      query += ` WHERE product.name IS NOT NULL `
 
       if (filter.priceMin && filter.priceMin > 0) {
         // queryBuilder.andWhere("product.priceTotal >= :priceMin", { priceMin: filter.priceMin })
