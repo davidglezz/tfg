@@ -41,5 +41,5 @@ async function main () {
 }
 
 main()
-  .then(() => { console.info('Fin de la ejecución.') })
-  .catch((e) => { console.error('La ejecución termino con errores', e) })
+  .then(() => { console.info('End of execution.') })
+  .catch((e) => { console.error('The execution ended with errors.', e) })
