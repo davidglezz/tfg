@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "api-server"
+		},
+		{
+			"path": "crawler"
+		},
+		{
+			"path": "frontend"
+		},
+		{
+			"path": "persistence"
+		}
+	]
+}
