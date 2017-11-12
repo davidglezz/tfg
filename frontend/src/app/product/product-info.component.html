@@ -60,8 +60,8 @@
             </span>
           </div>
           <p class="rating-results">
-            <ng-container i18n="@@Product-Info-Rating1">It has a rating of</ng-container> 
-            <strong> {{product.ratingValue * 5.0}} / 5 </strong> 
+            <ng-container i18n="@@Product-Info-Rating1">It has a rating of</ng-container>
+            <strong> {{product.ratingValue * 5.0 | number:'1.0-2'}} / 5 </strong>
             <ng-container i18n="@@Product-Info-Rating2">with a total of</ng-container>
             <strong> {{product.ratingCount}} </strong>
             <ng-container i18n="@@Product-Info-Rating3">reviews.</ng-container>
@@ -96,7 +96,8 @@
 
         <div *ngIf="prices.values">
           <canvas baseChart [datasets]="prices.values" [labels]="prices.labels" [options]="prices.options" chartType="line"></canvas>
-        </div><!-- -->
+        </div>
+        <!-- -->
       </mat-tab>
 
       <mat-tab label="Similar" i18n-label="@@Product-Info-Tab-Similar">
