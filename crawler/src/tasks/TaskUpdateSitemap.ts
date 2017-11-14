@@ -103,8 +103,8 @@ export class TaskUpdateSitemap implements Task {
   async updateShopDateNextUpd (shop: Shop) {
     let now = Date.now()
     shop.dateNextUpd = new Date(now + shop.sitemapUpdInterval)
-    return this.repository.shop.save(shop)
-      .catch(e => { console.error('[ERROR] on database', e) })
+    return this.repository.shop.save(shop as any) // TO FIX
+      .catch((e: any) => { console.error('[ERROR] on database', e) })
   }
 
   /**
@@ -135,7 +135,7 @@ export class TaskUpdateSitemap implements Task {
 
     const currentHashes = await this.getAllShopUrlHashes(shop)
     let rowsToAdd: string[] = []
-    let nextUpd = Date.now()
+    let nextUpd = 0 // Date.now() // High priority
     let parser = new SitemapParser(onUrl, () => {
       // NOOP
     })

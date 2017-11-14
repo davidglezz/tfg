@@ -14,7 +14,7 @@ export class TaskUpdateUrls implements Task {
   private repository: Dictionary<Repository<any>>
 
   private config = {
-    BatchSize: 1000,
+    BatchSize: 100,
     Concurrency: 25,
     RedirectUpdTime: 31536000000, // 1 year
     NoProductUpdTime: 31536000000, // 1 year
