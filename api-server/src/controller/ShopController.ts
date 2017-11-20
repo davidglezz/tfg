@@ -2,6 +2,7 @@ import { JsonController, Get, QueryParam, Param, Post, Put, Delete } from 'routi
 import { Connection, Repository, getConnectionManager } from 'typeorm'
 import { EntityFromParam, EntityFromBody } from 'typeorm-routing-controllers-extensions'
 import { Shop, Url } from '../persistence'
+import { SuggestShopByUrl } from '../classes/suggestShopByUrl'
 
 @JsonController('/api/shops')
 export class ShopController {
@@ -93,5 +94,11 @@ export class ShopController {
   deleteOne (@Param('id') id: number) {
     throw new Error('Disabled until there is an authentication system')
     /*return this.repository.removeById(id);*/
+  }
+
+  @Get('/suggestions')
+  getSuggestion ( @QueryParam('url', { required: true }) url: string) {
+    const suggest = new SuggestShopByUrl()
+    return suggest.get(url)
   }
 }
