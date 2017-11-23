@@ -7,6 +7,7 @@ import { ProductInfoComponent } from './product/product-info.component';
 import { AboutComponent } from './about/about.component';
 import { ShopInfoComponent } from './shop/shop-info.component'
 import { ShopEditComponent } from './shop/shop-edit.component'
+import { ShopAddComponent } from 'app/shop/shop-add/shop-add.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'shop/add',
-    component: ShopEditComponent
+    component: ShopAddComponent
   },
   {
     path: 'shop/:id',

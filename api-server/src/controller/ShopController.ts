@@ -2,6 +2,7 @@ import { JsonController, Get, QueryParam, Param, Post, Put, Delete } from 'routi
 import { Connection, Repository, getConnectionManager } from 'typeorm'
 import { EntityFromParam, EntityFromBody } from 'typeorm-routing-controllers-extensions'
 import { Shop, Url } from '../persistence'
+import { SuggestShopByUrl } from '../classes/suggestShopByUrl'
 
 @JsonController('/api/shops')
 export class ShopController {
@@ -11,6 +12,13 @@ export class ShopController {
   constructor () {
     this.connection = getConnectionManager().get()
     this.repository = this.connection.getRepository(Shop)
+  }
+
+  @Get('/suggestions')
+  getSuggestion (@QueryParam('url', { required: true }) url: string) {
+    console.log(url)
+    const suggest = new SuggestShopByUrl()
+    return suggest.get(decodeURI(url))
   }
 
   @Get('/')

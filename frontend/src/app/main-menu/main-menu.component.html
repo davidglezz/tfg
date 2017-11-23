@@ -1,0 +1,25 @@
+<mat-nav-list>
+
+  <h3 matSubheader i18n="@@MainMainMenuHeader">Main</h3>
+  <!--
+      <a mat-list-item routerLinkActive="sidenav-item-selected" href="/dashboard" [routerLink]="['dashboard']">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line>Dashboard</span>
+      </a>
+      -->
+  <a mat-list-item routerLinkActive="sidenav-item-selected" href="/shop" [routerLink]="['/shop']">
+    <mat-icon mat-list-icon>store</mat-icon>
+    <span mat-line i18n="@@ShopsMainMenuItem">Shops</span>
+  </a>
+  <a mat-list-item routerLinkActive="sidenav-item-selected" href="/product" [routerLink]="['/product']">
+    <mat-icon mat-list-icon>shopping_cart</mat-icon>
+    <span mat-line i18n="@@ProductsMainMenuItem">Products</span>
+  </a>
+  <mat-divider></mat-divider>
+  <h3 matSubheader i18n="@@AboutMainMenuHeader">About</h3>
+  <a mat-list-item routerLinkActive="sidenav-item-selected" href="/about" [routerLink]="['/about']">
+    <mat-icon mat-list-icon>help</mat-icon>
+    <span mat-line i18n="@@InformationMainMenuItem">Information</span>
+  </a>
+
+</mat-nav-list>

@@ -4,6 +4,8 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "types": []
   },
   "exclude": [

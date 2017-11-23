@@ -1,0 +1,64 @@
+<form>
+  <h1 class="content">
+    <span i18n="@@Shop-NewShop-Title">New shop: </span>
+  </h1>
+  <mat-card class="content">
+    <mat-card-content>
+
+      <div *ngIf="step==0">
+        <h2 i18n="@@Shop-Add-Step1-Title">1. Autodetect</h2>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Url of article" i18n-placeholder="@@Shop-NewShop-UrlArticle" [(ngModel)]="autodetectUrlArticle"
+              [ngModelOptions]="{standalone: true}" required>
+          </mat-form-field>
+        </div>
+        <button mat-button (click)="skip()" i18n="@@Shop-NewShop-SkipBtn">Skip</button>
+        <button mat-button (click)="autodetect()" i18n="@@Shop-NewShop-AutodetectBtn">
+          <mat-progress-spinner *ngIf="loading1" class="loading-small" color="primary" mode="indeterminate" [strokeWidth]="2" [diameter]="18"></mat-progress-spinner>Autodetect
+        </button>
+      </div>
+      <div *ngIf="step==1">
+        <h2 i18n="@@Shop-Add-Step2-Title">2. Information</h2>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="shop.name" placeholder="Name" name="name" i18n-placeholder="@@Shop-NewShop-Name">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="shop.domain" placeholder="Domain" name="domain" i18n-placeholder="@@Shop-NewShop-Domain">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="shop.sitemap" placeholder="Sitemap url" name="sitemap" i18n-placeholder="@@Shop-NewShop-Sitemap">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="shop.shippingCost" placeholder="Shipping cost (€)" name="shippingCost" i18n-placeholder="@@Shop-NewShop-ShippingCost">
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button [routerLink]="['/shop']" i18n="@@Shop-NewShop-CancelBtn">Cancel</button>
+          <button mat-button (click)="save()" i18n="@@Shop-NewShop-SaveBtn">Save</button>
+        </div>
+        <!--
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="shop.productUpdInterval" placeholder="Product update interval (ms)" name="productUpdInterval"
+              i18n-placeholder="@@Shop-NewShop-ProductUpdInterval">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="shop.sitemapUpdInterval" placeholder="Sitemap update interval (ms)" name="sitemapUpdInterval"
+              i18n-placeholder="@@Shop-NewShop-SitemapUpdInterval">
+          </mat-form-field>
+        </div>
+        -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>
