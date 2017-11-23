@@ -55,9 +55,3 @@ export class SuggestShopByUrl {
   }
 
 }
-
-function test () {
-  const href = 'https://www.orbitadigital.com/es/cctv/4861-sp955b-box-caja-de-conexiones-para-camaras.html'
-  const suggest = new SuggestShopByUrl()
-  suggest.get(href).then(console.log).catch(console.error)
-}
