@@ -1,24 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column } from 'typeorm'
 
-export interface ShopDTO {
-  id: number
-  hash: number
-  domain: string
-  name: string
-  shippingCost: number
-  vatFix: number
-  sitemap: string
-  productUpdInterval: number
-  sitemapUpdInterval: number
-  dateAdd: Date
-  dateUpd: Date
-  dateNextUpd: Date
-  type: number
-  comment: string
-}
-
 @Entity()
-export class Shop implements ShopDTO {
+export class Shop {
 
   @PrimaryGeneratedColumn()
     id: number

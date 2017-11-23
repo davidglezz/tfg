@@ -28,121 +28,122 @@ export interface ProductDTO {
 export class Product implements ProductDTO {
 
   @PrimaryGeneratedColumn()
-    id: number
+  id: number
 
   @Index()
-    @Column('char', {
-      nullable: true,
-      length: 5
-    })
-    language: string
+  @Column('char', {
+    nullable: true,
+    length: 5
+  })
+  language: string
 
   @Index()
-    @Column('varchar', {
-      nullable: true,
-      length: 255
-    })
-    name: string
+  @Column('varchar', {
+    nullable: true,
+    length: 255
+  })
+  name: string
 
   @Index()
-    @Column('float', {
-      nullable: true
-    })
-    ratingValue: number
+  @Column('float', {
+    nullable: true
+  })
+  ratingValue: number
 
   @Column('int', {
     nullable: true
   })
-    ratingCount: number
+  ratingCount: number
 
   @Index()
-    @Column('varchar', {
-      nullable: true,
-      length: 45
-    })
-    brand: string
+  @Column('varchar', {
+    nullable: true,
+    length: 45
+  })
+  brand: string
 
   @Column('varchar', {
     nullable: true,
     length: 45
   })
-    color: string
+  color: string
 
   @Index()
-    @Column('bigint', {
-      nullable: true,
-      default: 0
-    })
-    gtin13: number
+  @Column('bigint', {
+    nullable: true,
+    default: 0
+  })
+  gtin13: number
 
   @Index()
-    @Column('varchar', {
-      nullable: true,
-      length: 45
-    })
-    mpn: string
+  @Column('varchar', {
+    nullable: true,
+    length: 45
+  })
+  mpn: string
 
   @Index()
-    @Column('varchar', {
-      nullable: true,
-      length: 45
-    })
-    sku: string
+  @Column('varchar', {
+    nullable: true,
+    length: 45
+  })
+  sku: string
 
   @Index()
-    @Column('varchar', {
-      nullable: true,
-      length: 45
-    })
-    productID: string
+  @Column('varchar', {
+    nullable: true,
+    length: 45
+  })
+  productID: string
 
   @Index()
-    @Column('double', {
-      nullable: true
-    })
-    price: number
+  @Column('double', {
+    nullable: true
+  })
+  price: number
 
   @Column('varchar', {
     nullable: true,
     length: 3,
     default: 'EUR'
   })
-    priceCurrency: string
+  priceCurrency: string
 
   @Index()
-    @Column('double', {
-      nullable: true
-    })
-    priceTotal: number
+  @Column('double', {
+    nullable: true
+  })
+  priceTotal: number
 
   @Column('text', {
     nullable: true
   })
-    description: string
+  description: string
 
   @Column('varchar', {
     nullable: true,
     length: 255
   })
-    image: string
+  image: string
 
   @Index()
-    @Column({
-      type: 'enum',
-      enum: ['Discontinued', 'InStock', 'InStoreOnly', 'LimitedAvailability',
-        'OnlineOnly', 'OutOfStock', 'PreOrder', 'PreSale', 'SoldOut'],
-      default: 'InStock'
-    })
-    availability: 'Discontinued' | 'InStock' | 'InStoreOnly' | 'LimitedAvailability' |
-        'OnlineOnly' | 'OutOfStock' | 'PreOrder' | 'PreSale' | 'SoldOut'
+  @Column({
+    type: 'enum',
+    enum: ['Discontinued', 'InStock', 'InStoreOnly', 'LimitedAvailability',
+      'OnlineOnly', 'OutOfStock', 'PreOrder', 'PreSale', 'SoldOut'],
+    default: 'InStock'
+  })
+  availability: 'Discontinued' | 'InStock' | 'InStoreOnly' | 'LimitedAvailability' |
+    'OnlineOnly' | 'OutOfStock' | 'PreOrder' | 'PreSale' | 'SoldOut'
 
+  @Index()
   @CreateDateColumn({ type: 'timestamp', nullable: false })
-    dateAdd: Date
+  dateAdd: Date
 
   @UpdateDateColumn({ type: 'timestamp', nullable: false })
-    dateUpd: Date
+  dateUpd: Date
 
   @OneToMany(type => Url, urls => urls.product)
-    urls: Url[]
+  urls: Url[]
 
 }

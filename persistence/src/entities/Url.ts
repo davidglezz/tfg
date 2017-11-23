@@ -54,6 +54,7 @@ export class Url {
   })
   dateUpd: Date
 
+  @Index()
   @Column({
     type: 'timestamp',
     nullable: false,
