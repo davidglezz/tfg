@@ -59,6 +59,7 @@ import { AboutComponent } from './about/about.component';
 import { ObjectKeysPipe } from './object-keys.pipe';
 import { SearchComponent } from './search/search.component';
 import { TimespanPipe } from './timespan.pipe';
+import { MainMenuComponent } from './main-menu/main-menu.component';
 import { ShopAddComponent } from './shop/shop-add/shop-add.component';
 
 @NgModule({
@@ -79,7 +80,8 @@ import { ShopAddComponent } from './shop/shop-add/shop-add.component';
     AboutComponent,
     ObjectKeysPipe,
     SearchComponent,
-    TimespanPipe
+    TimespanPipe,
+    MainMenuComponent,
     ShopAddComponent
   ],
   imports: [
