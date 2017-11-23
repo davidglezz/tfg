@@ -1,0 +1,27 @@
+.content {
+  margin: 24px auto;
+  max-width: 990px;
+}
+
+.muted {
+  color: rgba(0, 0, 0, .32);
+}
+
+.right {
+  float: right;
+}
+
+.edit-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.loading-small {
+  float: left;
+  margin: 7px 10px 0px 0px;
+}

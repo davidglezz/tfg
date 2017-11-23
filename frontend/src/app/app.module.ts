@@ -59,6 +59,7 @@ import { AboutComponent } from './about/about.component';
 import { ObjectKeysPipe } from './object-keys.pipe';
 import { SearchComponent } from './search/search.component';
 import { TimespanPipe } from './timespan.pipe';
+import { ShopAddComponent } from './shop/shop-add/shop-add.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { TimespanPipe } from './timespan.pipe';
     ObjectKeysPipe,
     SearchComponent,
     TimespanPipe
+    ShopAddComponent
   ],
   imports: [
     BrowserModule,
