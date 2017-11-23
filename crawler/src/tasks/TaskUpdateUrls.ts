@@ -61,7 +61,9 @@ export class TaskUpdateUrls implements Task {
         } // no reject(err), if error, continue
 
         // Resolve immediately
-        resolve() // setTimeout(resolve, await this.getNextUpdate())
+        // resolve()
+
+        setTimeout(resolve, await this.getNextUpdate())
       })
     })
   }
