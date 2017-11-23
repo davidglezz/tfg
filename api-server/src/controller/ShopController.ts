@@ -14,6 +14,13 @@ export class ShopController {
     this.repository = this.connection.getRepository(Shop)
   }
 
+  @Get('/suggestions')
+  getSuggestion (@QueryParam('url', { required: true }) url: string) {
+    console.log(url)
+    const suggest = new SuggestShopByUrl()
+    return suggest.get(decodeURI(url))
+  }
+
   @Get('/')
   getAll (@QueryParam('page') page = 0,
     @QueryParam('limit') limit = 1000,
@@ -94,11 +101,5 @@ export class ShopController {
   deleteOne (@Param('id') id: number) {
     throw new Error('Disabled until there is an authentication system')
     /*return this.repository.removeById(id);*/
-  }
-
-  @Get('/suggestions')
-  getSuggestion ( @QueryParam('url', { required: true }) url: string) {
-    const suggest = new SuggestShopByUrl()
-    return suggest.get(url)
   }
 }
