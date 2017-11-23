@@ -2,48 +2,46 @@
   <mat-card class="content" *ngIf="shop">
     <mat-card-content>
       <h1>
-        <span *ngIf="isNew" [ngClass]="{'muted' : shop.name}" i18n="@@Shop-NewShop-Title">New shop: </span>
         {{shop.name}}
-        <span *ngIf="!isNew" class="muted right">#{{shop.id}}</span>
+        <span class="muted right">#{{shop.id}}</span>
       </h1>
 
       <div>
         <mat-form-field class="full-width">
-          <input matInput [(ngModel)]="shop.name" placeholder="Name" name="name" i18n-placeholder="@@Shop-NewShop-Name">
+          <input matInput [(ngModel)]="shop.name" placeholder="Name" name="name" i18n-placeholder="@@Shop-Edit-Name">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="full-width">
-          <input matInput [(ngModel)]="shop.domain" placeholder="Domain" name="domain" i18n-placeholder="@@Shop-NewShop-Domain">
+          <input matInput [(ngModel)]="shop.domain" placeholder="Domain" name="domain" i18n-placeholder="@@Shop-Edit-Domain">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="full-width">
-          <input matInput [(ngModel)]="shop.sitemap" placeholder="Sitemap url" name="sitemap" i18n-placeholder="@@Shop-NewShop-Sitemap">
+          <input matInput [(ngModel)]="shop.sitemap" placeholder="Sitemap url" name="sitemap" i18n-placeholder="@@Shop-Edit-Sitemap">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="full-width">
-          <input matInput [(ngModel)]="shop.shippingCost" placeholder="Shipping cost (€)" name="shippingCost" i18n-placeholder="@@Shop-NewShop-ShippingCost">
+          <input matInput [(ngModel)]="shop.shippingCost" placeholder="Shipping cost (€)" name="shippingCost" i18n-placeholder="@@Shop-Edit-ShippingCost">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="full-width">
           <input matInput [(ngModel)]="shop.productUpdInterval" placeholder="Product update interval (ms)" name="productUpdInterval"
-            i18n-placeholder="@@Shop-NewShop-ProductUpdInterval">
+            i18n-placeholder="@@Shop-Edit-ProductUpdInterval">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="full-width">
           <input matInput [(ngModel)]="shop.sitemapUpdInterval" placeholder="Sitemap update interval (ms)" name="sitemapUpdInterval"
-            i18n-placeholder="@@Shop-NewShop-SitemapUpdInterval">
+            i18n-placeholder="@@Shop-Edit-SitemapUpdInterval">
         </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button *ngIf="!(shop.id > 0)" [routerLink]="['/shop']" i18n="@@Shop-NewShop-CancelBtn">Cancel</button>
-      <button mat-button *ngIf="shop.id > 0" [routerLink]="['/shop',shop.id]" i18n="@@Shop-NewShop-CancelBtn">Cancel</button>
-      <button mat-button (click)="save()" i18n="@@Shop-NewShop-SaveBtn">Save</button>
+      <button mat-button [routerLink]="['/shop',shop.id]" i18n="@@Shop-Edit-CancelBtn">Cancel</button>
+      <button mat-button (click)="save()" i18n="@@Shop-Edit-SaveBtn">Save</button>
     </mat-card-actions>
   </mat-card>
 </form>

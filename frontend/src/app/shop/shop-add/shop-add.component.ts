@@ -13,6 +13,7 @@ export class ShopAddComponent implements OnInit {
   step = 0;
   autodetectUrlArticle = '';
   loading1 = false;
+  loading2 = false;
   shop: Shop;
 
   constructor(
@@ -25,8 +26,10 @@ export class ShopAddComponent implements OnInit {
   }
 
   save() {
+    this.loading2 = true;
     this.shopService.createShop(this.shop)
       .subscribe(shop => {
+        this.loading2 = false;
         this.router.navigate(['/shop', shop.id]);
       });
   }
