@@ -1,5 +1,5 @@
 <mat-sidenav-container class="product-container">
-  <mat-sidenav #productSidenav mode="side" align="start" opened="true" class="product-sidenav" tabindex="-1">
+  <mat-sidenav #productSidenav mode="side" align="start" [opened]="showFilters" class="product-sidenav" tabindex="-1">
     <mat-accordion multi="true" class="product-filters">
 
       <mat-expansion-panel class="filter-price" [expanded]="filter.price.active">
@@ -113,15 +113,15 @@
 
   <mat-toolbar>
     <mat-toolbar-row>
-      <button mat-button (click)="productSidenav.toggle()">
+      <button mat-button (click)="showFilters=!showFilters">
         <mat-icon>filter_list</mat-icon>
         <span i18n="@@Product-Toolbar-FilterBtn">Filters</span>
       </button>
       <span class="fill-remaining-space"></span>
       <span i18n="@@Product-List-Title">Products</span>
-      <span class="status muted">&nbsp; ({{indices?.start + 1}}-{{indices ? indices.end : 1}}
+      <!--<span class="status muted">&nbsp; ({{indices?.start + 1}}-{{indices ? indices.end : 1}}
         <ng-container i18n="@@Product-Toolbar-Status-Of">of</ng-container> {{items?.length}})
-      </span>
+      </span>-->
       <span class="fill-remaining-space"></span>
       <button mat-button [matMenuTriggerFor]="sortMenu">
         <mat-icon>sort</mat-icon>

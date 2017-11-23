@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'angular2-virtual-scroll/dist/virtual-scroll';
-import { Component, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, HostListener } from '@angular/core';
 import { Http } from '@angular/http';
 import { Product } from './product.interface';
 import { VirtualScrollComponent } from 'angular2-virtual-scroll';
@@ -23,6 +23,7 @@ const COMMA = 188, ENTER = 13;
 })
 export class ProductComponent implements OnInit, OnChanges {
 
+
   // Product List
   noMoreProducts: boolean;
   items: Url[];
@@ -39,6 +40,7 @@ export class ProductComponent implements OnInit, OnChanges {
   orderWay: 'DESC' | 'ASC' = 'DESC'
 
   // Filters
+  showFilters = true
   @ViewChild('filterShops') filterShops;
   @ViewChild('filterBrand') filterBrand;
   @ViewChild('filterAvailability') filterAvailability;
@@ -104,6 +106,7 @@ export class ProductComponent implements OnInit, OnChanges {
     private searchService: SearchService) { }
 
   ngOnInit() {
+    this.showFilters = window.innerWidth >= 768
     this.reset();
     this.setSearchListener()
     this.shopService.getShopsList().subscribe(list => this.filter.shop.data = list);
@@ -232,6 +235,20 @@ export class ProductComponent implements OnInit, OnChanges {
         }
         this.updateFilter()
       });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    console.log(event.target.innerWidth)
+    if (event.target.innerWidth >= 768) {
+      if (!this.showFilters) {
+        this.showFilters = true;
+      }
+    } else {
+      if (this.showFilters) {
+        this.showFilters = false;
+      }
+    }
   }
 
   log(value: any) {
