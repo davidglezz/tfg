@@ -16,7 +16,7 @@
         <button mat-button (click)="skip()" i18n="@@Shop-Add-SkipBtn">Skip</button>
         <button mat-button (click)="autodetect()">
           <mat-progress-spinner *ngIf="loading1" class="loading-small" color="primary" mode="indeterminate" [strokeWidth]="2" [diameter]="18"></mat-progress-spinner>
-          <ng-template i18n="@@Shop-Add-AutodetectBtn">Autodetect</ng-template>
+          <span i18n="@@Shop-Add-AutodetectBtn">Autodetect</span>
         </button>
       </div>
       <div *ngIf="step==1">
@@ -45,7 +45,7 @@
           <button mat-button [routerLink]="['/shop']" i18n="@@Shop-Add-CancelBtn">Cancel</button>
           <button mat-button (click)="save()">
             <mat-progress-spinner *ngIf="loading2" class="loading-small" color="primary" mode="indeterminate" [strokeWidth]="2" [diameter]="18"></mat-progress-spinner>
-            <ng-template i18n="@@Shop-Add-SaveBtn">Save</ng-template>
+            <span i18n="@@Shop-Add-SaveBtn">Save</span>
           </button>
         </div>
         <!--
