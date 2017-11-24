@@ -113,7 +113,7 @@ export class TaskUpdateSitemap implements Task {
    */
   async addUrls (toAdd: string[]) {
     let query = 'INSERT IGNORE INTO url (shopId, hash, href, dateNextUpd) VALUES '
-    query += (Object as any).values(toAdd).join(',')
+    query += toAdd.join(',')
     return this.connection
       .query(query)
       .catch(() => console.error('[ERROR] ON INSERT'/*, e*/))
