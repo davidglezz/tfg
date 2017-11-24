@@ -14,11 +14,11 @@ export class TaskUpdateUrls implements Task {
   private repository: Dictionary<Repository<any>>
 
   private config = {
-    BatchSize: 100,
+    BatchSize: 250,
     Concurrency: 25,
     RedirectUpdTime: 31536000000, // 1 year
     NoProductUpdTime: 31536000000, // 1 year
-    DefaultTimeToNextRun: 60000 // 1 minute
+    DefaultTimeToNextRun: 5000 // 5s
   }
 
   constructor (public stats: Dictionary<any> = {}, config?: any) {
@@ -62,8 +62,8 @@ export class TaskUpdateUrls implements Task {
 
         // Resolve immediately
         // resolve()
-
-        setTimeout(resolve, await this.getNextUpdate())
+        setTimeout(resolve, this.config.DefaultTimeToNextRun) // Temporal FIX
+        // setTimeout(resolve, await this.getNextUpdate())
       })
     })
   }
