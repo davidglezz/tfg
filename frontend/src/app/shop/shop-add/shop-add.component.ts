@@ -42,7 +42,7 @@ export class ShopAddComponent implements OnInit {
       sitemapUpdInterval: 86400000,
       productUpdInterval: 86400000,
       comment: 'SuggestShopByUrl',
-      dateNextUpd: new Date(),
+      dateNextUpd: new Date(0),
       shippingCost: 0,
       domain: '',
       sitemap: '',

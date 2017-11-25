@@ -12,7 +12,7 @@ export class SuggestShopByUrl {
     shop.sitemapUpdInterval = 86400000
     shop.productUpdInterval = 86400000
     shop.comment = 'SuggestShopByUrl'
-    shop.dateNextUpd = new Date()
+    shop.dateNextUpd = new Date(0)
     shop.shippingCost = 0
 
     // Get main url

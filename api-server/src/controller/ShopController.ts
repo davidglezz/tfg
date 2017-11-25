@@ -74,6 +74,10 @@ export class ShopController {
 
   @Post('/')
   create (@EntityFromBody({ required: true }) shop: Shop) {
+    if (typeof shop.dateNextUpd === 'string') {
+      shop.dateNextUpd = new Date(shop.dateNextUpd)
+    }
+
     return this.repository.save(shop)
   }
 
