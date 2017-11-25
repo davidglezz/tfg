@@ -67,7 +67,7 @@ export class ProductController {
     }
 
     if (filter) {
-      console.log(filter)
+      // console.log(filter)
       // queryBuilder.where('TRUE')
       query += ` WHERE product.name IS NOT NULL `
 
@@ -132,7 +132,7 @@ export class ProductController {
     // return queryBuilder.getMany()
 
     query = query.replace('\n', '')
-    console.log(query)
+    // console.log(query)
     return this.repository.query(query)
   }
 
@@ -205,7 +205,7 @@ export class ProductController {
       .andWhere(where)
       .limit(25)
 
-    console.log(queryBuilder.getSql())
+    // console.log(queryBuilder.getSql())
     return queryBuilder.getMany()
   }
 

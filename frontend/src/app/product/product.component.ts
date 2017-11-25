@@ -239,7 +239,6 @@ export class ProductComponent implements OnInit, OnChanges {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    console.log(event.target.innerWidth)
     if (event.target.innerWidth >= 768) {
       if (!this.showFilters) {
         this.showFilters = true;

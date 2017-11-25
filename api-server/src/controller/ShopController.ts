@@ -16,7 +16,6 @@ export class ShopController {
 
   @Get('/suggestions')
   getSuggestion (@QueryParam('url', { required: true }) url: string) {
-    console.log(url)
     const suggest = new SuggestShopByUrl()
     return suggest.get(decodeURI(url))
   }
@@ -85,7 +84,6 @@ export class ShopController {
 
   @Put('/')
   createMany (@EntityFromBody({ required: true, type: Shop }) shops: Array<Shop>) {
-    console.log(shops)
     shops.forEach(shop => shop.hash = Url.getHashCode(shop.domain))
     return this.repository.save(shops)
   }
