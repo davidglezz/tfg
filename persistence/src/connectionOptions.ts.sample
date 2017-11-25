@@ -1,8 +1,8 @@
 import { ConnectionOptions } from "typeorm";
-export { Shop } from './entities/Shop';
-export { Url } from './entities/Url';
-export { Product } from './entities/Product';
-export { PriceHistory } from './entities/PriceHistory';
+import { Shop } from './entities/Shop';
+import { Url } from './entities/Url';
+import { Product } from './entities/Product';
+import { PriceHistory } from './entities/PriceHistory';
 
 export const connectionOptions: ConnectionOptions = {
     "type": "mysql",
