@@ -45,11 +45,10 @@ export class TaskUpdateSitemap implements Task {
         .getMany()
 
       eachLimit<Shop, Error>(shops, this.config.ShopConcurrency, async (shop: Shop) => {
-        // Download sitemap and add urls
-        await this.proccessSitemap(shop)
         // Set next sitemap update date
         await this.updateShopDateNextUpd(shop)
-
+        // Download sitemap and add urls
+        await this.proccessSitemap(shop)
       }, async (err: any) => {
         if (err) {
           console.warn(err)
