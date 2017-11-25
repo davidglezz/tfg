@@ -1,6 +1,6 @@
 
 # Agregador de Productos y comparador de precios
-Se trata del Proyecto Fin de Grado de David González García, que consiste en una aplicacion web que extrae y recopila productos a la venta de tiendas electrónicas utilizando los microdatos que estas ponen a disposición.
+**Proyecto Fin de Grado de David González García** que consiste en una aplicacion web que extrae e indexa productos a la venta de tiendas electrónicas mediante los datos estructurados que estas ponen a disposición.
 
 ## Demostración
 http://tfg.davidgagnon.org/
