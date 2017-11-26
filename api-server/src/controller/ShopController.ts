@@ -77,7 +77,7 @@ export class ShopController {
     /*if (typeof shop.dateNextUpd === 'string') {
       shop.dateNextUpd = new Date(shop.dateNextUpd)
     }*/
-    shop.dateNextUpd = new Date(0)
+    shop.dateNextUpd = new Date(86400000) //
     return this.repository.save(shop)
   }
 
