@@ -1,18 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
+const { NoEmitOnErrorsPlugin } = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   "resolve": {
-    "extensions": [
-      ".ts"/*,".js"*/
-    ],
-    "modules": [
-      "./node_modules"
-    ],
+    "extensions": [".ts",".js"],
+    "modules": ["./node_modules"],
     "symlinks": true,
     "mainFields": [
       "module",
@@ -24,59 +20,25 @@ module.exports = {
       "./node_modules"
     ]
   },
-  "entry": {
-    "main": [
-      "./src/app.ts"
-    ],
-  },
+  "entry": "./src/app.ts",
   "output": {
-    "path": path.join(process.cwd(), "dist2"),
-    "filename": "apiserver.bundle.js",
-    "crossOriginLoading": false
+    "path": path.join(process.cwd(), "dist"),
+    "filename": "apiserver.bundle.js"
   },
-  "module": { },
+  "module": {
+    rules: [
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      { test: /\.tsx?$/, loader: 'ts-loader' }
+    ]
+  },
   "plugins": [
-    new NoEmitOnErrorsPlugin(),
-    new CopyWebpackPlugin([
-      {
-        "context": "src",
-        "to": "",
-        "from": {
-          "glob": "assets/**/*",
-          "dot": true
-        }
-      },
-      {
-        "context": "src",
-        "to": "",
-        "from": {
-          "glob": "favicon.ico",
-          "dot": true
-        }
-      }
-    ], {
-        "ignore": [
-          ".gitkeep"
-        ],
-        "debug": "warning"
-      }),
+    //new NoEmitOnErrorsPlugin(),
     new ProgressPlugin(),
-    new CircularDependencyPlugin({
+    /*new CircularDependencyPlugin({
       "exclude": /(\\|\/)node_modules(\\|\/)/,
       "failOnError": false
-    }),
-    new NamedModulesPlugin({}),
-    /*new AngularCompilerPlugin({
-      "mainPath": "main.ts",
-      "platform": 0,
-      "hostReplacementPaths": {
-        "environments\\environment.ts": "environments\\environment.ts"
-      },
-      "sourceMap": true,
-      "tsConfigPath": "src\\tsconfig.app.json",
-      "skipCodeGeneration": true,
-      "compilerOptions": {}
-    })*/
+    }),*/
+    // new UglifyJSPlugin()
   ],
   "node": {
     "fs": "empty",
@@ -88,5 +50,18 @@ module.exports = {
     "module": false,
     "clearImmediate": false,
     "setImmediate": false
-  }
+  },
+  "externals": [
+    {
+      "sntp": true, // a is not external
+      "kcors": true,
+      "dns": true,
+      "dgram": true,
+      "koa": true,
+      "koa-multer": true,
+      "koa-router": true,
+      "koa-bodyparser": true,
+      "multer": true,
+    },
+  ]
 };
