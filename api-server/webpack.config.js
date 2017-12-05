@@ -3,7 +3,8 @@ const path = require('path');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const { NoEmitOnErrorsPlugin } = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = {
   "resolve": {
@@ -20,6 +21,7 @@ module.exports = {
       "./node_modules"
     ]
   },
+  "target": "node",
   "entry": "./src/app.ts",
   "output": {
     "path": path.join(process.cwd(), "dist"),
@@ -38,7 +40,20 @@ module.exports = {
       "exclude": /(\\|\/)node_modules(\\|\/)/,
       "failOnError": false
     }),*/
-    // new UglifyJSPlugin()
+    /*new UglifyJsPlugin({
+      uglifyOptions: {
+        ie8: false,
+        ecma: 8,
+        parse: {},
+        mangle: true,
+        output: {
+          comments: false,
+          beautify: false
+        },
+        compress: true,
+        warnings: false
+      }
+    })*/
   ],
   "node": {
     "fs": "empty",
@@ -46,14 +61,15 @@ module.exports = {
     "crypto": "empty",
     "tls": "empty",
     "net": "empty",
+    "util": false,
     "process": true,
     "module": false,
     "clearImmediate": false,
     "setImmediate": false
   },
   "externals": [
-    {
-      "sntp": true, // a is not external
+    {/*
+      "sntp": true,
       "kcors": true,
       "dns": true,
       "dgram": true,
@@ -62,6 +78,6 @@ module.exports = {
       "koa-router": true,
       "koa-bodyparser": true,
       "multer": true,
-    },
+    */},
   ]
 };
