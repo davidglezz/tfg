@@ -12,7 +12,8 @@
     "build": "node_modules/.bin/tsc",
     "build:watch": "npm run build -- -w",
     "start:dev": "ts-node-dev --fast --respawn ./src/app.ts",
-    "release": "webpack -p"
+    "release": "webpack -p",
+    "clean": "rm -r ./dist/"
   },
   "author": {
     "name": "David González García",
@@ -54,12 +55,14 @@
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.44",
     "chai": "^4.1.2",
+    "circular-dependency-plugin": "^4.2.1",
     "mocha": "^4.0.1",
     "ts-loader": "^3.2.0",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.1",
+    "uglifyjs-webpack-plugin": "^1.1.1",
     "webpack": "^3.8.1"
   }
 }
