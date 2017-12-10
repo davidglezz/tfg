@@ -30,6 +30,20 @@ export class HttpRequest {
 
     return this.request
   }
+
+  public static async get (url: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      HttpRequest.getRequest()(url, function (error, response, body) {
+        if (error) {
+          reject(error)
+        } else if (response && response.statusCode !== 200) {
+          reject(response)
+        } else {
+          resolve(body)
+        }
+      })
+    })
+  }
 }
 
 // request .on('response') response argument is this instead of http.IncomingMessage
