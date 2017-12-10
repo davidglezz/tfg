@@ -6,9 +6,13 @@ import {
   GraphQLList,
   GraphQLNonNull
 } from 'graphql'
+import * as cheerio from 'cheerio'
+import { HttpRequest } from '../clases/HttpRequest'
 
-import axios from 'axios'
-import cheerio from 'cheerio'
+/**
+ * @author David González García <https://github.com/davidglezz>
+ * Based on https://github.com/IamNotUrKitty/gdom-node
+ */
 
 export function parse (query: string) {
   graphql(Schema, query)
@@ -19,14 +23,14 @@ const selector = {
   description: 'DOM element selector'
 }
 
-const NodeType = new GraphQLObjectType({
+const NodeType: GraphQLObjectType = new GraphQLObjectType({
   name: 'Node',
-  fields() {
+  fields () {
     return {
       text: {
         type: GraphQLString,
         args: { selector },
-        resolve(root, args) {
+        resolve (root, args) {
           if (args.selector) {
             return cheerio(args.selector, root).text()
           }
@@ -42,17 +46,17 @@ const NodeType = new GraphQLObjectType({
           },
           selector
         },
-        resolve(root, args) {
+        resolve (root, args) {
           if (args.selector) {
-            return cheerio(args.selector, root).attr(args.name);
+            return cheerio(args.selector, root).attr(args.name)
           }
-          return cheerio(root).attr(args.name);
+          return cheerio(root).attr(args.name)
         }
       },
       next: {
         type: NodeType,
         args: { selector },
-        resolve(root, args) {
+        resolve (root, args) {
           if (args.selector) {
             return cheerio(args.selector, root).next()
           }
@@ -62,10 +66,10 @@ const NodeType = new GraphQLObjectType({
       nextAll: {
         type: new GraphQLList(NodeType),
         args: { selector },
-        resolve(root, args) {
+        resolve (root, args) {
           const items = root(args.selector)
-          const arr = []
-          items.each((i, item) => {
+          const arr: any[] = []
+          items.each((i: number, item: any) => {
             arr.push(item)
           })
           return arr
@@ -74,7 +78,7 @@ const NodeType = new GraphQLObjectType({
       tag: {
         type: GraphQLString,
         args: { selector },
-        resolve(root, args) {
+        resolve (root, args) {
           if (args.selector) {
             return cheerio(args.selector, root).get(0).tagName
           }
@@ -84,7 +88,7 @@ const NodeType = new GraphQLObjectType({
       html: {
         type: GraphQLString,
         args: { selector },
-        resolve(root, args) {
+        resolve (root, args) {
           if (args.selector) {
             return cheerio(args.selector, root).html()
           }
@@ -93,16 +97,16 @@ const NodeType = new GraphQLObjectType({
       },
       parent: {
         type: NodeType,
-        resolve(root) {
+        resolve (root) {
           return cheerio(root).parent()
         }
       },
       query: {
         type: new GraphQLList(NodeType),
         args: { selector },
-        resolve(root, args) {
+        resolve (root, args) {
           const items = cheerio(args.selector, root)
-          const arr = []
+          const arr: any[] = []
           items.each((i, item) => {
             arr.push(item)
           })
@@ -113,7 +117,7 @@ const NodeType = new GraphQLObjectType({
   }
 })
 
-export const Schema = new GraphQLSchema({
+const Schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -125,9 +129,8 @@ export const Schema = new GraphQLSchema({
             description: 'Page url'
           }
         },
-        resolve(root, args) {
-          return axios.get(args.url)
-            .then(response => response.data)
+        resolve (root, args) {
+          return HttpRequest.get(args.url)
         }
       }
     }
