@@ -15,7 +15,7 @@ import { HttpRequest } from '../clases/HttpRequest'
  */
 
 export function parse (query: string) {
-  graphql(Schema, query)
+  return graphql(Schema, query)
 }
 
 const selector = {
