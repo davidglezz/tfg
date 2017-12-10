@@ -7,7 +7,7 @@ import {
   GraphQLNonNull
 } from 'graphql'
 import * as cheerio from 'cheerio'
-import { HttpRequest } from '../clases/HttpRequest'
+import { HttpRequest } from '../../clases/HttpRequest'
 
 /**
  * @author David González García <https://github.com/davidglezz>
